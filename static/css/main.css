@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+html {
+  font-family: "Roboto";
+  background-color: #DB001B;
+  }
+
+.card-title {
+font-weight: bolder;
+}
+
+.background-image {
+background: url('../resources/images/logosalesianos.png') no-repeat;
+background-size: 110px;
+background-position: center;
+display: block;
+position: absolute;
+top: 73px;
+min-height: 110px;
+width: 100%;
+z-index: 1;
+}
+
+.title h3 {
+margin: 0;
+padding: 40px 0;
+position: relative;
+z-index: 2;
+color: #FBF9ED;
+}
+
+.card {
+top: 40px;
+position: relative;
+z-index: 2;
+background-color: #FBF9ED;
+}
