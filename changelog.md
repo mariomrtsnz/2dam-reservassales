@@ -1,4 +1,13 @@
-## 0.0.1 - 2018-09-24
+## 0.0.1b - 2018-09-24
+### Añadido
+- Añadidos favicons.
+- Tarjetas y esqueleto inicial del formulario de Nueva Reserva.
+
+### Actualizado
+- Actualizados los títulos de los archivos .html creados hasta el momento.
+- La tabla con la lista de usuarios es ahora responsiva.
+
+## 0.0.1a - 2018-09-24
 ### Añadido
 - Menú desplegable al hacer click con las opciones de Editar y Borrar.
 - Fichero lista.js que aporta funcionalidad al menú desplegable.
