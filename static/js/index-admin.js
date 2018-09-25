@@ -1,7 +1,7 @@
-$(document).ready(function(){
+$(document).ready(function () {
     $(".dropdown-trigger").dropdown();
 });
 
-$(document).ready(function(){
+$(document).ready(function () {
     $('.modal').modal();
 });

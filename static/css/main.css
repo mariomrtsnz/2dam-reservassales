@@ -6,37 +6,37 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-font-smoothing: antialiased;
   font-smoothing: antialiased;
-  }
+}
 
 .card-title {
-font-weight: bolder;
+  font-weight: bolder;
 }
 
 .background-image {
-background: url('../resources/images/logosalesianos.png') no-repeat;
-background-size: 110px;
-background-position: center;
-display: block;
-position: absolute;
-top: 73px;
-min-height: 110px;
-width: 100%;
-z-index: 1;
+  background: url('../resources/images/logosalesianos.png') no-repeat;
+  background-size: 110px;
+  background-position: center;
+  display: block;
+  position: absolute;
+  top: 73px;
+  min-height: 110px;
+  width: 100%;
+  z-index: 1;
 }
 
 .title h3 {
-margin: 0;
-padding: 40px 0;
-position: relative;
-z-index: 2;
-color: #FBF9ED;
+  margin: 0;
+  padding: 40px 0;
+  position: relative;
+  z-index: 2;
+  color: #FBF9ED;
 }
 
 .card {
-top: 40px;
-position: relative;
-z-index: 2;
-background-color: #FBF9ED;
+  top: 40px;
+  position: relative;
+  z-index: 2;
+  background-color: #FBF9ED;
 }
 
 #logo {
@@ -45,51 +45,53 @@ background-color: #FBF9ED;
   background-size: 65px;
 }
 
-#banner{
+#banner {
   height: 64px;
   line-height: 64px;
-  }
+}
 
-#phone{
+#phone {
   top: 30px;
   left: 85%;
 }
 
-#user{
+#user {
   float: right;
   padding: 23px 0 23px 23px;
   margin: 0 auto;
 }
 
-#user > li > a{
+#user>li>a {
   padding: 0 40px 0 55px;
 }
 
-#dropdown1{
+#dropdown1 {
   top: 87px !important;
   z-index: 1000;
 }
-.container{
-  text-align:center;
+
+.container {
+  text-align: center;
   position: relative;
   top: 225px;
   z-index: 1;
 }
 
-body > div.container > div > a{
+body>div.container>div>a {
   width: 325px;
   height: 125px;
   font-size: larger;
   padding: 35px !important;
   background-color: #FBF9ED;
-  color: #6C0C13; 
+  color: #6C0C13;
 }
 
 @media only screen and (max-width: 600px) {
   .container {
-      top: 60px;
+    top: 60px;
   }
-  #phone{
-    left:30%;
+
+  #phone {
+    left: 30%;
   }
 }

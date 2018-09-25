@@ -13,6 +13,8 @@
 - Cambiado nombre del archivo "nueva-reserva.html" por "reserva-nueva.html" para seguir la nomenclatura.
 - Corregido problema con el padding en los formularios de "reserva-nueva.html" y "sala-nueva.html".
 - Cambiado inputs de "index.html" y de "registro.html" a "required".
+- Corregido linting de todos los ficheros.
+- Corregido título de "usuario-nuevo.html" y estilo de labels para cumplir las guías de diseño Material.
 
 
 ## 0.0.2b - 2018-09-25

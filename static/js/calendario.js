@@ -1,4 +1,4 @@
-$(function() {
+$(function () {
     $('#calendar').fullCalendar({
         editable: true,
         defaultView: 'agendaWeek',
