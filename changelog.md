@@ -5,6 +5,7 @@
 
 ### Actualizado
 - Finalizada página de Admin: Nueva Reserva (reutilizable después para editar).
+- Diagrama de clases (añadida clase día).
 
 ### TODO
 - Corregir espacio entre elementos en pantallas Large en Admin - nueva-reserva.html
