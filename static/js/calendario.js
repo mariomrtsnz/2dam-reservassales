@@ -1,7 +1,6 @@
 $(function() {
     $('#calendar').fullCalendar({
         editable: true,
-        weekends: false,
         defaultView: 'agendaWeek',
         header: {
             left: '',

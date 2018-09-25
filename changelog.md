@@ -4,6 +4,15 @@
 - Calendario (no funcional).
 - Lista salas.
 - Formulario de Nueva Sala (reutilizable después para Editar Sala).
+- Atributo "aforoMax" a la clase POJO "Sala".
+- Formulario de Nuevo Usuario (reutilizable después para Editar Usuario).
+
+### Actualizado
+- Terminado index-admin.html.
+- Habilitado los fines de semana en el calendario (aunque luego el Admin decidirá entre habilitarlos o no).
+- Cambiado nombre del archivo "nueva-reserva.html" por "reserva-nueva.html" para seguir la nomenclatura.
+- Corregido problema con el padding en los formularios de "reserva-nueva.html" y "sala-nueva.html".
+- Cambiado inputs de "index.html" y de "registro.html" a "required".
 
 
 ## 0.0.2b - 2018-09-25
