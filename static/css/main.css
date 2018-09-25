@@ -66,10 +66,15 @@ background-color: #FBF9ED;
   padding: 0 40px 0 55px;
 }
 
+#dropdown1{
+  top: 87px !important;
+  z-index: 1000;
+}
 .container{
   text-align:center;
   position: relative;
   top: 225px;
+  z-index: 1;
 }
 
 body > div.container > div > a{
