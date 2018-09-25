@@ -1,3 +1,11 @@
+## 0.0.2c - 2018-09-25
+### Añadido
+- Librería FullCalendar y Moment.js
+- Calendario (no funcional).
+- Lista salas.
+- Formulario de Nueva Sala (reutilizable después para Editar Sala).
+
+
 ## 0.0.2b - 2018-09-25
 ### Añadido
 - Navbar funcional y responsivo al index-admin.
