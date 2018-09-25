@@ -1,3 +1,14 @@
+## 0.0.2b - 2018-09-25
+### Añadido
+- Navbar funcional y responsivo al index-admin.
+- Archivo vacío admin-calendario.html.
+
+### Actualizado
+- Finalizada página de Admin: Nueva Reserva (reutilizable después para editar).
+
+### TODO
+- Corregir espacio entre elementos en pantallas Large en Admin - nueva-reserva.html
+
 ## 0.0.2a - 2018-09-25
 ### Añadido
 - Datepicker y Timepicker con Materialize para Nueva Reserva (funcional).

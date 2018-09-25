@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Lobster');
-html, body {
-    height: 100%;
-    
-}
+
 .card-title {
     font-family: 'Lobster';
+}
+
+.card-content {
+    padding-top: 0 !important;
 }
