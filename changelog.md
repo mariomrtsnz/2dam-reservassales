@@ -1,3 +1,13 @@
+## 0.0.2a - 2018-09-25
+### Añadido
+- Datepicker y Timepicker con Materialize para Nueva Reserva (funcional).
+- Creada estructura de página principal de Admin.
+- Creada página de Registro.
+
+### Actualizado
+- Corregido error al cambiar el focus de los inputs.
+- Movido localización de nueva reserva a Admin.
+
 ## 0.0.1b - 2018-09-24
 ### Añadido
 - Añadidos favicons.

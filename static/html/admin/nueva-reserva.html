@@ -11,8 +11,6 @@
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" type="text/css" media="screen" href="../../css/reserva.css" />
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
         crossorigin="anonymous"></script>
     <script src="../../js/nueva-reserva.js"></script>
@@ -42,11 +40,25 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col s8">9-columns</div>
+                    <input type="text" class="datepicker">
+                    <div class="col s8">
+                        <div class="input-field col s12 m6">
+                            <select class="icons">
+                              <option value="" disabled selected>Elige la sala</option>
+                              <option value="" data-icon="https://materializecss.com/images/sample-1.jpg">example 1</option>
+                              <option value="" data-icon="images/office.jpg">example 2</option>
+                              <option value="" data-icon="images/yuna.jpg">example 3</option>
+                            </select>
+                            <label>Images in select</label>
+                          </div>
+                    </div>
+                    <input type="text" class="timepicker">
                 </div>
             </div>
         </form>
     </div>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 
 </html>
