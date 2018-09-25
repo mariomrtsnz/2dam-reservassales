@@ -46,6 +46,46 @@ background-color: #FBF9ED;
 }
 
 #banner{
-    height: 64px;
-    line-height: 64px;
+  height: 64px;
+  line-height: 64px;
   }
+
+#phone{
+  top: 30px;
+  left: 85%;
+  background-color: #223127;
+}
+
+#user{
+  float: right;
+  padding: 23px 0 23px 23px;
+  margin: 0 auto;
+}
+
+#user > li > a{
+  padding: 0 40px 0 55px;
+}
+
+.container{
+  text-align:center;
+  position: relative;
+  top: 225px;
+}
+
+body > div.container > div > a{
+  width: 325px;
+  height: 125px;
+  font-size: larger;
+  padding: 35px !important;
+  background-color: #FBF9ED;
+  color: #6C0C13; 
+}
+
+@media only screen and (max-width: 600px) {
+  .container {
+      top: 60px;
+  }
+  #phone{
+    left:30%;
+  }
+}
