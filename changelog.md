@@ -1,3 +1,12 @@
+## 0.0.3a - 2018-09-26
+### Añadido
+- Sidenav en "index-admin.html".
+- index-usuario.html.
+
+### Actualizado
+- Color al hover de los botones de "index-usuario.html".
+- Eliminado botón contacto en "index-admin.html".
+
 ## 0.0.2c - 2018-09-25
 ### Añadido
 - Librería FullCalendar y Moment.js
