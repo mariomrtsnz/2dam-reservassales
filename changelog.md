@@ -1,3 +1,15 @@
+## 0.0.3c - 2018-09-26
+### Añadido
+- Botón de añadir nuevo elemento en los archivos de listas.
+
+### Actualizado
+- Corregido posición de los elementos de menú de "index-usuario.html".
+- Iconos del menú "index-usuario.html".
+- Menú lateral de "index-usuario.html".
+- Posición de icono de teléfono en pantallas grandes en "index-usuario.html".
+- Título de "salas-lista.html"
+- Posición de los iconos del botón flotante en las listas de "salas-lista.html" y "usuarios-lista.html".
+
 ## 0.0.3b - 2018-09-26
 ### Añadido
 - Sidenav en "index-admin.html".

@@ -85,16 +85,12 @@ html {
   background-color: #AEB4B0;
 }
 
-#phone {
-  left: 30%;
-}
-
 #button-menu {
   margin-left: 1em;
 }
 
 @media only screen and (max-width: 1260px) {
   #phone {
-    left: 50%;
+    left: 30%;
   }
 }

@@ -40,7 +40,7 @@ h2 {
     text-align: initial;
     font-size: 20px;
     font-weight: 500;
-    padding: 20px 20px 5px;
+    margin: 0;
     color: #404040;
 }
 
@@ -75,4 +75,31 @@ tr:not(#header) {
 
 tr:not(#header):hover {
     background: #eeeeee;
+}
+
+.fixed-action-btn.direction-left,
+.fixed-action-btn.direction-right {
+    padding: 0;
+}
+
+.fixed-action-btn {
+    position: relative;
+    right: 0;
+    bottom: 0;
+}
+
+.fixed-action-btn.direction-left ul, .fixed-action-btn.direction-right ul {
+    right: 95px;
+    top: 45%;
+}
+
+#button-nuevo-elemento{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#lista-header {
+    height: 137px;
 }
