@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+html {
+  background-color: #DB001B;
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+}
+
+.card-title {
+  font-weight: bolder;
+}
+
+.background-image {
+  background: url('../resources/images/logosalesianos.png') no-repeat;
+  background-size: 110px;
+  background-position: center;
+  display: block;
+  position: absolute;
+  top: 73px;
+  min-height: 110px;
+  width: 100%;
+  z-index: 1;
+}
+
+.title h3 {
+  margin: 0;
+  padding: 40px 0;
+  position: relative;
+  z-index: 2;
+  color: #FBF9ED;
+}
+
+.card {
+  top: 40px;
+  position: relative;
+  z-index: 2;
+  background-color: #FBF9ED;
+}
+
+#logo {
+  background-position: left;
+  top: -36%;
+  background-size: 65px;
+}
+
+#banner {
+  height: 64px;
+  line-height: 64px;
+}
+
+#phone {
+  top: 30px;
+  left: 80%;
+}
+
+#user {
+  float: right;
+  padding: 23px 0 23px 23px;
+  margin: 0 auto;
+}
+
+#user>li>a {
+  padding: 0 40px 0 55px;
+}
+
+#dropdown1 {
+  top: 87px !important;
+  z-index: 1000;
+}
+
+#index-main-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 125px;
+  font-size: larger;
+  background-color: #FBF9ED;
+  color: #6C0C13;
+  z-index: 1;
+}
+
+#index-main-button:hover {
+  background-color: #AEB4B0;
+}
+
+#button-menu {
+  margin-left: 1em;
+}
+
+@media only screen and (max-width: 1260px) {
+  #phone {
+    left: 30%;
+  }
+}

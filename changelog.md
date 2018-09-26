@@ -1,3 +1,14 @@
+## 0.0.3e - 2018-09-26
+### Añadido
+- Ficheros de vistas al proyecto de Spring.
+- Paquetes (vacíos) para Config, Controller, Model, Repository, Service y FormBean
+- Configuracion Spring Security por defecto (no personalizada para nuestra Aplicación).
+- Clases POJO con atributos, getters & setters, constructores y toString (sin anotaciones).
+- Clase HomeController básica (no configurada para nuestra Aplicación).
+
+### Actualizado
+- Eliminado atributo "disponible" de la clase POJO "Sala".
+
 ## 0.0.3d - 2018-09-26
 ### Añadido
 - Carpeta "workspace" que contendrá el proyecto principal con la aplicación de Spring.
