@@ -1,3 +1,8 @@
+## 0.0.3d - 2018-09-26
+### Añadido
+- Carpeta "workspace" que contendrá el proyecto principal con la aplicación de Spring.
+- Esqueleto de la estructura del proyecto con las dependencias H2, JPA, Hibernate, Web y Security.
+
 ## 0.0.3c - 2018-09-26
 ### Añadido
 - Botón de añadir nuevo elemento en los archivos de listas.
