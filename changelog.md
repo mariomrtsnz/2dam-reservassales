@@ -1,11 +1,18 @@
-## 0.0.3a - 2018-09-26
+## 0.0.3b - 2018-09-26
 ### Añadido
 - Sidenav en "index-admin.html".
+
+### Actualizado
+- Corregido posición de los elementos de menú de "index-main.html" (main.css).
+
+## 0.0.3a - 2018-09-26
+### Añadido
 - index-usuario.html.
 
 ### Actualizado
 - Color al hover de los botones de "index-usuario.html".
 - Eliminado botón contacto en "index-admin.html".
+- Corregido posición de los elementos de menú de "index-main.html" (main.css).
 
 ## 0.0.2c - 2018-09-25
 ### Añadido

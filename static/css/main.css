@@ -70,24 +70,27 @@ html {
   z-index: 1000;
 }
 
-.container {
-  text-align: center;
-  position: relative;
-  top: 225px;
+#index-main-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 125px;
+  font-size: larger;
+  background-color: #FBF9ED;
+  color: #6C0C13;
   z-index: 1;
 }
 
-body>div.container>div>a {
-  width: 325px;
-  height: 125px;
-  font-size: larger;
-  padding: 35px !important;
-  background-color: #FBF9ED;
-  color: #6C0C13;
+#index-main-button:hover {
+  background-color: #AEB4B0;
 }
 
-body>div.container>div>a:hover{
-  background-color: #AEB4B0;
+#phone {
+  left: 30%;
+}
+
+#button-menu {
+  margin-left: 1em;
 }
 
 @media only screen and (max-width: 1260px) {
@@ -95,14 +98,3 @@ body>div.container>div>a:hover{
     left: 50%;
   }
 }
-
-@media only screen and (max-width: 600px) {
-  .container {
-    top: 60px;
-  }
-
-  #phone {
-    left: 30%;
-  }
-}
-
