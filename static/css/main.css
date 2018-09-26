@@ -52,7 +52,7 @@ html {
 
 #phone {
   top: 30px;
-  left: 85%;
+  left: 80%;
 }
 
 #user {
@@ -86,6 +86,16 @@ body>div.container>div>a {
   color: #6C0C13;
 }
 
+body>div.container>div>a:hover{
+  background-color: #AEB4B0;
+}
+
+@media only screen and (max-width: 1260px) {
+  #phone {
+    left: 50%;
+  }
+}
+
 @media only screen and (max-width: 600px) {
   .container {
     top: 60px;
@@ -95,3 +105,4 @@ body>div.container>div>a {
     left: 30%;
   }
 }
+
