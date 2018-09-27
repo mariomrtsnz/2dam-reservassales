@@ -15,7 +15,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                     .antMatchers(
-                            "/",
+                    		// TODO: Eliminar los dos asteriscos de la línea de abajo una vez finalizada la fase de testeo de estilos y mappings
+                            "/**",
                             "/scripts/**",
                             "/styles/**",
                             "/images/**",
@@ -24,7 +25,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                    .loginPage("/login")
+                    .loginPage("/")
                     .permitAll()
                 .and()
                 .logout()

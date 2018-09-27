@@ -1,3 +1,15 @@
+## 0.0.4d - 2018-09-27
+### Añadido
+- Elementos (fragments) comunes en reserva-nueva.html.
+- TODO importante en SecurityConfig.java (línea 18).
+- GetMapping para /admin/nueva-sala.
+
+### Actualizado
+- Mapping para /registro en HomeController.
+- Renombrados GetMappings en UserController y AdminController.
+- Renombrado GetMapping /index por /home en HomeController.
+- Enlaces puestos con th:href y rutas relativas con Thymeleaf.
+
 ## 0.0.4c - 2018-09-27
 ### Añadido
 - AdminController.

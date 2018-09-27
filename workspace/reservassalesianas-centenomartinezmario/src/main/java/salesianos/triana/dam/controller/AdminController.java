@@ -6,24 +6,29 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class AdminController {
 
-	@GetMapping("/Admin/AdministrarReservas")
+	@GetMapping("/admin/calendario-general")
 	public String AdministrarReservas() {
-		return "admin-calendario";
+		return "admin/admin-calendario";
 	}
 
-	@GetMapping("/Admin/AdministrarUsuarios")
+	@GetMapping("/admin/lista-usuarios")
 	public String administrarUsuarios() {
-		return "usuarios-lista";
+		return "admin/usuarios-lista";
 	}
 
-	@GetMapping("/Admin/AdministrarSalas")
+	@GetMapping("/admin/lista-salas")
 	public String AdministrarReserva() {
-		return "salas-lista";
+		return "admin/salas-lista";
 	}
 
-	@GetMapping("/Admin/CrearUsuario")
+	@GetMapping("/admin/nuevo-usuario")
 	public String crearUsuario() {
-		return "usuario-nuevo";
+		return "admin/usuario-nuevo";
+	}
+	
+	@GetMapping("/admin/nueva-sala")
+	public String crearSala() {
+		return "admin/sala-nueva";
 	}
 
 }

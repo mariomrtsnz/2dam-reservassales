@@ -16,12 +16,11 @@ public class HomeController {
 
 	@GetMapping("/registro")
 	public String registro() {
-		return "registro";
+		return "public/registro";
 	}
 
-	@GetMapping("/index/")
-	public String index(Model model, Principal principal) {
-		model.addAttribute("message", "Has iniciado sesión como" + principal.getName());
-		return "index";
+	@GetMapping("/home")
+	public String home() {
+		return "public/index-usuario";
 	}
 }

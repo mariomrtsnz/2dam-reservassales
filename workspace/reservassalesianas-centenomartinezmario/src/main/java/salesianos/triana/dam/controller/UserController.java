@@ -6,19 +6,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class UserController {
 
-	@GetMapping("/User/NuevaReserva")
+	@GetMapping("/user/nueva-reserva")
 	public String nuevaReserva() {
-		return "reserva-nueva";
+		return "public/reserva-nueva";
 	}
 
-	@GetMapping("/User/VerCalendario")
+	@GetMapping("/user/calendario-general")
 	public String verCalendario() {
-		return "admin-calendario";
+		return "/admin/admin-calendario";
 	}
 
-	@GetMapping("/User/AdministrarReservas")
+	@GetMapping("/user/calendario-personal")
 	public String administrarReservas() {
-		return "admin-calendario";
+		return "/admin/admin-calendario";
 	}
 
 }
