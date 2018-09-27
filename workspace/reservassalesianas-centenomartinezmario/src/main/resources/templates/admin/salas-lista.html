@@ -1,24 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="shortcut icon" type="image/x-icon" href="../../resources/images/logosalesianos.ico">
     <title>Lista de Salas</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="../../css/usuarios-lista.css" />
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
         crossorigin="anonymous"></script>
-    <script src="../../js/lista.js"></script>
+    <th:block th:replace="fragments/comun :: head"></th:block>
+    <link rel="stylesheet" type="text/css" media="screen" th:href="@{/styles/main.css}"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="../../css/usuarios-lista.css" th:href="@{/styles/usuarios-lista.css}"/>
+    <script src="../../js/lista.js" th:src="@{/scripts/lista.js}"></script>
 </head>
 
 <body>
+	<ul th:replace="fragments/comun :: index-dropdown"></ul>
+  	<nav th:replace="fragments/comun :: index-nav"></nav>
+  	<ul th:replace="fragments/comun :: sideBar"></ul>
+  	<div th:replace="fragments/comun :: modal-contacto"></div>
+  	<div th:replace="fragments/comun :: toggle-sideBar"></div>
     <div class="container">
         <div class="row" id="lista-header">
             <div class="col s6">
@@ -26,13 +24,13 @@
             </div>
             <div class="col s6 hide-on-med-and-down" id="button-nuevo-elemento">
                 <h2>Nuevo Elemento</h2>
-                <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+                <a class="btn-floating btn-large waves-effect waves-light red" th:href="@{/admin/nueva-sala}"><i class="material-icons">add</i></a>
             </div>
         </div>
         <div class="row hide-on-med-and-up show-on-medium-and-down">
             <div class="col s12">
                 <h2>Nuevo Elemento</h2>
-                <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+                <a class="btn-floating btn-large waves-effect waves-light red" th:href="@{/admin/nueva-sala}"><i class="material-icons">add</i></a>
             </div>
         </div>
         <div class="card">
