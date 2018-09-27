@@ -31,4 +31,19 @@ public class AdminController {
 		return "admin/sala-nueva";
 	}
 
+	@GetMapping("/admin/editar-sala")
+	public String editarSala() {
+		return "admin/sala-nueva";
+	}
+	
+	@GetMapping("/admin/editar-usuario")
+	public String editarUsuario() {
+		return "admin/usuario-nuevo";
+	}
+	
+	@GetMapping("/admin/editar-reserva")
+	public String editarReserva() {
+		return "admin/reserva-nueva";
+	}
+	
 }
