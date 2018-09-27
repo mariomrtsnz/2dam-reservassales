@@ -1,16 +1,21 @@
 ## 0.0.4c - 2018-09-27
 ### Añadido
-- Elementos (fragments) comunes en todas las páginas una vez logueado.
 - AdminController.
 - UserController.
+- Atributos de asociación en las clases Sala, Reserva y Usuario.
+- Etiquetas de Hibernate en las clases POJO.
+- Métodos Helpers en la clase Usuario y Sala para Reserva.
+- Clase Authorities.
+- Atributo de Authorities en la POJO Usuario.
 
 ### Actualizado
-- Corregido problemas de estilo.
+- Corregido problemas de acceso a carpeta de estilo, scripts e imagenes.
 - Corregido conflicto de push mediante merge manual.
 - HomeController con datos del ultimo push fallido.
+- Constructores, Getters, Setters y toStrings de las clases POJO.
 
 ### Eliminado
-- Clase POJO Admin (se utilizarán ROLES).
+- Clase POJO Admin (se utilizarán ROLES en los Usuarios).
 
 ## 0.0.4b - 2018-09-27
 ### Añadido
