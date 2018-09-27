@@ -1,63 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
 <head>
-  <meta charset="utf-8" />
-  <link rel="shortcut icon" type="image/x-icon" href="../../resources/images/logosalesianos.ico">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Reservas Salesianas - Inicio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" media="screen" href="../../css/main.css" />
-  <script src="main.js"></script>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <!-- Compiled and minified CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <!-- Compiled and minified JavaScript -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
     crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <script src="../../js/index-admin.js"></script>
+  <th:block th:replace="fragments/comun :: head"></th:block>
+  <link rel="stylesheet" type="text/css" media="screen" th:href="@{/styles/main.css}"/>
+  <script src="../../js/index-admin.js" th:src="@{/scripts/index-admin.js}"></script>
 </head>
 
 <body>
-  <ul id="dropdown1" class="dropdown-content">
-    <li><a href="#!">one</a></li>
-    <li><a href="#!">two</a></li>
-  </ul>
-  <nav id="banner">
-    <div class="nav-wrapper">
-      <div class="background-image" id="logo">
-        <ul id="user">
-          <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">$Usuario<i class="material-icons right">arrow_drop_down</i></a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  <ul id="slide-out" class="sidenav">
-    <li>
-      <div class="user-view">
-        <div class="background">
-          <img src="https://materializecss.com/images/sample-1.jpg">
-        </div>
-        <a href="#user"><img class="circle" src="../../resources/images/logosalesianos.png"></a>
-        <a href="#name"><span class="white-text name">$loggedUser.nombre</span></a>
-        <a href="#email"><span class="white-text email">$loggedUser.email</span></a>
-      </div>
-    </li>
-    <li><a href="#!"><i class="material-icons">event_note</i>Administrar Reservas</a></li>
-    <li>
-      <div class="divider"></div>
-    </li>
-    <li><a href="#!"><i class="material-icons">face</i>Administrar Usuarios</a></li>
-    <li>
-      <div class="divider"></div>
-    </li>
-    <li><a href="#!"><i class="material-icons">developer_board</i>Administrar Salas</a></li>
-  </ul>
-  <div class="section">
-    <a data-target="slide-out" class="btn-floating btn waves-effect waves-light red sidenav-trigger" id="button-menu"><i
-        class="material-icons">menu</i></a>
-  </div>
+  <ul th:replace="fragments/comun :: index-dropdown"></ul>
+  <nav th:replace="fragments/comun :: index-nav"></nav>
+  <ul th:replace="fragments/comun :: sideBar"></ul>
+  <div th:replace="fragments/comun :: modal-contacto"></div>
+  <div th:replace="fragments/comun :: toggle-sideBar"></div>
   <div class="section" id="container">
     <div class="row">
       <div class="col s4 hide-on-small-only"></div>

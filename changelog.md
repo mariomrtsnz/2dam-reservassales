@@ -1,3 +1,23 @@
+## 0.0.4e - 2018-09-27
+### Añadido
+- GetMappings para editarSala, editarReserva y editarUsuario en AdminController.
+- Archivos relacionados con FullCalendar al proyecto de Spring.
+- Elementos (fragments) comunes en admin-calendario.html.
+- Elementos (fragments) comunes en reserva-nueva.html.
+- Elementos (fragments) comunes en sala-nueva.html.
+- Elementos (fragments) comunes en usuario-nuevo.html.
+- Elementos (fragments) comunes en usuarios-lista.html.
+- Elementos (fragments) comunes en salas-lista.html.
+
+### Actualizado
+- Enlaces correctos de los botones de "Nuevo".
+- Enlaces correctos en los botones del SideBar en comun.html
+- Enlaces correctos de los botones del menú central en index-usuario.html.
+- index-usuario.html ahora contiene los elementos del antiguo index-admin.html (vista según el ROL no funcional).
+
+### Eliminado
+- index-admin.html (integrado en index-usuario.html).
+
 ## 0.0.4d - 2018-09-27
 ### Añadido
 - Elementos (fragments) comunes en reserva-nueva.html.
