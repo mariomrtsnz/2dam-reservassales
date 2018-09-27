@@ -1,21 +1,10 @@
-<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      xmlns:th="http://www.thymeleaf.org">
 <!DOCTYPE html>
-<html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
 <head>
-    <meta charset="utf-8" />
-    <link rel="shortcut icon" type="image/x-icon" href="../resources/images/logosalesianos.ico">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<th:block th:replace="fragments/comun :: head"></th:block>
     <title>Reservas Salesianas - Inicio de Sesión</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="../css/main.css" />
-    <script src="main.js"></script>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" th:href="@{/styles/main.css}"/>
 </head>
 
 <body>

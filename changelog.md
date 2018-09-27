@@ -1,9 +1,19 @@
-## 0.0.3e - 2018-09-27
+## 0.0.4b - 2018-09-27
 ### Añadido
-- Importado workspace en clase.
+- Elementos de fragmentos comunes: sideBar, nav o head.
+- Enlaces puestos con th:href y rutas relativas con Thymeleaf.
+- HomeController
 
 ### Actualizado
-- 
+- Dropdown de las páginas de inicio ahora muestran "Ver Perfil" y "Cerrar Sesión".
+- Reemplazado elementos comunes por fragmentos.
+
+### Eliminado
+- Etiqueta inutilizada script con "main.js" en varios htmls.
+
+## 0.0.4a - 2018-09-27
+### Añadido
+- Importado workspace en clase.
 
 ## 0.0.3e - 2018-09-26
 ### Añadido
