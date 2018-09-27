@@ -1,3 +1,17 @@
+## 0.0.4c - 2018-09-27
+### Añadido
+- Elementos (fragments) comunes en todas las páginas una vez logueado.
+- AdminController.
+- UserController.
+
+### Actualizado
+- Corregido problemas de estilo.
+- Corregido conflicto de push mediante merge manual.
+- HomeController con datos del ultimo push fallido.
+
+### Eliminado
+- Clase POJO Admin (se utilizarán ROLES).
+
 ## 0.0.4b - 2018-09-27
 ### Añadido
 - Elementos de fragmentos comunes: sideBar, nav o head.

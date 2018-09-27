@@ -16,9 +16,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                     .antMatchers(
                             "/",
-                            "/js/**",
-                            "/css/**",
-                            "/img/**",
+                            "/scripts/**",
+                            "/styles/**",
+                            "/images/**",
                             "/webjars/**").permitAll()
                     .antMatchers("/user/**").hasRole("USER")
                     .anyRequest().authenticated()
