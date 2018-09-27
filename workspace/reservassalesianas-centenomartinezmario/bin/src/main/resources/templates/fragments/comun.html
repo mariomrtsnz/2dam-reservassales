@@ -1,0 +1,82 @@
+<head th:fragment="head" th:remove="tag">
+<meta charset="utf-8" />
+<link rel="shortcut icon" type="image/x-icon"
+	th:href="@{/images/logosalesianos.ico}">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+<!-- Compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<!-- Compiled and minified JavaScript -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+
+<ul id="dropdown1" class="dropdown-content" th:fragment="index-dropdown">
+	<li><a href="#!">Ver Perfil</a></li>
+	<li><a href="#!">Cerrar Sesión</a></li>
+</ul>
+
+<nav id="banner" th:fragment="index-nav">
+	<div class="nav-wrapper">
+		<div class="background-image" id="logo">
+			<ul id="user">
+				<li><a class="dropdown-trigger" href="#!"
+					data-target="dropdown1">$Usuario<i class="material-icons right">arrow_drop_down</i></a></li>
+			</ul>
+		</div>
+		<a class="btn-floating btn-large pulse modal-trigger" href="#modal1"
+			id="phone"><i class="material-icons">phone</i></a>
+	</div>
+</nav>
+
+<div id="modal1" class="modal" th:fragment="modal-contacto">
+	<div class="modal-content">
+		<h5>Si desea mas información puede llamar a los siguientes
+			números</h5>
+		<h4 class="divider"></h4>
+		<h4>
+			<a>+34 692 43 97 41</a>
+		</h4>
+		<h4>
+			<a>+34 678 37 70 84</a>
+		</h4>
+	</div>
+	<div class="modal-footer">
+		<a href="#!" class="modal-close waves-effect waves-green btn-flat">Ok</a>
+	</div>
+</div>
+
+<div class="section" th:fragment="toggle-sideBar">
+	<a data-target="slide-out"
+		class="btn-floating btn waves-effect waves-light red sidenav-trigger"
+		id="button-menu"><i class="material-icons">menu</i></a>
+</div>
+
+<ul id="slide-out" class="sidenav" th:fragment="sideBar">
+	<li>
+		<div class="user-view">
+			<div class="background">
+				<img src="https://materializecss.com/images/sample-1.jpg">
+			</div>
+			<a href="#user"><img class="circle"
+				src="../../resources/images/logosalesianos.png"></a> <a
+				href="#name"><span class="white-text name">$loggedUser.nombre</span></a>
+			<a href="#email"><span class="white-text email">$loggedUser.email</span></a>
+		</div>
+	</li>
+	<li><a href="#!"><i class="material-icons">event_note</i>Administrar
+			Reservas</a></li>
+	<li>
+		<div class="divider"></div>
+	</li>
+	<li><a href="#!"><i class="material-icons">event</i>Ver
+			Calendario</a></li>
+	<li>
+		<div class="divider"></div>
+	</li>
+	<li><a href="#!"><i class="material-icons">offline_pin</i>Hacer
+			Reserva</a></li>
+</ul>
