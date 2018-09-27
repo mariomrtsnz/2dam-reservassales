@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Lobster');
+
+.card-title {
+    font-family: 'Lobster';
+}
+
+.card-content {
+    padding-top: 0 !important;
+}
+
+@media only screen and (min-width: 600px) {
+    .form-fields {
+        padding-left: 3em;
+    }
+}

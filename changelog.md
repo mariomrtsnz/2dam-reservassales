@@ -1,3 +1,10 @@
+## 0.0.3e - 2018-09-27
+### Añadido
+- Importado workspace en clase.
+
+### Actualizado
+- 
+
 ## 0.0.3e - 2018-09-26
 ### Añadido
 - Ficheros de vistas al proyecto de Spring.
