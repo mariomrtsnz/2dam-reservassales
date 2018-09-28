@@ -35,8 +35,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 				http
 					.authorizeRequests()
-					.antMatchers("/h2-console/**").permitAll() // Para permitir la consola de H2
-					.antMatchers("/**").permitAll() // Para permitir el acceso al formulario de login
+					.antMatchers("/styles/**").permitAll()
+					.antMatchers("/scripts/**").permitAll()
+					.antMatchers("/images/**").permitAll()
+					.antMatchers("/h2-console/**").permitAll()
+					.antMatchers("/registro").permitAll()
+					.antMatchers("/").permitAll() // Para permitir el acceso al formulario de login
 					.anyRequest().authenticated() // El resto de peticiones, autenticadas.
 					.and()
 					.formLogin() 

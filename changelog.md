@@ -1,3 +1,18 @@
+## 0.1.0c - 2018-09-27
+### Añadido
+- Enlace con Thymeleaf a Nueva-Reserva desde lista-usuarios.
+- Paquete Service con UsuarioService y funcionalidades básicas.
+- CommandLineRunner (temporal).
+- Shema.sql
+
+### Actualizado
+- Corregidos enlaces con Thymeleaf.
+- Modificado ruta de permiso para todos en SecurityConfig (cambiar una vez terminada fase de pruebas).
+- 
+
+### Eliminado
+- 
+
 ## 0.1.0b - 2018-09-27
 ### Añadido
 - Enlace con Thymeleaf a Nueva-Reserva desde lista-usuarios.
