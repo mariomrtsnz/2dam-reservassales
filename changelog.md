@@ -1,3 +1,14 @@
+## 0.1.0a - 2018-09-27
+### Añadido
+- Nuevo sistema de configuración basado en security-sample de Luismi. (No funcional).
+
+### Actualizado
+- Corregido enlace en admin-calendario.html de nueva reserva.
+- Corregido problema de arranque debido a UsuarioRepository.
+
+### Eliminado
+- 
+
 ## 0.0.4e - 2018-09-27
 ### Añadido
 - GetMappings para editarSala, editarReserva y editarUsuario en AdminController.

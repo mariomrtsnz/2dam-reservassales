@@ -6,7 +6,8 @@ import org.springframework.stereotype.Repository;
 import salesianos.triana.dam.model.Usuario;
 
 @Repository
-public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
-	Usuario findFirstByEmailAndPassword(String email, String password);
+public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
+
+	Usuario findFirstByEmailAndPass(String email, String pass);
 	Usuario findFirstByEmail(String email);
 }
