@@ -20,6 +20,11 @@ public class AdminController {
 	public String AdministrarReserva() {
 		return "admin/salas-lista";
 	}
+	
+	@GetMapping("/admin/nueva-reserva")
+	public String crearReserva() {
+		return "public/reserva-nueva";
+	}
 
 	@GetMapping("/admin/nuevo-usuario")
 	public String crearUsuario() {

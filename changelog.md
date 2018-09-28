@@ -1,3 +1,14 @@
+## 0.1.0b - 2018-09-27
+### Añadido
+- Enlace con Thymeleaf a Nueva-Reserva desde lista-usuarios.
+
+### Actualizado
+- Corregidos enlaces con Thymeleaf.
+- Modificado ruta de permiso para todos en SecurityConfig (cambiar una vez terminada fase de pruebas).
+
+### Eliminado
+- 
+
 ## 0.1.0a - 2018-09-27
 ### Añadido
 - Nuevo sistema de configuración basado en security-sample de Luismi. (No funcional).

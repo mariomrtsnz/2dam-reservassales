@@ -31,38 +31,26 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
-                .authorizeRequests()
-                    .antMatchers(
-                    		// TODO: Eliminar los dos asteriscos de la línea de abajo una vez finalizada la fase de testeo de estilos y mappings
-                            "/**",
-                            "/scripts/**",
-                            "/styles/**",
-                            "/images/**",
-                            "/webjars/**").permitAll()
-                    .antMatchers("/user/**").hasRole("USER")
-                    .anyRequest().authenticated()
-                .and()
-                .formLogin()
-                    .loginPage("/")
-                    .permitAll()
-                .and()
-                .logout()
-                    .invalidateHttpSession(true)
-                    .clearAuthentication(true)
-                    .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                    .logoutSuccessUrl("/login?logout")
-                    .permitAll();
-    }
+		// @formatter:off
 
-//    @Override
-//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//    	// @formatter:off
-//        auth.inMemoryAuthentication().passwordEncoder(NoOpPasswordEncoder.getInstance())
-//                .withUser("user").password("password").roles("USER")
-//            .and()
-//                .withUser("manager").password("password").roles("MANAGER");
-//        // @formatter:off
-//    }
+				http
+					.authorizeRequests()
+					.antMatchers("/h2-console/**").permitAll() // Para permitir la consola de H2
+					.antMatchers("/**").permitAll() // Para permitir el acceso al formulario de login
+					.anyRequest().authenticated() // El resto de peticiones, autenticadas.
+					.and()
+					.formLogin() 
+						.loginPage("/") // Ruta del controlador del formulario de login
+						.defaultSuccessUrl("/home") // Ruta de redirección en caso de éxito.
+						.loginProcessingUrl("/") // Ruta de procesamiento del formulario de login.
+						.failureUrl("/?error=true") // Ruta en caso de error de login.
+					.and()
+					.logout().logoutSuccessUrl("/?logout"); // por defecto POST a /logout
+				
+				http.csrf().disable();
+				http.headers().frameOptions().disable();
+
+				// @formatter:on
+    }
 	
 }
