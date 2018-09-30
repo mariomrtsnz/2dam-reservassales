@@ -52,16 +52,15 @@ public class UsuarioService implements UserDetailsService {
 		Usuario usuario = repositorio.findUsuarioWithAuthorities(email);
 		if (usuario == null) {
 			throw new UsernameNotFoundException("Email no encontrado");
-			
+
 		}
-		
+
 		return usuario;
 	}
-	
-	private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Authorities> authorities){
-        return authorities.stream()
-                .map(authority -> new SimpleGrantedAuthority(authority.getAuthority()))
-                .collect(Collectors.toList());
-    }
+
+	private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Authorities> authorities) {
+		return authorities.stream().map(authority -> new SimpleGrantedAuthority(authority.getAuthority()))
+				.collect(Collectors.toList());
+	}
 
 }

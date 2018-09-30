@@ -24,9 +24,10 @@ public class Usuario implements UserDetails {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "usuario_seq")
 	@SequenceGenerator(name = "usuario_seq", sequenceName = "seq_usuario", allocationSize = 1)
+	@Column(name= "ID")
 	private Long id;
 
-	@Column(unique = true, name = "EMAIL")
+	@Column(unique = true)
 	private String email;
 	private String pass;
 	private String nombre;
@@ -119,7 +120,7 @@ public class Usuario implements UserDetails {
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		// TODO Auto-generated method stub
-		return (Collection<? extends GrantedAuthority>) authorities;
+		return authorities;
 	}
 
 	public void setAuthorities(Set<Authorities> authorities) {

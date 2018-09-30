@@ -1,3 +1,19 @@
+## 0.1.1b - 2018-09-30
+### Añadido
+- SalaRepository
+- ReservaRepository
+- SalaService
+- ReservaService
+- AuthoritiesRepository y AuthoritiesService (temporales hasta crear data.sql y schema.sql correctos).
+- Líneas en CommandLineRunner creando 2 Reservas, 2 Salas, 2 roles de Usuario y 1 de Admin.
+
+### Actualizado
+- CommandLineRunner temporal con base de datos creada al ejecutar el proyecto.
+- SecurityConfig siguiendo el ejemplo SecuritySample2 de Luismi.
+
+### Eliminado
+- 
+
 ## 0.1.1a - 2018-09-30
 ### Añadido
 - Método findUsuarioWithAuthorities en UsuarioRepository.
