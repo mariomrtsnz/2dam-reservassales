@@ -1,9 +1,22 @@
-## 0.1.0c - 2018-09-27
+## 0.1.1a - 2018-09-30
+### Añadido
+- Método findUsuarioWithAuthorities en UsuarioRepository.
+- Fichero data.sql en resources.
+
+### Actualizado
+- UsuarioService y Usuario implementan UserDetails
+- UsuarioRepository.
+- Ficher schema.sql cambiado orden de creación de constraints.
+
+### Eliminado
+- Atributos id de los constructores de las clases POJO ya que se autogeneran.
+
+## 0.1.0c - 2018-09-28
 ### Añadido
 - Enlace con Thymeleaf a Nueva-Reserva desde lista-usuarios.
 - Paquete Service con UsuarioService y funcionalidades básicas.
 - CommandLineRunner (temporal).
-- Shema.sql
+- Schema.sql
 
 ### Actualizado
 - Corregidos enlaces con Thymeleaf.
@@ -13,7 +26,7 @@
 ### Eliminado
 - 
 
-## 0.1.0b - 2018-09-27
+## 0.1.0b - 2018-09-28
 ### Añadido
 - Enlace con Thymeleaf a Nueva-Reserva desde lista-usuarios.
 
@@ -24,7 +37,7 @@
 ### Eliminado
 - 
 
-## 0.1.0a - 2018-09-27
+## 0.1.0a - 2018-09-28
 ### Añadido
 - Nuevo sistema de configuración basado en security-sample de Luismi. (No funcional).
 

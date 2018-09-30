@@ -6,8 +6,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import org.springframework.security.core.GrantedAuthority;
+
 @Entity
-public class Authorities {
+public class Authorities implements GrantedAuthority{
+	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@Column(name = "AUTHORITY")
 	private String authority;
@@ -16,8 +20,7 @@ public class Authorities {
 	@JoinColumn(name = "EMAIL")
 	private Usuario usuario;
 
-	public Authorities() {
-	}
+	public Authorities() {}
 
 	public Authorities(String authority, Usuario usuario) {
 		super();

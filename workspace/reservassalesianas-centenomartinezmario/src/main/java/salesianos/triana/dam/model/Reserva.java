@@ -22,9 +22,7 @@ public class Reserva {
 	@ManyToOne
 	private Sala sala;
 
-	public Reserva(Long id, LocalDateTime fechaInicial, LocalDateTime fechaFinal, Usuario usuario, Sala sala) {
-		super();
-		this.id = id;
+	public Reserva(LocalDateTime fechaInicial, LocalDateTime fechaFinal, Usuario usuario, Sala sala) {
 		this.fechaInicial = fechaInicial;
 		this.fechaFinal = fechaFinal;
 		this.usuario = usuario;

@@ -3,14 +3,13 @@ package salesianos.triana.dam.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
@@ -23,6 +22,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	public BCryptPasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
+	
+	@Bean
+    public DaoAuthenticationProvider authenticationProvider(){
+        DaoAuthenticationProvider auth = new DaoAuthenticationProvider();
+        auth.setUserDetailsService(userDetailsService);
+        auth.setPasswordEncoder(passwordEncoder());
+        return auth;
+    }
 	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -40,16 +47,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 					.antMatchers("/images/**").permitAll()
 					.antMatchers("/h2-console/**").permitAll()
 					.antMatchers("/registro").permitAll()
-					.antMatchers("/").permitAll() // Para permitir el acceso al formulario de login
+					.antMatchers("/login").permitAll() // Para permitir el acceso al formulario de login
 					.anyRequest().authenticated() // El resto de peticiones, autenticadas.
 					.and()
 					.formLogin() 
-						.loginPage("/") // Ruta del controlador del formulario de login
+						.loginPage("/login") // Ruta del controlador del formulario de login
 						.defaultSuccessUrl("/home") // Ruta de redirección en caso de éxito.
-						.loginProcessingUrl("/") // Ruta de procesamiento del formulario de login.
-						.failureUrl("/?error=true") // Ruta en caso de error de login.
+						.loginProcessingUrl("/login") // Ruta de procesamiento del formulario de login.
+						.failureUrl("/login?error=true") // Ruta en caso de error de login.
 					.and()
-					.logout().logoutSuccessUrl("/?logout"); // por defecto POST a /logout
+					.logout().logoutSuccessUrl("/login?logout"); // por defecto POST a /logout
 				
 				http.csrf().disable();
 				http.headers().frameOptions().disable();
