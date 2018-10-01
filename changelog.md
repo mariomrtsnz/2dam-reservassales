@@ -1,6 +1,10 @@
+## 0.1.2b - 2018-09-30
+### Actualizado
+- Cambiado Query de findUsuarioWithAuthorities para buscar por email en vez de por ID.
+
 ## 0.1.2a - 2018-09-30
 ### Añadido
-- Línea de búsqueda por email en loadByUserName de UsuarioService.
+- Línea de búsqueda por email en loadByUserName de UsuarioService (comentada).
 
 ### Actualizado
 - Cambiado método findUsuarioWithAuthorities UsuarioRepositorio para buscar por ID.

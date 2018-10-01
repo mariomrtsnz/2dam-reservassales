@@ -12,6 +12,6 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
 	Usuario findFirstByEmailAndPass(String email, String pass);
 	Usuario findFirstByEmail(String email);
 	
-	@Query("select u from Usuario u JOIN FETCH u.authorities WHERE u.id = ?1")
-	public Usuario findUsuarioWithAuthorities(Long id);
+	@Query("select u from Usuario u JOIN FETCH u.authorities WHERE u.email = ?1")
+	public Usuario findUsuarioWithAuthorities(String email);
 }
