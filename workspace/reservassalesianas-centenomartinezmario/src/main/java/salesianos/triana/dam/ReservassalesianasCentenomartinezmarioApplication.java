@@ -40,9 +40,9 @@ public class ReservassalesianasCentenomartinezmarioApplication {
 			usuarioService.save(admin);
 
 			Authorities authorityUser = new Authorities("ROLE_USUARIO", usuario);
-			Authorities authorityUser2 = new Authorities("ROLE_USUARIO", usuario2);
 			authoritiesService.save(authorityUser);
-			authoritiesService.save(authorityUser2);
+//			Authorities authorityUser2 = new Authorities("ROLE_USUARIO", usuario2);
+//			authoritiesService.save(authorityUser2);
 			Authorities authorityAdmin = new Authorities("ROLE_ADMIN", admin);
 			authoritiesService.save(authorityAdmin);
 

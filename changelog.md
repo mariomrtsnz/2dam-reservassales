@@ -1,3 +1,14 @@
+## 0.1.2a - 2018-09-30
+### Añadido
+- Línea de búsqueda por email en loadByUserName de UsuarioService.
+
+### Actualizado
+- Cambiado método findUsuarioWithAuthorities UsuarioRepositorio para buscar por ID.
+- Modificado main.css para corregir colores de calendario.
+
+### Eliminado
+- 
+
 ## 0.1.1b - 2018-09-30
 ### Añadido
 - SalaRepository

@@ -13,5 +13,5 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
 	Usuario findFirstByEmail(String email);
 	
 	@Query("select u from Usuario u JOIN FETCH u.authorities WHERE u.id = ?1")
-	public Usuario findUsuarioWithAuthorities(String email);
+	public Usuario findUsuarioWithAuthorities(Long id);
 }
