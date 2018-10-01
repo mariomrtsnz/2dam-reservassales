@@ -89,6 +89,15 @@ html {
   margin-left: 1em;
 }
 
+#calendar > div.fc-view-container{
+	background-color: #FBF9ED;
+	color: #C81623;
+}
+
+#calendar > div.fc-toolbar.fc-header-toolbar > div.fc-center > h2{
+	color: #FBF9ED;
+}
+
 @media only screen and (max-width: 1260px) {
   #phone {
     left: 30%;
