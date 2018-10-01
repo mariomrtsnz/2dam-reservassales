@@ -1,3 +1,12 @@
+## 0.1.2c - 2018-09-30
+### Añadido
+- PostMapping para /registro (no completo).
+
+### Actualizado
+- RegisterUsuario renombrado a RegistroUsuario.
+- Añadido atributos, constructores, getters y setters al formBean de RegistroUsuario.
+- Añadidas etiquetas de Thyneleaf en registro.html para th:field para el formBean de RegistroUsuario.
+
 ## 0.1.2b - 2018-09-30
 ### Actualizado
 - Cambiado Query de findUsuarioWithAuthorities para buscar por email en vez de por ID.
