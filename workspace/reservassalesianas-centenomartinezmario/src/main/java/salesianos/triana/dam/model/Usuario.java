@@ -24,7 +24,6 @@ public class Usuario implements UserDetails {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "usuario_seq")
 	@SequenceGenerator(name = "usuario_seq", sequenceName = "seq_usuario", allocationSize = 1)
-	@Column(name= "ID")
 	private Long id;
 
 	@Column(unique = true)
@@ -130,19 +129,19 @@ public class Usuario implements UserDetails {
 	@Override
 	public String toString() {
 		return "Usuario [id=" + id + ", email=" + email + ", pass=" + pass + ", nombre=" + nombre + ", numTlf=" + numTlf
-				+ ", validado=" + validado + ", reservas=" + reservas + "]";
+				+ ", validado=" + validado + ", reservas=" + reservas + ", authorities=" + authorities + "]";
 	}
 
 	@Override
 	public String getPassword() {
 		// TODO Auto-generated method stub
-		return null;
+		return pass;
 	}
 
 	@Override
 	public String getUsername() {
 		// TODO Auto-generated method stub
-		return null;
+		return email;
 	}
 
 	@Override

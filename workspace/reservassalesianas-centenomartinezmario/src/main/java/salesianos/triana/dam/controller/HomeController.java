@@ -46,7 +46,8 @@ public class HomeController {
 	
 
 	@GetMapping("/home")
-	public String home() {
+	public String home(Model model, Principal principal) {
+		model.addAttribute("usuarioLogueado", usuarioService.findFirstByEmail(principal.getName()));
 		return "public/index-usuario";
 	}
 }

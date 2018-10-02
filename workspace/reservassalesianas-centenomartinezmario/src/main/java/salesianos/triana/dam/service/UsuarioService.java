@@ -40,6 +40,10 @@ public class UsuarioService implements UserDetailsService {
 	public Usuario findFirstByEmailAndPass(String email, String pass) {
 		return repositorio.findFirstByEmailAndPass(email, pass);
 	}
+	
+	public Usuario findFirstByEmail(String email) {
+		return repositorio.findFirstByEmail(email);
+	}
 
 	public Usuario remove(Usuario usuario) {
 		Usuario usuarioEliminado = findOne(usuario.getId());
@@ -54,8 +58,6 @@ public class UsuarioService implements UserDetailsService {
 
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-//		Usuario usuarioTemporal = repositorio.findFirstByEmail(email);
-//		Usuario usuario = repositorio.findUsuarioWithAuthorities(usuarioTemporal.getId());
 		Usuario usuario = repositorio.findUsuarioWithAuthorities(email);
 		if (usuario == null) {
 			throw new UsernameNotFoundException("Email no encontrado");
@@ -63,11 +65,6 @@ public class UsuarioService implements UserDetailsService {
 		}
 
 		return usuario;
-	}
-
-	private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Authorities> authorities) {
-		return authorities.stream().map(authority -> new SimpleGrantedAuthority(authority.getAuthority()))
-				.collect(Collectors.toList());
 	}
 
 }

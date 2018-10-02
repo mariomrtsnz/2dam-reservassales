@@ -1,13 +1,24 @@
+## 0.1.3b - 2018-10-02
+### Añadido
+- Etiquetas th:text para mostrar valores de usuarioLogueado (solución temporal en HomeController?).
+- Enlace a /logout funcional en la barra de navegación superior.
+- Crear Sala funcional.
+- Crear Usuario funcional (corregir estilo de checkbox). Un usuario recien creado no se puede loguear.
+- Crear Reserva (no funcional).
+
+### Actualizado
+- Corregido problema de Logueo. Un usuario recien registrado no se puede loguear.
+- data.sql y schema.sql
+- Comentado CommandLineRunner y cargando datos desde data.sql y schema.sql.
+
 ## 0.1.3a - 2018-10-02
 ### Añadido
 - PostMapping para /registro (funcional). Los usuarios se guardan en la base de datos con la contraseña encriptada.
 - sala-editar.html, reserva-editar.html y usuario-editar.html.
-- 
 
 ### Actualizado
 - Etiquetas de Thymeleaf th:object, th:action, th:value y th:field para todos los formularios.
 - SecurityConfig y UsuarioService editados para que encripte las contraseñas al hacer save().
-- 
 
 ## 0.1.2c - 2018-10-01
 ### Añadido
@@ -30,9 +41,6 @@
 - Cambiado método findUsuarioWithAuthorities UsuarioRepositorio para buscar por ID.
 - Modificado main.css para corregir colores de calendario.
 
-### Eliminado
-- 
-
 ## 0.1.1b - 2018-09-30
 ### Añadido
 - SalaRepository
@@ -45,9 +53,6 @@
 ### Actualizado
 - CommandLineRunner temporal con base de datos creada al ejecutar el proyecto.
 - SecurityConfig siguiendo el ejemplo SecuritySample2 de Luismi.
-
-### Eliminado
-- 
 
 ## 0.1.1a - 2018-09-30
 ### Añadido
@@ -72,10 +77,6 @@
 ### Actualizado
 - Corregidos enlaces con Thymeleaf.
 - Modificado ruta de permiso para todos en SecurityConfig (cambiar una vez terminada fase de pruebas).
-- 
-
-### Eliminado
-- 
 
 ## 0.1.0b - 2018-09-28
 ### Añadido
@@ -85,9 +86,6 @@
 - Corregidos enlaces con Thymeleaf.
 - Modificado ruta de permiso para todos en SecurityConfig (cambiar una vez terminada fase de pruebas).
 
-### Eliminado
-- 
-
 ## 0.1.0a - 2018-09-28
 ### Añadido
 - Nuevo sistema de configuración basado en security-sample de Luismi. (No funcional).
@@ -95,9 +93,6 @@
 ### Actualizado
 - Corregido enlace en admin-calendario.html de nueva reserva.
 - Corregido problema de arranque debido a UsuarioRepository.
-
-### Eliminado
-- 
 
 ## 0.0.4e - 2018-09-27
 ### Añadido

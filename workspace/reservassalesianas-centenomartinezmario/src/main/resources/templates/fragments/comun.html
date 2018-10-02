@@ -15,7 +15,7 @@
 
 <ul id="dropdown1" class="dropdown-content" th:fragment="index-dropdown">
 	<li><a href="#!">Ver Perfil</a></li>
-	<li><a href="#!">Cerrar Sesión</a></li>
+	<li><a href="/logout">Cerrar Sesión</a></li>
 </ul>
 
 <nav id="banner" th:fragment="index-nav">
@@ -23,7 +23,7 @@
 		<div class="background-image" id="logo">
 			<ul id="user">
 				<li><a class="dropdown-trigger" href="#!"
-					data-target="dropdown1">$Usuario<i class="material-icons right">arrow_drop_down</i></a></li>
+					data-target="dropdown1" th:text="${usuarioLogueado.nombre}">$Usuario<i class="material-icons right">arrow_drop_down</i></a></li>
 			</ul>
 		</div>
 		<a class="btn-floating btn-large pulse modal-trigger" href="#modal1"

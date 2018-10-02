@@ -2,22 +2,29 @@ package salesianos.triana.dam.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 
 import org.springframework.security.core.GrantedAuthority;
 
 @Entity
-public class Authorities implements GrantedAuthority{
+public class Authorities implements GrantedAuthority {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "authorities_seq")
+	@SequenceGenerator(name = "authorities_seq", sequenceName = "seq_authorities", allocationSize = 1)
+	private Long id;
+
 	@Column(name = "AUTHORITY")
 	private String authority;
 
 	@ManyToOne
-	@JoinColumn(name = "ID")
+	@JoinColumn(name = "usuario_id")
 	private Usuario usuario;
 
 	public Authorities() {}
@@ -26,6 +33,14 @@ public class Authorities implements GrantedAuthority{
 		super();
 		this.authority = authority;
 		this.usuario = usuario;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getAuthority() {
