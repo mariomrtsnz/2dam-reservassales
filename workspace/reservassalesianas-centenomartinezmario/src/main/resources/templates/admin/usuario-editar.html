@@ -2,7 +2,7 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
 <head>
-    <title>Nueva Usuario</title>
+    <title>Editar Usuario</title>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
         crossorigin="anonymous"></script>
     <th:block th:replace="fragments/comun :: head"></th:block>
@@ -21,25 +21,25 @@
     <div class="container">
         <div class="row">
             <div class="col s12">
-                <h3>Nuevo Usuario</h3>
+                <h3>Editar Usuario</h3>
             </div>
         </div>
         <div class="divider"></div>
-        <form action="" th:object="${nuevoUsuario}" th:action="@{/aniadirNuevoUsuario}" method="post">
+        <form action="" th:object="${editarUsuario}" th:action="@{/editarUsuario}" method="post">
             <div class="row">
                 <div class="col s12">
                     <div class="section">
                         <div class="row">
                             <div class="input-field">
                                 <i class="material-icons prefix">account_circle</i>
-                                <input type="text" id="name" class="validate" required th:value="*{nombre}" th:field="*{nombre}"/>
+                                <input type="text" id="name" class="validate" required th:value="*{nombre}" th:field="*{nombre}" placeholder="*{nombre}"/>
                                 <label for="name">Nombre Completo</label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field">
                                 <i class="material-icons prefix">call</i>
-                                <input type="text" id="phone" class="validate" required th:value="*{numTlf}" th:field="*{numTlf}"/>
+                                <input type="text" id="phone" class="validate" required th:value="*{numTlf}" th:field="*{numTlf}" placeholder="*numTlf"/>
                                 <label for="phone">Teléfono</label>
                             </div>
                         </div>
@@ -49,7 +49,7 @@
                         <div class="row">
                             <div class="input-field">
                                 <i class="material-icons prefix">email</i>
-                                <input type="email" id="email" class="validate" required th:value="*{email}" th:field="*{email}"/>
+                                <input type="email" id="email" class="validate" required th:value="*{email}" th:field="*{email}" placeholder="*{email}"/>
                                 <label for="email">Email</label>
                             </div>
                         </div>
@@ -57,14 +57,14 @@
                     <div class="row">
                         <div class="input-field">
                             <i class="material-icons prefix">vpn_key</i>
-                            <input type="password" id="password" class="validate" required th:value="*{pass}" th:field="*{pass}"/>
+                            <input type="password" id="password" class="validate" required th:value="*{pass}" th:field="*{pass}" placeholder="*{pass}"/>
                             <label for="password">ContraseÃ±a</label>
                         </div>
                     </div>
                     <div class="section">
                         <div class="row">
                             <label>
-                                <input type="checkbox" class="filled-in" th:value="*{validado}" th:field="*{validado}"/>
+                                <input type="checkbox" class="filled-in" th:value="*{validado}" th:field="*{validado}" placeholder="*{validado}"/>
                                 <span>Activar Usuario</span>
                             </label>
                         </div>
