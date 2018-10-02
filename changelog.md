@@ -1,4 +1,15 @@
-## 0.1.2c - 2018-09-30
+## 0.1.3a - 2018-10-02
+### Añadido
+- PostMapping para /registro (funcional). Los usuarios se guardan en la base de datos con la contraseña encriptada.
+- sala-editar.html, reserva-editar.html y usuario-editar.html.
+- 
+
+### Actualizado
+- Etiquetas de Thymeleaf th:object, th:action, th:value y th:field para todos los formularios.
+- SecurityConfig y UsuarioService editados para que encripte las contraseñas al hacer save().
+- 
+
+## 0.1.2c - 2018-10-01
 ### Añadido
 - PostMapping para /registro (no completo).
 
@@ -7,11 +18,11 @@
 - Añadido atributos, constructores, getters y setters al formBean de RegistroUsuario.
 - Añadidas etiquetas de Thyneleaf en registro.html para th:field para el formBean de RegistroUsuario.
 
-## 0.1.2b - 2018-09-30
+## 0.1.2b - 2018-10-01
 ### Actualizado
 - Cambiado Query de findUsuarioWithAuthorities para buscar por email en vez de por ID.
 
-## 0.1.2a - 2018-09-30
+## 0.1.2a - 2018-10-01
 ### Añadido
 - Línea de búsqueda por email en loadByUserName de UsuarioService (comentada).
 

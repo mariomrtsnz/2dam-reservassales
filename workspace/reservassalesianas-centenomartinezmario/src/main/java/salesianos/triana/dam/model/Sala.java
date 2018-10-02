@@ -23,6 +23,8 @@ public class Sala {
 	@OneToMany(mappedBy = "sala", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
 	Set<Reserva> reservas = new HashSet<Reserva>();
 
+	public Sala() {}
+	
 	public Sala(String nombre, int aforoMax) {
 		super();
 		this.nombre = nombre;

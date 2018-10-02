@@ -30,13 +30,13 @@ public class ReservassalesianasCentenomartinezmarioApplication {
 			SalaService salaService, ReservaService reservaService) {
 		return args -> {
 			Usuario usuario = new Usuario("usuario@usuario.com",
-					"$2a$04$Kl8L17nXNhC1Rfr/z2aGjuo8XOQUVS.ZYUcHdDUOVX26XN1ru263G", "Usuario", "111222333", true);
+					"usuario", "Usuario", "111222333", true);
 			usuarioService.save(usuario);
 			Usuario usuario2 = new Usuario("usuario2@usuario2.com",
-					"$2a$04$hDkpDSmANf7Ho8hNl/LqE.QFm/A4ZVm5vLSMVcyKgw2lgQ8OjnN3i", "Usuario2", "777888999", false);
+					"usuario2", "Usuario2", "777888999", false);
 			usuarioService.save(usuario2);
 			Usuario admin = new Usuario("admin@admin.com",
-					"$2a$04$r8Ar8dyS0gfybPUSg825aOZYg4/41vXwcvQGVe5.bOCOxyQh1I3eu", "Admin", "444555666", true);
+					"admin", "Admin", "444555666", true);
 			usuarioService.save(admin);
 
 			Authorities authorityUser = new Authorities("ROLE_USUARIO", usuario);

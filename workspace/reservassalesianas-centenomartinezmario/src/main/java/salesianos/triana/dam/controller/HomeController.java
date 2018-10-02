@@ -14,12 +14,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import salesianos.triana.dam.formbean.RegistroUsuario;
 import salesianos.triana.dam.model.Usuario;
+import salesianos.triana.dam.service.UsuarioService;
 
 @Controller
 public class HomeController {
 
 	@Autowired
 	private HttpSession sesion;
+	
+	@Autowired
+	private UsuarioService usuarioService;
 	
 	@GetMapping("/login")
 	public String inicioSesion() {
@@ -35,8 +39,8 @@ public class HomeController {
 	@PostMapping("/registroEnvio")
 	public String registroEnvio(@ModelAttribute("registroUsuario") RegistroUsuario registroUsuario, BindingResult bindingResult, Model model) {
 		Usuario usuario = new Usuario(registroUsuario.getEmail(), registroUsuario.getPass(), registroUsuario.getNombre(), registroUsuario.getNumTlf(), false);
-		
-		return "/";
+		usuarioService.save(usuario);
+		return "index";
 	}
 	
 	

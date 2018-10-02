@@ -22,6 +22,8 @@ public class Reserva {
 	@ManyToOne
 	private Sala sala;
 
+	public Reserva() {};
+	
 	public Reserva(LocalDateTime fechaInicial, LocalDateTime fechaFinal, Usuario usuario, Sala sala) {
 		this.fechaInicial = fechaInicial;
 		this.fechaFinal = fechaFinal;
