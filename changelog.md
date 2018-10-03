@@ -1,3 +1,10 @@
+## 0.1.4d - 2018-10-03
+### Añadido
+- Mappings en AdminController para editarSala, editarUsuario y editarReserva.
+
+### Actualizado
+- Internacionalización en inglés completamente funcional.
+
 ## 0.1.4c - 2018-10-03
 ### Añadido
 - Las listas de Sala y Usuario ahora muestran los datos reales.

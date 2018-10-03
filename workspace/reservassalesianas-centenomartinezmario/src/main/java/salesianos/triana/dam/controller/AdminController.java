@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import salesianos.triana.dam.model.Reserva;
 import salesianos.triana.dam.model.Sala;
 import salesianos.triana.dam.model.Usuario;
+import salesianos.triana.dam.service.ReservaService;
 import salesianos.triana.dam.service.SalaService;
 import salesianos.triana.dam.service.UsuarioService;
 
@@ -25,6 +27,9 @@ public class AdminController {
 
 	@Autowired
 	private SalaService salaService;
+	
+	@Autowired
+	private ReservaService reservaService;
 
 	@GetMapping("/admin/calendario-general")
 	public String AdministrarReservas(Model model, Principal principal) {
@@ -52,13 +57,15 @@ public class AdminController {
 		model.addAttribute("usuarioLogueado", usuarioService.findFirstByEmail(principal.getName()));
 		return "admin/usuario-nuevo";
 	}
-	
+
 	@PostMapping("/aniadirNuevoUsuario")
-	public String aniadirNuevoUsuario(@ModelAttribute("nuevoUsuario") Usuario nuevoUsuario, BindingResult bindingresult, Model model) {
-		usuarioService.save(new Usuario(nuevoUsuario.getEmail(), nuevoUsuario.getPass(), nuevoUsuario.getNombre(), nuevoUsuario.getNumTlf(), nuevoUsuario.isEnabled()));
+	public String aniadirNuevoUsuario(@ModelAttribute("nuevoUsuario") Usuario nuevoUsuario, BindingResult bindingresult,
+			Model model) {
+		usuarioService.save(new Usuario(nuevoUsuario.getEmail(), nuevoUsuario.getPass(), nuevoUsuario.getNombre(),
+				nuevoUsuario.getNumTlf(), nuevoUsuario.isEnabled()));
 		return "redirect:/admin/lista-usuarios";
 	}
-	
+
 	@GetMapping("/admin/eliminar-usuario/{id}")
 	public String eliminarUsuario(@PathVariable("id") Long id, Model model, RedirectAttributes ra) {
 		Usuario usuario = usuarioService.findOne(id);
@@ -75,11 +82,12 @@ public class AdminController {
 	}
 
 	@PostMapping("/aniadirNuevaSala")
-	public String aniadirNuevaSala(@ModelAttribute("nuevaSala") Sala nuevaSala, BindingResult bindingresult, Model model) {
+	public String aniadirNuevaSala(@ModelAttribute("nuevaSala") Sala nuevaSala, BindingResult bindingresult,
+			Model model) {
 		salaService.save(new Sala(nuevaSala.getNombre(), nuevaSala.getAforoMax()));
 		return "redirect:/admin/lista-salas";
 	}
-	
+
 	@GetMapping("/admin/eliminar-sala/{id}")
 	public String eliminarSala(@PathVariable("id") Long id, Model model, RedirectAttributes ra) {
 		Sala sala = salaService.findOneById(id);
@@ -88,28 +96,50 @@ public class AdminController {
 		return "redirect:/admin/lista-salas";
 	}
 
-	@GetMapping("/admin/editar-sala")
-	public String editarSala(Model model, Principal principal) {
+	@GetMapping("/admin/editar-sala/{id}")
+	public String irAEditarSala(@PathVariable("id") Long id, Model model, Principal principal) {
 		model.addAttribute("usuarioLogueado", usuarioService.findFirstByEmail(principal.getName()));
+		model.addAttribute("salaEditable", salaService.findOneById(id));
 		return "admin/sala-nueva";
+	}
+
+	@PostMapping("/editarSala")
+	public String editarSala(@ModelAttribute("salaEditable") Sala salaEditable, Model model,
+			BindingResult bindingResult, RedirectAttributes ra, Principal principal) {
+		model.addAttribute("usuarioLogueado", usuarioService.findFirstByEmail(principal.getName()));
+		ra.addFlashAttribute("exitoEdit", true);
+		salaService.edit(salaEditable);
+		return "redirect:/admin/lista-salas";
 	}
 
 	@GetMapping("/admin/editar-usuario/{id}")
 	public String irAEditarUsuario(@PathVariable("id") Long id, Model model, Principal principal) {
 		model.addAttribute("usuarioLogueado", usuarioService.findFirstByEmail(principal.getName()));
-		return "admin/usuario-nuevo";
-	}
-	
-	@PostMapping("/editarUsuario")
-	public String editarUsuario(Model model, Principal principal) {
-		model.addAttribute("usuarioLogueado", usuarioService.findFirstByEmail(principal.getName()));
+		model.addAttribute("usuarioEditable", usuarioService.findOne(id));
 		return "admin/usuario-nuevo";
 	}
 
-	@GetMapping("/admin/editar-reserva")
-	public String editarReserva(Model model, Principal principal) {
+	@PostMapping("/editarUsuario")
+	public String editarUsuario(@ModelAttribute("usuarioEditable") Usuario usuarioEditable, Model model, BindingResult bindingResult, RedirectAttributes ra, Principal principal) {
 		model.addAttribute("usuarioLogueado", usuarioService.findFirstByEmail(principal.getName()));
+		ra.addFlashAttribute("exitoEdit", true);
+		usuarioService.edit(usuarioEditable);
+		return "redirect:/admin/lista-usuarios";
+	}
+
+	@GetMapping("/admin/editar-reserva/{id}")
+	public String irAEditarReserva(@PathVariable("id") Long id, Model model, Principal principal) {
+		model.addAttribute("usuarioLogueado", usuarioService.findFirstByEmail(principal.getName()));
+		model.addAttribute("reservaEditable", reservaService.findOne(id));
 		return "admin/reserva-nueva";
+	}
+	
+	@PostMapping("/editarReserva")
+	public String editarReserva(@ModelAttribute("reservaEditable") Reserva reservaEditable, Model model, BindingResult bindingResult, RedirectAttributes ra, Principal principal) {
+		model.addAttribute("usuarioLogueado", usuarioService.findFirstByEmail(principal.getName()));
+		ra.addFlashAttribute("exitoEdit", true);
+		reservaService.edit(reservaEditable);
+		return "redirect:/admin/calendario-general";
 	}
 
 }
