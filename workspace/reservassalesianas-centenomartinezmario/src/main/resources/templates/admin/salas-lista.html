@@ -20,25 +20,25 @@
     <div class="container">
         <div class="row" id="lista-header">
             <div class="col s6">
-                <h1>Salas</h1>
+                <h1 th:text="#{administrar.sala.titulo}">Salas</h1>
             </div>
             <div class="col s6 hide-on-med-and-down" id="button-nuevo-elemento">
-                <h2>Nuevo Elemento</h2>
+                <h2 th:text="#{administrar.sala.aniadirSala}">Nueva Sala</h2>
                 <a class="btn-floating btn-large waves-effect waves-light red" th:href="@{/admin/nueva-sala}"><i class="material-icons">add</i></a>
             </div>
         </div>
         <div class="row hide-on-med-and-up show-on-medium-and-down">
             <div class="col s12">
-                <h2>Nuevo Elemento</h2>
+                <h2 th:text="#{administrar.sala.aniadirSala}">Nueva Sala</h2>
                 <a class="btn-floating btn-large waves-effect waves-light red" th:href="@{/admin/nueva-sala}"><i class="material-icons">add</i></a>
             </div>
         </div>
         <div class="card">
             <table cellspacing="0" class="responsive-table">
                 <tr id="header">
-                    <th>Id Sala</th>
-                    <th>Nombre</th>
-                    <th>Aforo Máximo</th>
+                    <th th:text="#{administrar.sala.id}">Id Sala</th>
+                    <th th:text="#{administrar.sala.nombre}">Nombre de la Sala</th>
+                    <th th:text="#{administrar.sala.aforoMax}">Aforo Máximo</th>
                 </tr>
                 <tr class="dr">
                     <td><a href="#">5795448</a></td>

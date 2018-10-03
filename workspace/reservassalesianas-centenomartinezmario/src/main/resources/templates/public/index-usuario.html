@@ -19,19 +19,19 @@
   <div class="section" id="container" sec:authorize="hasRole('USER')">
     <div class="row">
       <div class="col s4 hide-on-small-only"></div>
-      <div class="col s12 m4"><a class="waves-effect waves-light btn-large" id="index-main-button" th:href="@{/user/calendario-personal}"><i class="material-icons left">event_note</i>Administrar
+      <div class="col s12 m4"><a th:text="#{home.menu.adminReservas}"class="waves-effect waves-light btn-large" id="index-main-button" th:href="@{/user/calendario-personal}"><i class="material-icons left">event_note</i>Administrar
           Reservas</a></div>
       <div class="col s4 hide-on-small-only"></div>
     </div>
     <div class="row">
       <div class="col s4 hide-on-small-only"></div>
-      <div class="col s12 m4"><a class="waves-effect waves-light btn-large" id="index-main-button" th:href="@{/user/calendario-general}"><i class="material-icons left">event</i>Ver
+      <div class="col s12 m4"><a th:text="#{home.menu.calendario}" class="waves-effect waves-light btn-large" id="index-main-button" th:href="@{/user/calendario-general}"><i class="material-icons left">event</i>Ver
           Calendario General</a></div>
       <div class="col s4 hide-on-small-only"></div>
     </div>
     <div class="row">
       <div class="col s4 hide-on-small-only"></div>
-      <div class="col s12 m4"><a class="waves-effect waves-light btn-large" id="index-main-button" th:href="@{/user/nueva-reserva}"><i class="material-icons left">offline_pin</i>Hacer
+      <div class="col s12 m4"><a th:text="#{home.menu.hacerReservas}" class="waves-effect waves-light btn-large" id="index-main-button" th:href="@{/user/nueva-reserva}"><i class="material-icons left">offline_pin</i>Hacer
           Reserva</a></div>
       <div class="col s4 hide-on-small-only"></div>
     </div>
@@ -39,19 +39,19 @@
   <div class="section" id="container" sec:authorize="hasRole('ADMIN')">
     <div class="row">
       <div class="col s4 hide-on-small-only"></div>
-      <div class="col s12 m4"><a class="waves-effect waves-light btn-large" id="index-main-button" th:href="@{/admin/calendario-general}"><i class="material-icons left">event_note</i>Administrar
+      <div class="col s12 m4"><a th:text="#{home.menu.adminReservas}" class="waves-effect waves-light btn-large" id="index-main-button" th:href="@{/admin/calendario-general}"><i class="material-icons left">event_note</i>Administrar
           Reservas</a></div>
       <div class="col s4 hide-on-small-only"></div>
     </div>
     <div class="row">
       <div class="col s4 hide-on-small-only"></div>
-      <div class="col s12 m4"><a class="waves-effect waves-light btn-large" id="index-main-button" th:href="@{/admin/lista-usuarios}"><i class="material-icons left">face</i>Administrar
+      <div class="col s12 m4"><a th:text="#{home.menu.adminUsuario}" class="waves-effect waves-light btn-large" id="index-main-button" th:href="@{/admin/lista-usuarios}"><i class="material-icons left">face</i>Administrar
           Usuarios</a></div>
       <div class="col s4 hide-on-small-only"></div>
     </div>
     <div class="row">
       <div class="col s4 hide-on-small-only"></div>
-      <div class="col s12 m4"><a class="waves-effect waves-light btn-large" id="index-main-button" th:href="@{/admin/lista-salas}"><i class="material-icons left">developer_board</i>Administrar
+      <div class="col s12 m4"><a th:text="#{home.menu.adminSalas}" class="waves-effect waves-light btn-large" id="index-main-button" th:href="@{/admin/lista-salas}"><i class="material-icons left">developer_board</i>Administrar
           Salas</a></div>
       <div class="col s4 hide-on-small-only"></div>
     </div>
