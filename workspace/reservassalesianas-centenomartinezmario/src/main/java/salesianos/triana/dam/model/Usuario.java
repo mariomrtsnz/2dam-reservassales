@@ -32,7 +32,7 @@ public class Usuario implements UserDetails {
 	private String nombre;
 	@Column(unique = true, name = "NUM_TLF")
 	private String numTlf;
-	private boolean validado;
+	private boolean enabled;
 	@OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
 	Set<Reserva> reservas = new HashSet<Reserva>();
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
@@ -41,24 +41,24 @@ public class Usuario implements UserDetails {
 	public Usuario() {
 	};
 
-	public Usuario(String email, String pass, String nombre, String numTlf, boolean validado,
+	public Usuario(String email, String pass, String nombre, String numTlf, boolean enabled,
 			Set<Authorities> authorities) {
 		super();
 		this.email = email;
 		this.pass = pass;
 		this.nombre = nombre;
 		this.numTlf = numTlf;
-		this.validado = validado;
+		this.enabled = enabled;
 		this.authorities = authorities;
 	}
 
-	public Usuario(String email, String pass, String nombre, String numTlf, boolean validado) {
+	public Usuario(String email, String pass, String nombre, String numTlf, boolean enabled) {
 		super();
 		this.email = email;
 		this.pass = pass;
 		this.nombre = nombre;
 		this.numTlf = numTlf;
-		this.validado = validado;
+		this.enabled = enabled;
 	}
 
 	public Long getId() {
@@ -122,7 +122,7 @@ public class Usuario implements UserDetails {
 	@Override
 	public String toString() {
 		return "Usuario [id=" + id + ", email=" + email + ", pass=" + pass + ", nombre=" + nombre + ", numTlf=" + numTlf
-				+ ", validado=" + validado + ", reservas=" + reservas + ", authorities=" + authorities + "]";
+				+ ", validado=" + enabled + ", reservas=" + reservas + ", authorities=" + authorities + "]";
 	}
 
 	@Override
@@ -157,11 +157,11 @@ public class Usuario implements UserDetails {
 	@Override
 	public boolean isEnabled() {
 		// TODO Auto-generated method stub
-		return validado;
+		return enabled;
 	}
 
-	public void setEnabled(boolean validado) {
-		this.validado = validado;
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}
 
 	public void addReserva(Reserva r) {

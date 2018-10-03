@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" media="screen" th:href="@{/styles/main.css}"/>
     <link rel="stylesheet" type="text/css" media="screen" href="../../css/usuarios-lista.css" th:href="@{/styles/usuarios-lista.css}"/>
     <script src="../../js/lista.js" th:src="@{/scripts/lista.js}"></script>
+    <script src="../../js/index-admin.js" th:src="@{/scripts/index-admin.js}"></script>
 </head>
 
 <body>
@@ -40,31 +41,17 @@
                     <th>Nombre</th>
                     <th>Aforo Máximo</th>
                 </tr>
-                <tr class="dr">
-                    <td><a href="#">5795448</a></td>
-                    <td>9/6/2016</td>
-                    <td>Jon Snow</td>
+                <tr class="dr" th:each="sala : ${salas}">
+                    <td th:text="${sala.id}">5795448</td>
+                    <td th:text="${sala.nombre}">9/6/2016</td>
+                    <td th:text="${sala.aforoMax}">Jon Snow</td>
                     <td class="fixed-action-btn click-to-toggle">
                         <a class="btn-floating btn-small red">
                             <i class="large material-icons">menu</i>
                         </a>
                         <ul>
-                            <li><a class="btn-floating btn-small red"><i class="material-icons">delete_forever</i></a></li>
-                            <li><a class="btn-floating btn-small green darken-1"><i class="material-icons">edit</i></a></li>
-                        </ul>
-                    </td>
-                </tr>
-                <tr class="dr">
-                    <td> <a href="#">5795300</a></td>
-                    <td>9/6/2016</td>
-                    <td>Betsy Clore</td>
-                    <td class="fixed-action-btn click-to-toggle">
-                        <a class="btn-floating btn-small red">
-                            <i class="large material-icons">menu</i>
-                        </a>
-                        <ul>
-                            <li><a class="btn-floating btn-small red"><i class="material-icons">delete_forever</i></a></li>
-                            <li><a class="btn-floating btn-small green darken-1"><i class="material-icons">edit</i></a></li>
+                            <li><a class="btn-floating btn-small red" th:href="@{'/admin/eliminar-sala/' + ${sala.id}}"><i class="material-icons">delete_forever</i></a></li>
+                            <li><a class="btn-floating btn-small green darken-1" th:href="@{'/admin/editar-sala/' + ${sala.id}}"><i class="material-icons">edit</i></a></li>
                         </ul>
                     </td>
                 </tr>

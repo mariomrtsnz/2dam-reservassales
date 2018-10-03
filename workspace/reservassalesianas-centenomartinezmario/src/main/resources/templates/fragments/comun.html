@@ -62,8 +62,8 @@
 			</div>
 			<a href="#user"><img class="circle"
 				src="../../resources/images/logosalesianos.png"></a> <a
-				href="#name"><span class="white-text name">$loggedUser.nombre</span></a>
-			<a href="#email"><span class="white-text email">$loggedUser.email</span></a>
+				href="#name"><span class="white-text name" th:text="${usuarioLogueado.nombre}">$loggedUser.nombre</span></a>
+			<a href="#email"><span class="white-text email" th:text="${usuarioLogueado.email}">$loggedUser.email</span></a>
 		</div>
 	</li>
 	<li>
@@ -77,9 +77,10 @@
 	</li>
 	<li>
 		<a href="#!" sec:authorize="hasRole('USER')" th:href="@{/user/calendario-general}"><i class="material-icons">event</i>Ver
-			Calendario</a></li>
+			Calendario</a>
 		<a href="#!" sec:authorize="hasRole('ADMIN')" th:href="@{/admin/lista-usuarios}"><i class="material-icons">event</i>Administrar
 			Usuarios</a>
+	</li>
 	<li>
 		<div class="divider"></div>
 	</li>

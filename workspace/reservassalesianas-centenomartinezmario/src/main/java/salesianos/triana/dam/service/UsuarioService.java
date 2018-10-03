@@ -20,13 +20,17 @@ import salesianos.triana.dam.repository.UsuarioRepository;
 public class UsuarioService implements UserDetailsService {
 	@Autowired
 	UsuarioRepository repositorio;
+	
+	AuthoritiesService authoritiesService;
 
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
 	public Usuario save(Usuario usuario) {
 		usuario.setPass(passwordEncoder.encode(usuario.getPass()));
-//		usuario.setAuthorities(usuario.getAuthorities().add(new Authorities("USER", usuario)));
+//		Para asignarle ROLE_USER por defecto al usuario creado.
+//		Authorities authorityUser = new Authorities("ROLE_USER", usuario);
+//		authoritiesService.save(authorityUser);
 		return repositorio.save(usuario);
 	}
 

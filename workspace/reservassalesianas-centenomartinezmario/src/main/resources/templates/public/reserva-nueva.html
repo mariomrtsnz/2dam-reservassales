@@ -54,7 +54,7 @@
 	                    <div class="row" sec:authorize="hasRole('ADMIN')">
                             <div class="input-field">
                                 <select class="icons" required th:field="${nuevaReserva.usuarioId}">
-                                    <option value="" disabled selected>Salas</option>
+                                    <option value="" disabled selected>Usuarios</option>
                                     <option th:each="usuario : ${usuarios}" th:text="${usuario.nombre}" th:value="${usuario.id}">{usuario.nombre}</option>
                                 </select>
                                 <label>Elige el usuario</label>

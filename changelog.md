@@ -1,3 +1,19 @@
+## 0.1.4c - 2018-10-03
+### Añadido
+- Las listas de Sala y Usuario ahora muestran los datos reales.
+- Lineas comentadas para asignarle un rol de usuario por defecto a cada nuevo usuario creado.
+- Finalizado internacionalización (sin comprobar funcionalidad).
+- Etiquetas Thymeleaf a SideNav para nombre e email del usuarioLogueado.
+- Eliminar Usuario (sin notificación de éxito).
+- Eliminar Sala (sin notificación de éxito).
+
+### Actualizado
+- Renombrado atributo validado en POJO Usuario por "enabled" para mayor consistencia de nomenclatura.
+- Corregido problema en usuario-nuevo.html con el atributo enabled.
+- Corregido problema de estilo en "Administrar Usuarios" de sidenav de Admin.
+- Corregido problema de script en "Administrar Usuarios".
+- Corregido problema de script en "Administrar Salas".
+
 ## 0.1.4b - 2018-10-03
 ### Añadido
 - Nueva Reserva por Usuario logueado funcional.
