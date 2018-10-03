@@ -21,7 +21,7 @@
     <div class="container">
         <div class="row">
             <div class="col s12">
-                <h3>Editar Sala</h3>
+                <h3 th:text="#{administrar.sala.editar}">Editar Sala</h3>
                 <div class="divider"></div>
             </div>
         </div>
@@ -32,7 +32,7 @@
                         <img class="materialboxed responsive-img" width="650" src="https://materializecss.com/images/sample-1.jpg">
                     </div>
                     <div class="row hide-on-med-and-down">
-                        <button class="btn waves-effect waves-light" type="submit" name="action">Enviar
+                        <button th:text="#{nueva.reserva.enviar}" class="btn waves-effect waves-light" type="submit" name="action">Enviar
                             <i class="material-icons right">send</i>
                         </button>
                     </div>
@@ -42,7 +42,7 @@
                         <div class="row">
                             <div class="input-field col s12">
                                 <input th:value="*{nombre}" th:field="*{nombre}" placeholder="*{nombre}" id="name" type="text" class="validate" required>
-                                <label for="first_name">Nombre de la Sala</label>
+                                <label th:text="#{administrar.sala.nombre}" for="first_name">Nombre de la Sala</label>
                             </div>
                         </div>
                         <div class="row">
@@ -60,11 +60,11 @@
                         </div>
                         <div class="row">
                             <input type="number" th:value="*{aforoMax}" th:field="*{aforoMax}" class="validate" required placeholder="*{aforoMax}">
-                            <label for="fechaFin">Aforo Máximo</label>
+                            <label th:text="#{administrar.sala.aforoMax}" for="fechaFin">Aforo Máximo</label>
                         </div>
                         <div class="section">
                             <div class="row show-on-medium-and-down hide-on-large-only center-align">
-                                <button class="btn waves-effect waves-light" type="submit" name="action">Enviar
+                                <button th:text="#{}" class="btn waves-effect waves-light" type="submit" name="action">Enviar
                                     <i class="material-icons right">send</i>
                                 </button>
                             </div>

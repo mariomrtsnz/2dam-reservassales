@@ -21,28 +21,28 @@
     <div class="container">
         <div class="row" id="lista-header">
             <div class="col s6">
-                <h1>Usuarios</h1>
+                <h1 th:text="#{administrar.usuario.titulo}">Usuarios</h1>
             </div>
             <div class="col s6 hide-on-med-and-down" id="button-nuevo-elemento">
-                <h2>Nuevo Elemento</h2>
+                <h2 th:text="#{administrar.usuario.aniadirUsuario}">Nuevo Usuario</h2>
                 <a class="btn-floating btn-large waves-effect waves-light red" th:href="@{/admin/nuevo-usuario}"><i class="material-icons">add</i></a>
             </div>
         </div>
         <div class="row hide-on-med-and-up show-on-medium-and-down">
             <div class="col s12">
-                <h2>Nuevo Elemento</h2>
+                <h2 th:text="#{administrar.usuario.aniadirUsuario}">Nuevo Usuario</h2>
                 <a class="btn-floating btn-large waves-effect waves-light red" th:href="@{/admin/nuevo-usuario}"><i class="material-icons">add</i></a>
             </div>
         </div>
         <div class="card">
             <table cellspacing="0" class="responsive-table">
                 <tr id="header">
-                    <th>Id Usuario</th>
-                    <th>Nombre Completo</th>
-                    <th>Email</th>
-                    <th>Teléfono de Contacto</th>
-                    <th>Cuenta Validada</th>
-                    <th>Tiene Reserva</th>
+                    <th th:text="#{administrar.usuario.id}">Id Usuario</th>
+                    <th th:text="#{administrar.usuario.nombre}">Nombre Completo</th>
+                    <th th:text="#{administrar.usuario.email}">Email</th>
+                    <th th:text="#{administrar.usuario.telefono}">Teléfono de Contacto</th>
+                    <th th:text="#{administrar.usuario.verficiacion}">Cuenta Validada</th>
+                    <th th:text="#{administrar.usuario.reserva}">Tiene Reserva</th>
                 </tr>
                 <tr class="dr" th:each="usuario : ${usuarios}">
                     <td th:text="${usuario.id}">5795448</td>
