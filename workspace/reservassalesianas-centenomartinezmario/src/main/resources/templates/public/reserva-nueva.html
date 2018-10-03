@@ -51,14 +51,22 @@
                 </div>
                 <div class="col l8 s12">
                     <div class="section form-fields">
+	                    <div class="row">
+                            <div class="input-field">
+                                <select class="icons" required th:field="${nuevaReserva.usuarioId}">
+                                    <option value="" disabled selected>Salas</option>
+                                    <option th:each="usuario : ${usuarios}" th:text="${usuario.nombre}" th:value="${usuario.id}">{usuario.nombre}</option>
+                                </select>
+                                <label>Elige el usuario</label>
+                            </div>
+                        </div>
                         <div class="row">
                             <div class="input-field">
-                                <select class="icons" required>
+                                <select class="icons" required th:field="${nuevaReserva.salaId}">
                                     <option value="" disabled selected>Salas</option>
+                                    <option th:each="sala : ${salas}" th:text="${sala.nombre}" th:value="${sala.id}">{sala.nombre}</option>
                                     <option value="" data-icon="https://materializecss.com/images/sample-1.jpg">Sala
                                         1</option>
-                                    <option value="" data-icon="https://materializecss.com/images/sample-1.jpg">Sala 2</option>
-                                    <option value="" data-icon="https://materializecss.com/images/sample-1.jpg">Sala 3</option>
                                 </select>
                                 <label>Elige la sala</label>
                             </div>

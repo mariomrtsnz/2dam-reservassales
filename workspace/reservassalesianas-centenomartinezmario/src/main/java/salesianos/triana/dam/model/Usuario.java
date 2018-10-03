@@ -180,5 +180,19 @@ public class Usuario implements UserDetails {
 			this.getReservas().remove(r);
 		}
 	}
+	
+//	public void addRole(Authorities a) {
+//		if (a != null) {
+//			a.setUsuario(this);
+//			this.getAuthorities().add(a);
+//		}
+//	}
+
+	public void removeReserva(Authorities a) {
+		if (a != null) {
+			a.setUsuario(null);
+			this.getAuthorities().remove(a);
+		}
+	} 
 
 }

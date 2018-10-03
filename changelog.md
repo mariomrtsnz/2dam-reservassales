@@ -1,3 +1,12 @@
+## 0.1.4a - 2018-10-03
+### Añadido
+- Estructura de ficheros de internacionalización.
+- Spring Security Extras para Thymeleaf en pom.xml para el uso de sec:authorize.
+
+### Actualizado
+- Select de Salas y Usuarios en nuevaReserva.html puesto para generar opciones por Thymeleaf.
+
+
 ## 0.1.3b - 2018-10-02
 ### Añadido
 - Etiquetas th:text para mostrar valores de usuarioLogueado (solución temporal en HomeController?).

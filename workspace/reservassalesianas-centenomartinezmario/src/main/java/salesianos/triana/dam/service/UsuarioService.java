@@ -26,6 +26,7 @@ public class UsuarioService implements UserDetailsService {
 
 	public Usuario save(Usuario usuario) {
 		usuario.setPass(passwordEncoder.encode(usuario.getPass()));
+//		usuario.setAuthorities(usuario.getAuthorities().add(new Authorities("USER", usuario)));
 		return repositorio.save(usuario);
 	}
 

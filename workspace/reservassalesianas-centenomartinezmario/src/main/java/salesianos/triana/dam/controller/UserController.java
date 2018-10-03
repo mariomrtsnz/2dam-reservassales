@@ -34,6 +34,8 @@ public class UserController {
 	public String nuevaReserva(Model model, Principal principal) {
 		model.addAttribute("nuevaReserva", new ReservaFormBean());
 		model.addAttribute("usuarioLogueado", usuarioService.findFirstByEmail(principal.getName()));
+		model.addAttribute("salas", salaService.findAll());
+		model.addAttribute("usuarios", usuarioService.findAll());
 		return "public/reserva-nueva";
 	}
 	
