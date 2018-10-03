@@ -42,12 +42,6 @@ public class AdminController {
 		return "admin/salas-lista";
 	}
 
-	@GetMapping("/admin/nueva-reserva")
-	public String crearReserva(Model model, Principal principal) {
-		model.addAttribute("usuarioLogueado", usuarioService.findFirstByEmail(principal.getName()));
-		return "public/reserva-nueva";
-	}
-
 	@GetMapping("/admin/nuevo-usuario")
 	public String crearUsuario(Model model, Principal principal) {
 		model.addAttribute("nuevoUsuario", new Usuario());
@@ -57,7 +51,7 @@ public class AdminController {
 	
 	@PostMapping("/aniadirNuevoUsuario")
 	public String aniadirNuevoUsuario(@ModelAttribute("nuevoUsuario") Usuario nuevoUsuario, BindingResult bindingresult, Model model) {
-		usuarioService.save(new Usuario(nuevoUsuario.getEmail(), nuevoUsuario.getPass(), nuevoUsuario.getNombre(), nuevoUsuario.getNumTlf(), nuevoUsuario.isValidado()));
+		usuarioService.save(new Usuario(nuevoUsuario.getEmail(), nuevoUsuario.getPass(), nuevoUsuario.getNombre(), nuevoUsuario.getNumTlf(), nuevoUsuario.isEnabled()));
 		return "redirect:/admin/lista-usuarios";
 	}
 

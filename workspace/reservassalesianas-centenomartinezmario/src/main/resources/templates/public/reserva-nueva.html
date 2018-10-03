@@ -51,7 +51,7 @@
                 </div>
                 <div class="col l8 s12">
                     <div class="section form-fields">
-	                    <div class="row">
+	                    <div class="row" sec:authorize="hasRole('ADMIN')">
                             <div class="input-field">
                                 <select class="icons" required th:field="${nuevaReserva.usuarioId}">
                                     <option value="" disabled selected>Salas</option>

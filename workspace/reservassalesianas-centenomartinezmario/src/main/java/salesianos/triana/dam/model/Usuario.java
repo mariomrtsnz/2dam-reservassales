@@ -41,7 +41,8 @@ public class Usuario implements UserDetails {
 	public Usuario() {
 	};
 
-	public Usuario(String email, String pass, String nombre, String numTlf, boolean validado, Set<Authorities> authorities) {
+	public Usuario(String email, String pass, String nombre, String numTlf, boolean validado,
+			Set<Authorities> authorities) {
 		super();
 		this.email = email;
 		this.pass = pass;
@@ -100,14 +101,6 @@ public class Usuario implements UserDetails {
 		this.numTlf = numTlf;
 	}
 
-	public boolean isValidado() {
-		return validado;
-	}
-
-	public void setValidado(boolean validado) {
-		this.validado = validado;
-	}
-
 	public Set<Reserva> getReservas() {
 		return reservas;
 	}
@@ -164,7 +157,11 @@ public class Usuario implements UserDetails {
 	@Override
 	public boolean isEnabled() {
 		// TODO Auto-generated method stub
-		return true;
+		return validado;
+	}
+
+	public void setEnabled(boolean validado) {
+		this.validado = validado;
 	}
 
 	public void addReserva(Reserva r) {
@@ -180,7 +177,7 @@ public class Usuario implements UserDetails {
 			this.getReservas().remove(r);
 		}
 	}
-	
+
 //	public void addRole(Authorities a) {
 //		if (a != null) {
 //			a.setUsuario(this);
@@ -188,11 +185,11 @@ public class Usuario implements UserDetails {
 //		}
 //	}
 
-	public void removeReserva(Authorities a) {
+	public void removeAuthority(Authorities a) {
 		if (a != null) {
 			a.setUsuario(null);
 			this.getAuthorities().remove(a);
 		}
-	} 
+	}
 
 }

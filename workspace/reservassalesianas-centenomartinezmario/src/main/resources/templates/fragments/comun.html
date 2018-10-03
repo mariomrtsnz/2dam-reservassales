@@ -67,7 +67,7 @@
 		</div>
 	</li>
 	<li>
-		<a href="#!" sec:authorize="hasRole('USUARIO')" th:href="@{/user/calendario-personal}"><i class="material-icons">event_note</i>Administrar
+		<a href="#!" sec:authorize="hasRole('USER')" th:href="@{/user/calendario-personal}"><i class="material-icons">event_note</i>Administrar
 			Reservas</a>
 		<a href="#!" sec:authorize="hasRole('ADMIN')" th:href="@{/admin/calendario-general}"><i class="material-icons">event_note</i>Administrar
 			Reservas</a>
@@ -76,7 +76,7 @@
 		<div class="divider"></div>
 	</li>
 	<li>
-		<a href="#!" sec:authorize="hasRole('USUARIO')" th:href="@{/user/calendario-general}"><i class="material-icons">event</i>Ver
+		<a href="#!" sec:authorize="hasRole('USER')" th:href="@{/user/calendario-general}"><i class="material-icons">event</i>Ver
 			Calendario</a></li>
 		<a href="#!" sec:authorize="hasRole('ADMIN')" th:href="@{/admin/lista-usuarios}"><i class="material-icons">event</i>Administrar
 			Usuarios</a>
@@ -84,7 +84,7 @@
 		<div class="divider"></div>
 	</li>
 	<li>
-		<a href="#!" sec:authorize="hasRole('USUARIO')" th:href="@{/user/nueva-reserva}"><i class="material-icons">offline_pin</i>Hacer
+		<a href="#!" sec:authorize="hasRole('USER')" th:href="@{/user/nueva-reserva}"><i class="material-icons">offline_pin</i>Hacer
 			Reserva</a>
 		<a href="#!" sec:authorize="hasRole('ADMIN')" th:href="@{/admin/lista-salas}"><i class="material-icons">offline_pin</i>Administrar
 			Salas</a>

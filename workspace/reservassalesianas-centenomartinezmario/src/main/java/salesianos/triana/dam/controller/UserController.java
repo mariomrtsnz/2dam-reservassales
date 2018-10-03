@@ -3,6 +3,8 @@ package salesianos.triana.dam.controller;
 import java.security.Principal;
 import java.time.LocalDateTime;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,7 +32,7 @@ public class UserController {
 	@Autowired
 	private ReservaService reservaService;
 	
-	@GetMapping("/user/nueva-reserva")
+	@GetMapping({"/user/nueva-reserva", "/admin/nueva-reserva"})
 	public String nuevaReserva(Model model, Principal principal) {
 		model.addAttribute("nuevaReserva", new ReservaFormBean());
 		model.addAttribute("usuarioLogueado", usuarioService.findFirstByEmail(principal.getName()));
@@ -40,18 +42,17 @@ public class UserController {
 	}
 	
 	@PostMapping("/aniadirNuevaReserva")
-	public String aniadirNuevaReserva(@ModelAttribute("nuevaReserva") ReservaFormBean nuevaReserva, BindingResult bindingResult, Model model, Principal principal) {
+	public String aniadirNuevaReserva(@ModelAttribute("nuevaReserva") ReservaFormBean nuevaReserva, BindingResult bindingResult, Model model, Principal principal, HttpServletRequest request) {
 		LocalDateTime fechaInicial = LocalDateTime.of(nuevaReserva.getFechaInicio(), nuevaReserva.getHoraInicio());
 		LocalDateTime fechaFinal = LocalDateTime.of(nuevaReserva.getFechaFin(), nuevaReserva.getHoraFin());
 		Usuario usuarioLogueado = usuarioService.findFirstByEmail(principal.getName());
 		Reserva reserva;
-//		Si usuarioLogueado es Admin, asignar el usuario a new Reserva por buscando por la Id del ReservaFormBean. Si no, asignarle el usuarioLogueado.
-//		if (usuarioLogueado) {
-//			
-//		} else {
-//			reserva = new Reserva(fechaInicial, fechaFinal, usuarioLogueado, salaService.findOneById(nuevaReserva.getSalaId()));
-//		}
-//		reservaService.save(reserva);
+		if (request.isUserInRole("ROLE_ADMIN")) {
+			reserva = new Reserva(fechaInicial, fechaFinal, usuarioService.findOne(nuevaReserva.getUsuarioId()), salaService.findOneById(nuevaReserva.getSalaId()));
+		} else {
+			reserva = new Reserva(fechaInicial, fechaFinal, usuarioLogueado, salaService.findOneById(nuevaReserva.getSalaId()));
+		}
+		reservaService.save(reserva);
 		return "redirect:/user/calendario-general";
 	}
 

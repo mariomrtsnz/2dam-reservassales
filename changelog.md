@@ -1,3 +1,17 @@
+## 0.1.4b - 2018-10-03
+### Añadido
+- Nueva Reserva por Usuario logueado funcional.
+- Nueva Reserva por Admin funcional.
+
+### Actualizado
+- Clase POJO Usuario para que no puedan loguearse usuarios no validados.
+- Corregido problema de roles en los usuarios y mostrar el menú principal correspondiente a cada usuario según rol.
+- Fichero nueva-reserva.js para cumplir con el formato de ReservaFormBean.java en fecha y hora.
+- Ruta de nueva-reserva desde vista calendario según el rol.
+
+### Eliminado
+- Archivo index-admin.html inutizilado.
+
 ## 0.1.4a - 2018-10-03
 ### Añadido
 - Estructura de ficheros de internacionalización.
