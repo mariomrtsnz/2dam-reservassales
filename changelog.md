@@ -1,3 +1,13 @@
+## 0.1.5b - 2018-10-04
+### Añadido
+-
+
+### Actualizado
+- Botón flotante con submenú en usuarios-lista.html y salas-lista.html ahora son dos columnas cada una con el icono y su función.
+
+### Eliminado
+- Archivo lista.js inutilizado.
+
 ## 0.1.5a - 2018-10-04
 ### Añadido
 - Editar Sala funcional.
