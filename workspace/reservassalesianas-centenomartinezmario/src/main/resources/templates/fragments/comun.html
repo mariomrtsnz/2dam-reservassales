@@ -14,8 +14,8 @@
 </head>
 
 <ul id="dropdown1" class="dropdown-content" th:fragment="index-dropdown">
-	<li><a href="#!">Ver Perfil</a></li>
-	<li><a href="/logout">Cerrar Sesión</a></li>
+	<li><a th:text="#{home.menu.usuarioPerfil}" href="#!">Ver Perfil</a></li>
+	<li><a th:text="#{home.menu.usuarioCerrarSesion}" href="/logout">Cerrar Sesión</a></li>
 </ul>
 
 <nav id="banner" th:fragment="index-nav">
@@ -67,27 +67,27 @@
 		</div>
 	</li>
 	<li>
-		<a href="#!" sec:authorize="hasRole('USER')" th:href="@{/user/calendario-personal}"><i class="material-icons">event_note</i>Administrar
+		<a th:text="#{home.menu.adminReservas}" sec:authorize="hasRole('USER')" th:href="@{/user/calendario-personal}"><i class="material-icons">event_note</i>Administrar
 			Reservas</a>
-		<a href="#!" sec:authorize="hasRole('ADMIN')" th:href="@{/admin/calendario-general}"><i class="material-icons">event_note</i>Administrar
+		<a th:text="#{home.menu.adminReservas}" sec:authorize="hasRole('ADMIN')" th:href="@{/admin/calendario-general}"><i class="material-icons">event_note</i>Administrar
 			Reservas</a>
 	</li>
 	<li>
 		<div class="divider"></div>
 	</li>
 	<li>
-		<a href="#!" sec:authorize="hasRole('USER')" th:href="@{/user/calendario-general}"><i class="material-icons">event</i>Ver
+		<a th:text="#{home.menu.calendario}" sec:authorize="hasRole('USER')" th:href="@{/user/calendario-general}"><i class="material-icons">event</i>Ver
 			Calendario</a>
-		<a href="#!" sec:authorize="hasRole('ADMIN')" th:href="@{/admin/lista-usuarios}"><i class="material-icons">event</i>Administrar
+		<a th:text="#{home.menu.adminUsuario}" sec:authorize="hasRole('ADMIN')" th:href="@{/admin/lista-usuarios}"><i class="material-icons">event</i>Administrar
 			Usuarios</a>
 	</li>
 	<li>
 		<div class="divider"></div>
 	</li>
 	<li>
-		<a href="#!" sec:authorize="hasRole('USER')" th:href="@{/user/nueva-reserva}"><i class="material-icons">offline_pin</i>Hacer
+		<a th:text="#{home.menu.hacerReservas}" sec:authorize="hasRole('USER')" th:href="@{/user/nueva-reserva}"><i class="material-icons">offline_pin</i>Hacer
 			Reserva</a>
-		<a href="#!" sec:authorize="hasRole('ADMIN')" th:href="@{/admin/lista-salas}"><i class="material-icons">offline_pin</i>Administrar
+		<a th:text="#{home.menu.adminSalas}" sec:authorize="hasRole('ADMIN')" th:href="@{/admin/lista-salas}"><i class="material-icons">offline_pin</i>Administrar
 			Salas</a>
 	</li>
 </ul>
