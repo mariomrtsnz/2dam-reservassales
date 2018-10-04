@@ -100,7 +100,7 @@ public class AdminController {
 	public String irAEditarSala(@PathVariable("id") Long id, Model model, Principal principal) {
 		model.addAttribute("usuarioLogueado", usuarioService.findFirstByEmail(principal.getName()));
 		model.addAttribute("salaEditable", salaService.findOneById(id));
-		return "admin/sala-nueva";
+		return "admin/sala-editar";
 	}
 
 	@PostMapping("/editarSala")
@@ -116,7 +116,7 @@ public class AdminController {
 	public String irAEditarUsuario(@PathVariable("id") Long id, Model model, Principal principal) {
 		model.addAttribute("usuarioLogueado", usuarioService.findFirstByEmail(principal.getName()));
 		model.addAttribute("usuarioEditable", usuarioService.findOne(id));
-		return "admin/usuario-nuevo";
+		return "admin/usuario-editar";
 	}
 
 	@PostMapping("/editarUsuario")
@@ -131,7 +131,7 @@ public class AdminController {
 	public String irAEditarReserva(@PathVariable("id") Long id, Model model, Principal principal) {
 		model.addAttribute("usuarioLogueado", usuarioService.findFirstByEmail(principal.getName()));
 		model.addAttribute("reservaEditable", reservaService.findOne(id));
-		return "admin/reserva-nueva";
+		return "admin/reserva-editar";
 	}
 	
 	@PostMapping("/editarReserva")

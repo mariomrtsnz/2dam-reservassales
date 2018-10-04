@@ -1,3 +1,13 @@
+## 0.1.5a - 2018-10-04
+### Añadido
+- Editar Sala funcional.
+- Editar Usuario funcional.
+
+### Actualizado
+- Corregida internacionalización en dropdown y sidebar.
+- Mappings para enviar a editar.
+- Movido reserva-editar.html a la carpeta admin.
+
 ## 0.1.4d - 2018-10-03
 ### Añadido
 - Mappings en AdminController para editarSala, editarUsuario y editarReserva.

@@ -21,11 +21,12 @@
     <div class="container">
         <div class="row">
             <div class="col s12">
-                <h3 th:text="#{administrar.sala.editar}">Editar Sala</h3>
+                <h3 th:text="#{administrar.sala.aniadirSala}">Nueva Sala</h3>
                 <div class="divider"></div>
             </div>
         </div>
-        <form action="" th:object="${editarSala}" th:action="@{/editarSala}" method="post">
+        <form action="" th:object="${salaEditable}" th:action="@{/editarSala}" method="post">
+            <input type="hidden" required="required" name="id" th:field="*{id}" th:value="*{id}" readonly="readonly"/>
             <div class="row">
                 <div class="col l4 s12">
                     <div class="row">
@@ -41,7 +42,7 @@
                     <div class="section form-fields">
                         <div class="row">
                             <div class="input-field col s12">
-                                <input th:value="*{nombre}" th:field="*{nombre}" placeholder="*{nombre}" id="name" type="text" class="validate" required>
+                                <input th:value="*{nombre}" th:field="*{nombre}" placeholder="$nombreSalaActual" id="name" type="text" class="validate" required>
                                 <label th:text="#{administrar.sala.nombre}" for="first_name">Nombre de la Sala</label>
                             </div>
                         </div>
@@ -59,12 +60,12 @@
                             </form>
                         </div>
                         <div class="row">
-                            <input type="number" th:value="*{aforoMax}" th:field="*{aforoMax}" class="validate" required placeholder="*{aforoMax}">
+                            <input type="number" th:value="*{aforoMax}" th:field="*{aforoMax}" class="validate" required placeholder="$aforoMax">
                             <label th:text="#{administrar.sala.aforoMax}" for="fechaFin">Aforo Máximo</label>
                         </div>
                         <div class="section">
                             <div class="row show-on-medium-and-down hide-on-large-only center-align">
-                                <button th:text="#{}" class="btn waves-effect waves-light" type="submit" name="action">Enviar
+                                <button th:text="#{nueva.reserva.enviar}" class="btn waves-effect waves-light" type="submit" name="action">Enviar
                                     <i class="material-icons right">send</i>
                                 </button>
                             </div>

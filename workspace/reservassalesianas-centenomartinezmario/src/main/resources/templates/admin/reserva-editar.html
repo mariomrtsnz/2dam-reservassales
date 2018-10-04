@@ -25,7 +25,7 @@
                 <div class="divider"></div>
             </div>
         </div>
-        <form action="" th:object="${editarReserva}" th:action="@{/editarReserva}" method="post">
+        <form action="" th:object="${reservaEditable}" th:action="@{/editarReserva}" method="post">
             <div class="row">
                 <div class="col l4 s12">
                     <div class="row">
@@ -51,14 +51,22 @@
                 </div>
                 <div class="col l8 s12">
                     <div class="section form-fields">
+	                    <div class="row" sec:authorize="hasRole('ADMIN')">
+                            <div class="input-field">
+                                <select class="icons" required th:field="${reservaEditable.usuarioId}">
+                                    <option value="" disabled selected>Usuarios</option>
+                                    <option th:each="usuario : ${usuarios}" th:text="${usuario.nombre}" th:value="${usuario.id}">{usuario.nombre}</option>
+                                </select>
+                                <label>Elige el usuario</label>
+                            </div>
+                        </div>
                         <div class="row">
                             <div class="input-field">
-                                <select class="icons" required>
+                                <select class="icons" required th:field="${reservaEdtiable.salaId}">
                                     <option value="" disabled selected>Salas</option>
+                                    <option th:each="sala : ${salas}" th:text="${sala.nombre}" th:value="${sala.id}">{sala.nombre}</option>
                                     <option value="" data-icon="https://materializecss.com/images/sample-1.jpg">Sala
                                         1</option>
-                                    <option value="" data-icon="https://materializecss.com/images/sample-1.jpg">Sala 2</option>
-                                    <option value="" data-icon="https://materializecss.com/images/sample-1.jpg">Sala 3</option>
                                 </select>
                                 <label th:text="#{nueva.reserva.eleccionSala}">Elige la sala</label>
                             </div>
@@ -68,11 +76,11 @@
                                 <h5 th:text="#{nueva.reserva.tituloInicioReserva}">Inicio de reserva</h5>
                             </div>
                             <div class="row">
-                                <input type="text" class="datepicker" th:value="*{fechaInicio}" th:field="*{fechaInicio}" required placeholder="*{fechaInicio}">
+                                <input type="text" class="datepicker" th:value="*{fechaInicio}" th:field="*{fechaInicio}" required placeholder="$fechaInicio">
                                 <label th:text="#{nueva.reserva.fechaInicio}" for="fechaInicio">Fecha de Inicio</label>
                             </div>
                             <div class="row">
-                                <input type="text" class="timepicker" th:value="*{horaInicio}" th:field="*{horaInicio}" required placeholder="*{horaInicio}">
+                                <input type="text" class="timepicker" th:value="*{horaInicio}" th:field="*{horaInicio}" required placeholder="$horaInicio">
                                 <label th:text="#{nueva.reserva.horaIncio}" for="horaInicio">Hora de Inicio</label>
                             </div>
                         </div>
@@ -82,12 +90,12 @@
                                 <h5 th:text="#{nueva.reserva.tituloFinReserva}">Fin de reserva</h5>
                             </div>
                             <div class="row">
-                                <input type="text" class="datepicker" th:value="*{fechaFin}" th:field="*{fechaFin}" required placeholder="*{fechaFin}">
+                                <input type="text" class="datepicker" th:value="*{fechaFin}" th:field="*{fechaFin}" required placeholder="$fechaFin">
                                 <label th:text="#{nueva.reserva.fechaFin}" for="fechaFin">Fecha de Finalización</label>
                             </div>
                         </div>
                         <div class="row">
-                            <input type="text" class="timepicker" th:value="*{horaInicio}" th:field="*{horaInicio}" required placeholder="*{horaFin}">
+                            <input type="text" class="timepicker" th:value="*{horaFin}" th:field="*{horaFin}" required placeholder="$horaFin">
                             <label th:text="#{nueva.reserva.horaFin}" for="horaFin">Hora de Finalización</label>
                         </div>
                         <div class="section">
