@@ -30,4 +30,13 @@ public interface ReservaRepository extends JpaRepository<Reserva, Long> {
 
 	@Query("select distinct r from Reserva r where r.fechaInicial >= ?1 and r.fechaFinal <= ?2")
 	Iterable<Reserva> findAllByFechaInicialAndFechaFinalBetween(LocalDateTime fechaInicial, LocalDateTime fechaFinal);
+	
+	@Query("select distinct r from Reserva r where r.sala.id = ?1 and r.fechaInicial >= ?2 and r.fechaFinal <= ?3")
+	Iterable<Reserva> findBySalaIdAndFechaInicialAndFechaFinalBetween(Long salaId, LocalDateTime fechaInicial, LocalDateTime fechaFinal);
+	
+	@Query("select distinct r from Reserva r where r.sala.id = ?1 and ?2 < r.fechaInicial")
+	Iterable<Reserva> findBySalaIdAndFechaInicialLaterThanReserva(Long salaId, LocalDateTime fechaFinal);
+	
+	@Query("select distinct r from Reserva r where r.sala.id = ?1 and ?2 > r.fechaFinal")
+	Iterable<Reserva> findBySalaIdAndFechaFinalEarlierThanReserva(Long salaId, LocalDateTime fechaInicial);
 }

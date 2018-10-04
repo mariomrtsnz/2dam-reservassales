@@ -91,3 +91,27 @@
 			Salas</a>
 	</li>
 </ul>
+
+<script th:fragment="eliminadoExito" th:if="${eliminadoExito}">
+M.toast({html: 'Eliminado con éxito'})
+</script>
+
+<script th:fragment="editadoExito" th:if="${editadoExito}">
+M.toast({html: 'Editado con éxito'})
+</script>
+
+<script th:fragment="creadoExito" th:if="${creadoExito}">
+M.toast({html: 'Elemento creado con éxito'})
+</script>
+
+<script th:fragment="reservaExito" th:if="${reservaExito}">
+M.toast({html: 'Reserva realizada con éxito'})
+</script>
+
+<script th:fragment="errorSolapa" th:if="${errorSolapa}">
+M.toast({html: 'Error de solapamiento en las fechas'})
+</script>
+
+<script th:fragment="errorFecha" th:if="${errorFecha}">
+M.toast({html: 'La Fecha Inicial debe ser anterior a la Fecha Final'})
+</script>

@@ -64,6 +64,11 @@ public class ReservassalesianasCentenomartinezmarioApplication {
 //			usuario2.addReserva(reserva2);
 			
 //			System.out.println(usuario);
+			
+//			Iterable<Reserva> valores = reservaService.findBySalaIdAndFechaInicialAndFechaFinalBetween(sala1.getId(), reserva1.getFechaInicial(), reserva1.getFechaFinal());
+//			long size = valores.spliterator().getExactSizeIfKnown();
+//			System.out.println(size); // Resultado esperado: 1
+			
 		};
 	}
 }

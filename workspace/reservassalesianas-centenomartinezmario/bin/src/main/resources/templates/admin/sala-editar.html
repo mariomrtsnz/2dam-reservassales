@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <title>Editar Sala</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+        crossorigin="anonymous"></script>
+	<th:block th:replace="fragments/comun :: head"></th:block>
+	<link rel="stylesheet" type="text/css" media="screen" th:href="@{/styles/main.css}"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="../../css/reserva.css" th:href="@{/styles/reserva.css}"/>
+    <script src="../../js/nueva-reserva.js" th:src="@{/scripts/nueva-reserva.js}"></script>
+    <script src="../../js/index-admin.js" th:src="@{/scripts/index-admin.js}"></script>
+</head>
+
+<body>
+	<ul th:replace="fragments/comun :: index-dropdown"></ul>
+  	<nav th:replace="fragments/comun :: index-nav"></nav>
+  	<ul th:replace="fragments/comun :: sideBar"></ul>
+  	<div th:replace="fragments/comun :: modal-contacto"></div>
+  	<div th:replace="fragments/comun :: toggle-sideBar"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <h3 th:text="#{administrar.sala.aniadirSala}">Nueva Sala</h3>
+                <div class="divider"></div>
+            </div>
+        </div>
+        <form action="" th:object="${salaEditable}" th:action="@{/editarSala}" method="post">
+            <input type="hidden" required="required" name="id" th:field="*{id}" th:value="*{id}" readonly="readonly"/>
+            <div class="row">
+                <div class="col l4 s12">
+                    <div class="row">
+                        <img class="materialboxed responsive-img" width="650" src="https://materializecss.com/images/sample-1.jpg">
+                    </div>
+                    <div class="row hide-on-med-and-down">
+                        <button th:text="#{nueva.reserva.enviar}" class="btn waves-effect waves-light" type="submit" name="action">Enviar
+                            <i class="material-icons right">send</i>
+                        </button>
+                    </div>
+                </div>
+                <div class="col l8 s12">
+                    <div class="section form-fields">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input th:value="*{nombre}" th:field="*{nombre}" placeholder="$nombreSalaActual" id="name" type="text" class="validate" required>
+                                <label th:text="#{administrar.sala.nombre}" for="first_name">Nombre de la Sala</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <form action="#">
+                                <div class="file-field input-field">
+                                    <div class="btn">
+                                        <span>Archivo</span>
+                                        <input type="file">
+                                    </div>
+                                    <div class="file-path-wrapper">
+                                        <input class="file-path validate" type="text" placeholder="Suba una foto de la sala">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="row">
+                            <input type="number" th:value="*{aforoMax}" th:field="*{aforoMax}" class="validate" required placeholder="$aforoMax">
+                            <label th:text="#{administrar.sala.aforoMax}" for="fechaFin">Aforo Máximo</label>
+                        </div>
+                        <div class="section">
+                            <div class="row show-on-medium-and-down hide-on-large-only center-align">
+                                <button th:text="#{nueva.reserva.enviar}" class="btn waves-effect waves-light" type="submit" name="action">Enviar
+                                    <i class="material-icons right">send</i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

@@ -3,6 +3,7 @@ package salesianos.triana.dam.service;
 import java.time.LocalDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import salesianos.triana.dam.model.Reserva;
@@ -46,6 +47,31 @@ public class ReservaService {
 	public Iterable<Reserva> findAllByFechaInicialAndFechaFinalBetween(LocalDateTime fechaInicial,
 			LocalDateTime fechaFinal) {
 		return repositorio.findAllByFechaFinalBetween(fechaInicial, fechaFinal);
+	}
+	
+	public Iterable<Reserva> findBySalaIdAndFechaInicialAndFechaFinalBetween(Long salaId, LocalDateTime fechaInicial, LocalDateTime fechaFinal) {
+		return repositorio.findBySalaIdAndFechaInicialAndFechaFinalBetween(salaId, fechaInicial, fechaFinal);
+	}
+	
+	public boolean salaIdAndFechaInicialEarlierThanReserva(Long salaId, LocalDateTime fechaFinal) {
+		Iterable<Reserva> valores = repositorio.findBySalaIdAndFechaInicialLaterThanReserva(salaId, fechaFinal);
+		long size = valores.spliterator().getExactSizeIfKnown();
+		// Se setea en true porque devuelve si NO solapan.
+		boolean antesDeReserva = true;
+		if (size > 0) {
+			antesDeReserva = false;
+		}
+		return antesDeReserva;
+	}
+	
+	public boolean salaIdAndFechaInicialLaterThanReserva(Long salaId, LocalDateTime fechaInicial) {
+		Iterable<Reserva> valores = repositorio.findBySalaIdAndFechaFinalEarlierThanReserva(salaId, fechaInicial);
+		long size = valores.spliterator().getExactSizeIfKnown();
+		boolean despuesDeReserva = true;
+		if (size > 0) {
+			despuesDeReserva = false;
+		}
+		return despuesDeReserva;
 	}
 
 	public Iterable<Reserva> findBySala(Sala sala) {

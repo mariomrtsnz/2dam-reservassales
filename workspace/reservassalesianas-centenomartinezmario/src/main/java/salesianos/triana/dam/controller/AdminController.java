@@ -60,9 +60,10 @@ public class AdminController {
 
 	@PostMapping("/aniadirNuevoUsuario")
 	public String aniadirNuevoUsuario(@ModelAttribute("nuevoUsuario") Usuario nuevoUsuario, BindingResult bindingresult,
-			Model model) {
+			Model model, RedirectAttributes ra) {
 		usuarioService.save(new Usuario(nuevoUsuario.getEmail(), nuevoUsuario.getPass(), nuevoUsuario.getNombre(),
 				nuevoUsuario.getNumTlf(), nuevoUsuario.isEnabled()));
+		ra.addFlashAttribute("creadoExito", true);
 		return "redirect:/admin/lista-usuarios";
 	}
 
@@ -83,8 +84,9 @@ public class AdminController {
 
 	@PostMapping("/aniadirNuevaSala")
 	public String aniadirNuevaSala(@ModelAttribute("nuevaSala") Sala nuevaSala, BindingResult bindingresult,
-			Model model) {
+			Model model, RedirectAttributes ra) {
 		salaService.save(new Sala(nuevaSala.getNombre(), nuevaSala.getAforoMax()));
+		ra.addFlashAttribute("creadoExito", true);
 		return "redirect:/admin/lista-salas";
 	}
 
@@ -107,7 +109,7 @@ public class AdminController {
 	public String editarSala(@ModelAttribute("salaEditable") Sala salaEditable, Model model,
 			BindingResult bindingResult, RedirectAttributes ra, Principal principal) {
 		model.addAttribute("usuarioLogueado", usuarioService.findFirstByEmail(principal.getName()));
-		ra.addFlashAttribute("exitoEdit", true);
+		ra.addFlashAttribute("editadoExito", true);
 		salaService.edit(salaEditable);
 		return "redirect:/admin/lista-salas";
 	}
@@ -122,7 +124,7 @@ public class AdminController {
 	@PostMapping("/editarUsuario")
 	public String editarUsuario(@ModelAttribute("usuarioEditable") Usuario usuarioEditable, Model model, BindingResult bindingResult, RedirectAttributes ra, Principal principal) {
 		model.addAttribute("usuarioLogueado", usuarioService.findFirstByEmail(principal.getName()));
-		ra.addFlashAttribute("exitoEdit", true);
+		ra.addFlashAttribute("editadoExito", true);
 		usuarioService.edit(usuarioEditable);
 		return "redirect:/admin/lista-usuarios";
 	}
@@ -137,7 +139,7 @@ public class AdminController {
 	@PostMapping("/editarReserva")
 	public String editarReserva(@ModelAttribute("reservaEditable") Reserva reservaEditable, Model model, BindingResult bindingResult, RedirectAttributes ra, Principal principal) {
 		model.addAttribute("usuarioLogueado", usuarioService.findFirstByEmail(principal.getName()));
-		ra.addFlashAttribute("exitoEdit", true);
+		ra.addFlashAttribute("editadoExito", true);
 		reservaService.edit(reservaEditable);
 		return "redirect:/admin/calendario-general";
 	}

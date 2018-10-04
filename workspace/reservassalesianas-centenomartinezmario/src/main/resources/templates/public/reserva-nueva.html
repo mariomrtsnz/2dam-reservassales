@@ -57,7 +57,7 @@
                                     <option value="" disabled selected>Usuarios</option>
                                     <option th:each="usuario : ${usuarios}" th:text="${usuario.nombre}" th:value="${usuario.id}">{usuario.nombre}</option>
                                 </select>
-                                <label>Elige el usuario</label>
+                                <label th:text="#{nueva.reserva.eleccionUsuario}">Elige el usuario</label>
                             </div>
                         </div>
                         <div class="row">
@@ -110,6 +110,8 @@
             </div>
         </form>
     </div>
+    <script th:replace="fragments/comun :: errorSolapa"></script>
+    <script th:replace="fragments/comun :: errorFecha"></script>
 </body>
 
 </html>

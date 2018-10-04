@@ -1,7 +1,24 @@
-## 0.1.5b - 2018-10-04
+## 0.1.5c - 2018-10-04
 ### Añadido
--
+- Comprobación de nueva reserva de solapamiento (no completo funcional).
+- Comprobación de nueva reserva de fechaInicial menor que la fechaFinal (funcional).
+- Toast al Eliminar en usuarios-lista.html.
+- Toast al Editar en usuarios-lista.html.
+- Toast al Crear en usuarios-lista.html.
+- Toast al Eliminar en salas-lista.html.
+- Toast al Editar en salas-lista.html.
+- Toast al Crear en salas-lista.html.
+- Toast al Crear en admin-calendario.html.
+- Toast al Editar en admin-calendario.html.
+- Toast de error de solapamiento en nueva-reserva.html.
+- Toast de error de orden de fecha inicial y final en nueva-reserva.html.
 
+### Actualizado
+- Corregido i18n 'Elegir usuario' en formulario de Nueva Reserva desde Admin.
+- Corregido i18n 'Editar Usuario' en formulario de Editar Usuario desde Admin.
+- Corregido i18n 'Editar Sala' en formulario de Editar Sala desde Admin.
+
+## 0.1.5b - 2018-10-04
 ### Actualizado
 - Botón flotante con submenú en usuarios-lista.html y salas-lista.html ahora son dos columnas cada una con el icono y su función.
 

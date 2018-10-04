@@ -32,6 +32,9 @@
             <a class="btn-floating btn-large waves-effect waves-light red" href="../admin/reserva-nueva.html" th:href="@{/user/nueva-reserva}" sec:authorize="hasRole('USER')"><i class="material-icons">add</i></a>
         </div>
     </div>
+    <script th:replace="fragments/comun :: eliminadoExito"></script>
+    <script th:replace="fragments/comun :: editadoExito"></script>
+    <script th:replace="fragments/comun :: reservaExito"></script>
 </body>
 
 </html>

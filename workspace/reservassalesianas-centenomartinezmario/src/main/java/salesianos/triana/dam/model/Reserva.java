@@ -3,6 +3,7 @@ package salesianos.triana.dam.model;
 import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,7 +20,7 @@ public class Reserva {
 	private LocalDateTime fechaFinal;
 	@ManyToOne
 	private Usuario usuario;
-	@ManyToOne
+	@ManyToOne (fetch = FetchType.LAZY)
 	private Sala sala;
 
 	public Reserva() {};

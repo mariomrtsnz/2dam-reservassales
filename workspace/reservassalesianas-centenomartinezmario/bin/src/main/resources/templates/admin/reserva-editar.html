@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <title>Editar Reserva</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+        crossorigin="anonymous"></script>
+	<th:block th:replace="fragments/comun :: head"></th:block>
+    <link rel="stylesheet" type="text/css" media="screen" th:href="@{/styles/main.css}"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="../../css/reserva.css" th:href="@{/styles/reserva.css}"/>
+    <script src="../../js/nueva-reserva.js" th:src="@{/scripts/nueva-reserva.js}"></script>
+	<script src="../../js/index-admin.js" th:src="@{/scripts/index-admin.js}"></script>
+</head>
+
+<body>
+	<ul th:replace="fragments/comun :: index-dropdown"></ul>
+  	<nav th:replace="fragments/comun :: index-nav"></nav>
+  	<ul th:replace="fragments/comun :: sideBar"></ul>
+  	<div th:replace="fragments/comun :: modal-contacto"></div>
+  	<div th:replace="fragments/comun :: toggle-sideBar"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <h3 th:text="#{nueva.reserva.titulo}">Editar Reserva</h3>
+                <div class="divider"></div>
+            </div>
+        </div>
+        <form action="" th:object="${reservaEditable}" th:action="@{/editarReserva}" method="post">
+            <div class="row">
+                <div class="col l4 s12">
+                    <div class="row">
+                        <div class="card medium">
+                            <div class="card-image">
+                                <img src="https://materializecss.com/images/sample-1.jpg" alt="">
+                            </div>
+                            <div class="card-content center-align">
+                                <span class="card-title">$diaEnNumero</span>
+                                <span class="card-title">de</span>
+                                <span class="card-title">$mesEnLetra</span>
+                            </div>
+                            <div class="card-action center-align">
+                                <span class="card-title">$año</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row hide-on-med-and-down">
+                        <button th:text="#{nueva.reserva.enviar}" class="btn waves-effect waves-light" type="submit" name="action">Enviar
+                            <i class="material-icons right">send</i>
+                        </button>
+                    </div>
+                </div>
+                <div class="col l8 s12">
+                    <div class="section form-fields">
+	                    <div class="row" sec:authorize="hasRole('ADMIN')">
+                            <div class="input-field">
+                                <select class="icons" required th:field="${reservaEditable.usuarioId}">
+                                    <option value="" disabled selected>Usuarios</option>
+                                    <option th:each="usuario : ${usuarios}" th:text="${usuario.nombre}" th:value="${usuario.id}">{usuario.nombre}</option>
+                                </select>
+                                <label>Elige el usuario</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field">
+                                <select class="icons" required th:field="${reservaEdtiable.salaId}">
+                                    <option value="" disabled selected>Salas</option>
+                                    <option th:each="sala : ${salas}" th:text="${sala.nombre}" th:value="${sala.id}">{sala.nombre}</option>
+                                    <option value="" data-icon="https://materializecss.com/images/sample-1.jpg">Sala
+                                        1</option>
+                                </select>
+                                <label th:text="#{nueva.reserva.eleccionSala}">Elige la sala</label>
+                            </div>
+                        </div>
+                        <div class="section">
+                            <div class="row">
+                                <h5 th:text="#{nueva.reserva.tituloInicioReserva}">Inicio de reserva</h5>
+                            </div>
+                            <div class="row">
+                                <input type="text" class="datepicker" th:value="*{fechaInicio}" th:field="*{fechaInicio}" required placeholder="$fechaInicio">
+                                <label th:text="#{nueva.reserva.fechaInicio}" for="fechaInicio">Fecha de Inicio</label>
+                            </div>
+                            <div class="row">
+                                <input type="text" class="timepicker" th:value="*{horaInicio}" th:field="*{horaInicio}" required placeholder="$horaInicio">
+                                <label th:text="#{nueva.reserva.horaIncio}" for="horaInicio">Hora de Inicio</label>
+                            </div>
+                        </div>
+                        <div class="divider"></div>
+                        <div class="section">
+                            <div class="row">
+                                <h5 th:text="#{nueva.reserva.tituloFinReserva}">Fin de reserva</h5>
+                            </div>
+                            <div class="row">
+                                <input type="text" class="datepicker" th:value="*{fechaFin}" th:field="*{fechaFin}" required placeholder="$fechaFin">
+                                <label th:text="#{nueva.reserva.fechaFin}" for="fechaFin">Fecha de Finalización</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <input type="text" class="timepicker" th:value="*{horaFin}" th:field="*{horaFin}" required placeholder="$horaFin">
+                            <label th:text="#{nueva.reserva.horaFin}" for="horaFin">Hora de Finalización</label>
+                        </div>
+                        <div class="section">
+                            <div class="row show-on-medium-and-down hide-on-large-only center-align">
+                                <button th:text="#{nueva.reserva.enviar}" class="btn waves-effect waves-light" type="submit" name="action">Enviar
+                                    <i class="material-icons right">send</i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
