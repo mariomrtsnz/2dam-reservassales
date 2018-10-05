@@ -53,25 +53,48 @@ public class ReservaService {
 		return repositorio.findBySalaIdAndFechaInicialAndFechaFinalBetween(salaId, fechaInicial, fechaFinal);
 	}
 	
-	public boolean salaIdAndFechaInicialEarlierThanReserva(Long salaId, LocalDateTime fechaFinal) {
+	
+	public boolean salaIdAndFechaInicialLaterThanReserva(Long salaId, LocalDateTime fechaFinal) {
 		Iterable<Reserva> valores = repositorio.findBySalaIdAndFechaInicialLaterThanReserva(salaId, fechaFinal);
 		long size = valores.spliterator().getExactSizeIfKnown();
+		boolean despuesDeReserva = false;
+		if (size == 0) {
+			despuesDeReserva = true;
+		}
+		return despuesDeReserva;
+	}
+	
+	public boolean salaIdAndFechaFinalEarlierThanReserva(Long salaId, LocalDateTime fechaInicial) {
+		Iterable<Reserva> valores = repositorio.findBySalaIdAndFechaFinalEarlierThanReserva(salaId, fechaInicial);
+		long size = valores.spliterator().getExactSizeIfKnown();
 		// Se setea en true porque devuelve si NO solapan.
-		boolean antesDeReserva = true;
-		if (size > 0) {
-			antesDeReserva = false;
+		boolean antesDeReserva = false;
+		if (size == 0) {
+			antesDeReserva = true;
 		}
 		return antesDeReserva;
 	}
 	
-	public boolean salaIdAndFechaInicialLaterThanReserva(Long salaId, LocalDateTime fechaInicial) {
-		Iterable<Reserva> valores = repositorio.findBySalaIdAndFechaFinalEarlierThanReserva(salaId, fechaInicial);
+	public boolean salaIdAndFechaInicialEarlierThanReserva(Long salaId, LocalDateTime fechaInicial) {
+		Iterable<Reserva> valores = repositorio.findBySalaIdAndFechaInicialEarlierThanReserva(salaId, fechaInicial);
 		long size = valores.spliterator().getExactSizeIfKnown();
-		boolean despuesDeReserva = true;
-		if (size > 0) {
-			despuesDeReserva = false;
+		// Se setea en true porque devuelve si NO solapan.
+		boolean antesDeReserva = false;
+		if (size == 0) {
+			antesDeReserva = true;
 		}
-		return despuesDeReserva;
+		return antesDeReserva;
+	}
+	
+	public boolean salaIdAndFechaFinalLaterThanReserva(Long salaId, LocalDateTime fechaFinal) {
+		Iterable<Reserva> valores = repositorio.findBySalaIdAndFechaInicialEarlierThanReserva(salaId, fechaFinal);
+		long size = valores.spliterator().getExactSizeIfKnown();
+		// Se setea en true porque devuelve si NO solapan.
+		boolean antesDeReserva = false;
+		if (size == 0) {
+			antesDeReserva = true;
+		}
+		return antesDeReserva;
 	}
 
 	public Iterable<Reserva> findBySala(Sala sala) {

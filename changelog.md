@@ -1,3 +1,7 @@
+## 0.1.6b - 2018-10-05
+### Añadido
+- Variables de comparación de solapamiento en usuarioController.
+
 ## 0.1.6a - 2018-10-05
 ### Añadido
 - Variables para mejor comprensión en UserController.
