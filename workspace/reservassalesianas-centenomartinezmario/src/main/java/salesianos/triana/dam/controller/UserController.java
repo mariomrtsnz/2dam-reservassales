@@ -52,8 +52,9 @@ public class UserController {
 		Reserva reserva;
 		Long salaId = nuevaReserva.getSalaId();
 		boolean errorFecha = fechaInicial.isAfter(fechaFinal) || fechaFinal.isBefore(fechaInicial);
-		boolean solapan = reservaService.salaIdAndFechaInicialEarlierThanReserva(salaId, fechaFinal)
-				|| reservaService.salaIdAndFechaInicialLaterThanReserva(salaId, fechaInicial);
+		boolean earlierFechaInicialThanReserva = reservaService.salaIdAndFechaInicialEarlierThanReserva(salaId, fechaFinal);
+		boolean laterFechaInicialThanReserva = reservaService.salaIdAndFechaInicialLaterThanReserva(salaId, fechaInicial);
+		boolean solapan = earlierFechaInicialThanReserva || laterFechaInicialThanReserva;
 
 		if (errorFecha) {
 			ra.addFlashAttribute("errorFecha", true);

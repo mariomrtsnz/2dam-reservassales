@@ -1,3 +1,11 @@
+## 0.1.6a - 2018-10-05
+### Añadido
+- Variables para mejor comprensión en UserController.
+
+### Actualizado
+- Corregido paleta de colores en nuevo-usuario, nueva-sala, editar-usuario y editar-sala.
+- Corregido visibilidad de checkbox.
+
 ## 0.1.5c - 2018-10-04
 ### Añadido
 - Comprobación de nueva reserva de solapamiento (no completo funcional).
