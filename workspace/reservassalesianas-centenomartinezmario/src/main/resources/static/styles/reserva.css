@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Lobster');
 
+html{
+	background-color: #FBF9ED;
+}
+
 .card-title {
     font-family: 'Lobster';
 }
