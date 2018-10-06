@@ -1,3 +1,7 @@
+## 0.1.7a - 2018-10-06
+### Añadido
+- Finalizado solapamiento de fechas (funcional).
+
 ## 0.1.6b - 2018-10-05
 ### Añadido
 - Variables de comparación de solapamiento en usuarioController.

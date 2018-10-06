@@ -32,19 +32,16 @@ public interface ReservaRepository extends JpaRepository<Reserva, Long> {
 	Iterable<Reserva> findAllByFechaInicialAndFechaFinalBetween(LocalDateTime fechaInicial, LocalDateTime fechaFinal);
 	
 	@Query("select distinct r from Reserva r where r.sala.id = ?1 and r.fechaInicial >= ?2 and r.fechaFinal <= ?3")
-	Iterable<Reserva> findBySalaIdAndFechaInicialAndFechaFinalBetween(Long salaId, LocalDateTime fechaInicial, LocalDateTime fechaFinal);
+	Iterable<Reserva> findBySalaIdAndExistingBetweenReserva(Long salaId, LocalDateTime fechaInicial, LocalDateTime fechaFinal);
+	
+	@Query("select distinct r from Reserva r where r.sala.id = ?1 and ?2 >= r.fechaInicial and ?3 <= r.fechaFinal")
+	Iterable<Reserva> findBySalaIdAndReservaBetweenExisting(Long salaId, LocalDateTime fechaInicial, LocalDateTime fechaFinal);
 
-	@Query("select distinct r from Reserva r where r.sala.id = ?1 and ?2 < r.fechaInicial")
-	Iterable<Reserva> findBySalaIdAndFechaInicialLaterThanReserva(Long salaId, LocalDateTime fechaFinal);
+	@Query("select distinct r from Reserva r where r.sala.id = ?1 and ?2 < r.fechaInicial and ?3 < r.fechaInicial")
+	Iterable<Reserva> findBySalaIdAndReservaEarlierThanExisting(Long salaId, LocalDateTime fechaInicial, LocalDateTime fechaFinal);
 	
-	@Query("select distinct r from Reserva r where r.sala.id = ?1 and ?2 < r.fechaInicial")
-	Iterable<Reserva> findBySalaIdAndFechaInicialEarlierThanReserva(Long salaId, LocalDateTime fechaInicial);
-	
-	@Query("select distinct r from Reserva r where r.sala.id = ?1 and ?2 > r.fechaFinal")
-	Iterable<Reserva> findBySalaIdAndFechaFinalEarlierThanReserva(Long salaId, LocalDateTime fechaInicial);
-	
-	@Query("select distinct r from Reserva r where r.sala.id = ?1 and ?2 > r.fechaFinal")
-	Iterable<Reserva> findBySalaIdAndFechaFinalLaterThanReserva(Long salaId, LocalDateTime fechaFinal);
+	@Query("select distinct r from Reserva r where r.sala.id = ?1 and ?2 > r.fechaFinal and ?3 > r.fechaFinal")
+	Iterable<Reserva> findBySalaIdAndReservaLaterThanExisting(Long salaId, LocalDateTime fechaInicial, LocalDateTime fechaFinal);
 	
 	
 }

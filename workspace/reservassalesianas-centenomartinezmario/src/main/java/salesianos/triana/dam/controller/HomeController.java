@@ -1,10 +1,7 @@
 package salesianos.triana.dam.controller;
 
-import java.security.Principal;
-
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,9 +15,6 @@ import salesianos.triana.dam.service.UsuarioService;
 
 @Controller
 public class HomeController {
-
-	@Autowired
-	private HttpSession sesion;
 	
 	@Autowired
 	private UsuarioService usuarioService;
@@ -43,11 +37,10 @@ public class HomeController {
 		return "index";
 	}
 	
-	
-
 	@GetMapping("/home")
-	public String home(Model model, Principal principal) {
-		model.addAttribute("usuarioLogueado", usuarioService.findFirstByEmail(principal.getName()));
+	public String home(@AuthenticationPrincipal Usuario usuarioLogueado, Model model) {
+		model.addAttribute("usuarioLogueado", usuarioLogueado);
 		return "public/index-usuario";
 	}
+
 }

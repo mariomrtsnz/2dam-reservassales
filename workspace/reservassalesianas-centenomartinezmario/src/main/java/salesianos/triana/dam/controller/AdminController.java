@@ -3,6 +3,7 @@ package salesianos.triana.dam.controller;
 import java.security.Principal;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -32,29 +33,29 @@ public class AdminController {
 	private ReservaService reservaService;
 
 	@GetMapping("/admin/calendario-general")
-	public String AdministrarReservas(Model model, Principal principal) {
-		model.addAttribute("usuarioLogueado", usuarioService.findFirstByEmail(principal.getName()));
+	public String AdministrarReservas(Model model, @AuthenticationPrincipal Usuario usuarioLogueado) {
+		model.addAttribute("usuarioLogueado", usuarioLogueado);
 		return "admin/admin-calendario";
 	}
 
 	@GetMapping("/admin/lista-usuarios")
-	public String administrarUsuarios(Model model, Principal principal) {
-		model.addAttribute("usuarioLogueado", usuarioService.findFirstByEmail(principal.getName()));
+	public String administrarUsuarios(Model model, @AuthenticationPrincipal Usuario usuarioLogueado) {
+		model.addAttribute("usuarioLogueado", usuarioLogueado);
 		model.addAttribute("usuarios", usuarioService.findAll());
 		return "admin/usuarios-lista";
 	}
 
 	@GetMapping("/admin/lista-salas")
-	public String AdministrarReserva(Model model, Principal principal) {
-		model.addAttribute("usuarioLogueado", usuarioService.findFirstByEmail(principal.getName()));
+	public String AdministrarReserva(Model model, @AuthenticationPrincipal Usuario usuarioLogueado) {
+		model.addAttribute("usuarioLogueado", usuarioLogueado);
 		model.addAttribute("salas", salaService.findAll());
 		return "admin/salas-lista";
 	}
 
 	@GetMapping("/admin/nuevo-usuario")
-	public String crearUsuario(Model model, Principal principal) {
+	public String crearUsuario(Model model, @AuthenticationPrincipal Usuario usuarioLogueado) {
 		model.addAttribute("nuevoUsuario", new Usuario());
-		model.addAttribute("usuarioLogueado", usuarioService.findFirstByEmail(principal.getName()));
+		model.addAttribute("usuarioLogueado", usuarioLogueado);
 		return "admin/usuario-nuevo";
 	}
 
@@ -76,9 +77,9 @@ public class AdminController {
 	}
 
 	@GetMapping("/admin/nueva-sala")
-	public String crearSala(Model model, Principal principal) {
+	public String crearSala(Model model, @AuthenticationPrincipal Usuario usuarioLogueado) {
 		model.addAttribute("nuevaSala", new Sala());
-		model.addAttribute("usuarioLogueado", usuarioService.findFirstByEmail(principal.getName()));
+		model.addAttribute("usuarioLogueado", usuarioLogueado);
 		return "admin/sala-nueva";
 	}
 
@@ -99,8 +100,8 @@ public class AdminController {
 	}
 
 	@GetMapping("/admin/editar-sala/{id}")
-	public String irAEditarSala(@PathVariable("id") Long id, Model model, Principal principal) {
-		model.addAttribute("usuarioLogueado", usuarioService.findFirstByEmail(principal.getName()));
+	public String irAEditarSala(@PathVariable("id") Long id, Model model,@AuthenticationPrincipal Usuario usuarioLogueado) {
+		model.addAttribute("usuarioLogueado", usuarioLogueado);
 		model.addAttribute("salaEditable", salaService.findOneById(id));
 		return "admin/sala-editar";
 	}
@@ -115,8 +116,8 @@ public class AdminController {
 	}
 
 	@GetMapping("/admin/editar-usuario/{id}")
-	public String irAEditarUsuario(@PathVariable("id") Long id, Model model, Principal principal) {
-		model.addAttribute("usuarioLogueado", usuarioService.findFirstByEmail(principal.getName()));
+	public String irAEditarUsuario(@PathVariable("id") Long id, Model model, @AuthenticationPrincipal Usuario usuarioLogueado) {
+		model.addAttribute("usuarioLogueado", usuarioLogueado);
 		model.addAttribute("usuarioEditable", usuarioService.findOne(id));
 		return "admin/usuario-editar";
 	}
@@ -130,8 +131,8 @@ public class AdminController {
 	}
 
 	@GetMapping("/admin/editar-reserva/{id}")
-	public String irAEditarReserva(@PathVariable("id") Long id, Model model, Principal principal) {
-		model.addAttribute("usuarioLogueado", usuarioService.findFirstByEmail(principal.getName()));
+	public String irAEditarReserva(@PathVariable("id") Long id, Model model, @AuthenticationPrincipal Usuario usuarioLogueado) {
+		model.addAttribute("usuarioLogueado", usuarioLogueado);
 		model.addAttribute("reservaEditable", reservaService.findOne(id));
 		return "admin/reserva-editar";
 	}

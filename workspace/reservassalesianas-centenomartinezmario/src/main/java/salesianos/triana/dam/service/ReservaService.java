@@ -3,7 +3,6 @@ package salesianos.triana.dam.service;
 import java.time.LocalDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import salesianos.triana.dam.model.Reserva;
@@ -49,52 +48,44 @@ public class ReservaService {
 		return repositorio.findAllByFechaFinalBetween(fechaInicial, fechaFinal);
 	}
 	
-	public Iterable<Reserva> findBySalaIdAndFechaInicialAndFechaFinalBetween(Long salaId, LocalDateTime fechaInicial, LocalDateTime fechaFinal) {
-		return repositorio.findBySalaIdAndFechaInicialAndFechaFinalBetween(salaId, fechaInicial, fechaFinal);
+	public boolean findBySalaIdAndExistingBetweenReserva(Long salaId, LocalDateTime fechaInicial, LocalDateTime fechaFinal) {
+		Iterable<Reserva> valores = repositorio.findBySalaIdAndExistingBetweenReserva(salaId, fechaInicial, fechaFinal);
+		long size = valores.spliterator().getExactSizeIfKnown();
+		boolean existenteDuranteReserva = false;
+		if (size > 0) {
+			existenteDuranteReserva = true;
+		}
+		return existenteDuranteReserva;
 	}
 	
-	
-	public boolean salaIdAndFechaInicialLaterThanReserva(Long salaId, LocalDateTime fechaFinal) {
-		Iterable<Reserva> valores = repositorio.findBySalaIdAndFechaInicialLaterThanReserva(salaId, fechaFinal);
+	public boolean findBySalaIdAndReservaBetweenExisting(Long salaId, LocalDateTime fechaInicial, LocalDateTime fechaFinal) {
+		Iterable<Reserva> valores = repositorio.findBySalaIdAndReservaBetweenExisting(salaId, fechaInicial, fechaFinal);
 		long size = valores.spliterator().getExactSizeIfKnown();
-		boolean despuesDeReserva = false;
-		if (size == 0) {
-			despuesDeReserva = true;
+		boolean reservaDuranteExistente = false;
+		if (size > 0) {
+			reservaDuranteExistente = true;
 		}
-		return despuesDeReserva;
+		return reservaDuranteExistente;
 	}
 	
-	public boolean salaIdAndFechaFinalEarlierThanReserva(Long salaId, LocalDateTime fechaInicial) {
-		Iterable<Reserva> valores = repositorio.findBySalaIdAndFechaFinalEarlierThanReserva(salaId, fechaInicial);
+	public boolean salaIdAndReservaEarlierThanExisting(Long salaId, LocalDateTime fechaInicial, LocalDateTime fechaFinal) {
+		Iterable<Reserva> valores = repositorio.findBySalaIdAndReservaEarlierThanExisting(salaId, fechaInicial, fechaFinal);
 		long size = valores.spliterator().getExactSizeIfKnown();
-		// Se setea en true porque devuelve si NO solapan.
-		boolean antesDeReserva = false;
-		if (size == 0) {
-			antesDeReserva = true;
+		boolean reservaAntesDeExistentes = false;
+		if (size > 0) {
+			reservaAntesDeExistentes = true;
 		}
-		return antesDeReserva;
+		return reservaAntesDeExistentes;
 	}
 	
-	public boolean salaIdAndFechaInicialEarlierThanReserva(Long salaId, LocalDateTime fechaInicial) {
-		Iterable<Reserva> valores = repositorio.findBySalaIdAndFechaInicialEarlierThanReserva(salaId, fechaInicial);
+	public boolean salaIdAndReservaLaterThanExisting(Long salaId, LocalDateTime fechaInicial, LocalDateTime fechaFinal) {
+		Iterable<Reserva> valores = repositorio.findBySalaIdAndReservaLaterThanExisting(salaId, fechaInicial, fechaFinal);
 		long size = valores.spliterator().getExactSizeIfKnown();
-		// Se setea en true porque devuelve si NO solapan.
-		boolean antesDeReserva = false;
-		if (size == 0) {
-			antesDeReserva = true;
+		boolean reservaDespuesDeExistentes = false;
+		if (size > 0) {
+			reservaDespuesDeExistentes = true;
 		}
-		return antesDeReserva;
-	}
-	
-	public boolean salaIdAndFechaFinalLaterThanReserva(Long salaId, LocalDateTime fechaFinal) {
-		Iterable<Reserva> valores = repositorio.findBySalaIdAndFechaInicialEarlierThanReserva(salaId, fechaFinal);
-		long size = valores.spliterator().getExactSizeIfKnown();
-		// Se setea en true porque devuelve si NO solapan.
-		boolean antesDeReserva = false;
-		if (size == 0) {
-			antesDeReserva = true;
-		}
-		return antesDeReserva;
+		return reservaDespuesDeExistentes;
 	}
 
 	public Iterable<Reserva> findBySala(Sala sala) {
