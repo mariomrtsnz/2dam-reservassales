@@ -12,9 +12,11 @@ import org.springframework.context.annotation.Bean;
 
 import salesianos.triana.dam.model.Authorities;
 import salesianos.triana.dam.model.Reserva;
+import salesianos.triana.dam.model.ReservaEvento;
 import salesianos.triana.dam.model.Sala;
 import salesianos.triana.dam.model.Usuario;
 import salesianos.triana.dam.service.AuthoritiesService;
+import salesianos.triana.dam.service.ReservaEventoService;
 import salesianos.triana.dam.service.ReservaService;
 import salesianos.triana.dam.service.SalaService;
 import salesianos.triana.dam.service.UsuarioService;
@@ -28,7 +30,7 @@ public class ReservassalesianasCentenomartinezmarioApplication {
 
 	@Bean
 	public CommandLineRunner insertInitialData(UsuarioService usuarioService, AuthoritiesService authoritiesService,
-			SalaService salaService, ReservaService reservaService) {
+			SalaService salaService, ReservaService reservaService, ReservaEventoService eventoService) {
 		return args -> {
 			Usuario usuario = new Usuario("usuario@usuario.com",
 					"usuario", "Usuario", "111222333", true);
@@ -62,6 +64,11 @@ public class ReservassalesianasCentenomartinezmarioApplication {
 					LocalDateTime.of(LocalDate.of(2018, 12, 18), LocalTime.of(20, 00)), usuario2, sala2);
 			reservaService.save(reserva2);
 //			usuario2.addReserva(reserva2);
+			
+			LocalDateTime ahora = LocalDateTime.now().plusHours(1);
+			LocalDateTime luego = ahora.plusHours(1);
+			Reserva reserva3 = new Reserva(ahora, luego, usuario, sala1);
+			reservaService.save(reserva3);
 			
 //			System.out.println(usuario);
 			

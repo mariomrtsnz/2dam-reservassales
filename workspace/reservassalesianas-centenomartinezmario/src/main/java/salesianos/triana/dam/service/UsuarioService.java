@@ -21,6 +21,7 @@ public class UsuarioService implements UserDetailsService {
 	@Autowired
 	UsuarioRepository repositorio;
 	
+	@Autowired
 	AuthoritiesService authoritiesService;
 
 	@Autowired

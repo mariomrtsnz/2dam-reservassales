@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import salesianos.triana.dam.model.Reserva;
+import salesianos.triana.dam.model.ReservaEvento;
 import salesianos.triana.dam.model.Sala;
 import salesianos.triana.dam.model.Usuario;
 import salesianos.triana.dam.repository.ReservaRepository;
@@ -14,6 +15,9 @@ import salesianos.triana.dam.repository.ReservaRepository;
 public class ReservaService {
 	@Autowired
 	ReservaRepository repositorio;
+	
+	@Autowired
+	ReservaEventoService eventoService;
 
 	public Reserva findOne(Long id) {
 		return repositorio.findById(id).orElse(null);
@@ -28,6 +32,7 @@ public class ReservaService {
 	}
 
 	public Reserva save(Reserva entidad) {
+		eventoService.save(new ReservaEvento(entidad.getSala().getNombre(), entidad.getUsuario().getNombre(), entidad.getFechaInicial(), entidad.getFechaFinal()));
 		return repositorio.save(entidad);
 	}
 

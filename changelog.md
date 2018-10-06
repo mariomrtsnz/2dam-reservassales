@@ -1,3 +1,7 @@
+## 0.2.0a - 2018-10-06
+### Añadido
+- Ficheros necesarios para funcionamiento de Calendario (funcional).
+
 ## 0.1.7a - 2018-10-06
 ### Añadido
 - Finalizado solapamiento de fechas (funcional).

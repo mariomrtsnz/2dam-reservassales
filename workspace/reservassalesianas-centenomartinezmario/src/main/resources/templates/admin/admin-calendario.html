@@ -3,14 +3,12 @@
 
 <head>
     <title>Admin Calendario</title>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 	<th:block th:replace="fragments/comun :: head"></th:block>
 	<link rel="stylesheet" type="text/css" media="screen" th:href="@{/styles/main.css}"/>
 	<link rel="stylesheet" type="text/css" media="screen" href="../../resources/fullcalendar/fullcalendar.min.css" th:href="@{/styles/fullcalendar.min.css}"/>
 	<script src="../../js/index-admin.js" th:src="@{/scripts/index-admin.js}"></script>
     <script src="../../js/moment.js" th:src="@{/scripts/moment.js}"></script>
-    <script src="../../js/calendario.js" th:src="@{/scripts/calendario.js}"></script>
     <script src="../../resources/fullcalendar/fullcalendar.min.js" th:src="@{/scripts/fullcalendar.min.js}"></script>
     <script src="../../resources/fullcalendar/locale/es.js" th:src="@{/scripts/es.js}"></script>
 </head>
@@ -35,6 +33,7 @@
     <script th:replace="fragments/comun :: eliminadoExito"></script>
     <script th:replace="fragments/comun :: editadoExito"></script>
     <script th:replace="fragments/comun :: reservaExito"></script>
+    <script src="../../js/calendario.js" th:src="@{/scripts/calendario.js}"></script>
 </body>
 
 </html>
