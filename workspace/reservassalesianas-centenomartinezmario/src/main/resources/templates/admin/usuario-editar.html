@@ -65,7 +65,7 @@
                     <div class="section">
                         <div class="row">
                             <label>
-                                <input type="checkbox" class="filled-in" th:value="*{enabled}" th:field="*{enabled}"/>
+                                <input th:value="*{enabled}" th:field="*{enabled}" type="checkbox" class="filled-in"/>
                                 <span th:text="#{administrar.usuario.verficiar}">Activar Usuario</span>
                             </label>
                         </div>
@@ -81,6 +81,9 @@
             </div>
         </form>
     </div>
+    <script>
+	$('input[type=hidden]').remove();
+</script>
 </body>
 
 </html>

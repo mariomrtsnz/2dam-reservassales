@@ -42,5 +42,4 @@ public class HomeController {
 		model.addAttribute("usuarioLogueado", usuarioLogueado);
 		return "public/index-usuario";
 	}
-
 }
