@@ -1,3 +1,15 @@
+## 0.2.1a - 2018-10-06
+### Añadido
+- Imágenes de las 2 entidades creadas por defecto de las salas.
+- Botón para ir a registro y para volver a inicio de sesión.
+
+### Actualizado
+- z-index en el desplegable de usuario.
+- Visibilidad de botón de verificar usuario en editar-usuario.html.
+- Método save para asignar al usuario el rol de usuario automáticamente.
+- data.sql y schema.sql con tabla Event
+- Comentado CommandLineRunner
+
 ## 0.2.0a - 2018-10-06
 ### Añadido
 - Ficheros necesarios para funcionamiento de Calendario (funcional).
