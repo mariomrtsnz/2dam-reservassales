@@ -22,6 +22,10 @@ public class ReservaEventoService {
 		return repositorio.findAll();
 	}
 	
+	public List<ReservaEvento> findAllByDescription(String usuario) {
+		return repositorio.findByDescription(usuario);
+	}
+	
 //	public List<ReservaEvento> findByDatesBetween(LocalDateTime start, LocalDateTime end) {
 //		return repositorio.findByDatesBetween(start, end);
 //	}

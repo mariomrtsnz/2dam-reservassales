@@ -2,6 +2,7 @@ package salesianos.triana.dam.controller;
 
 import java.security.Principal;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -47,6 +48,8 @@ public class UserController {
 	public String aniadirNuevaReserva(@ModelAttribute("nuevaReserva") ReservaFormBean nuevaReserva,
 			BindingResult bindingResult, Model model, Principal principal, HttpServletRequest request,
 			RedirectAttributes ra) {
+		LocalTime horaInicioMinima = LocalTime.of(8, 00);
+		LocalTime horaFinMaxima = LocalTime.of(21, 00);
 		LocalDateTime fechaInicial = LocalDateTime.of(nuevaReserva.getFechaInicio(), nuevaReserva.getHoraInicio());
 		LocalDateTime fechaFinal = LocalDateTime.of(nuevaReserva.getFechaFin(), nuevaReserva.getHoraFin());
 		Usuario usuarioLogueado = usuarioService.findFirstByEmail(principal.getName());
@@ -60,9 +63,13 @@ public class UserController {
 		boolean existenteDuranteReserva = reservaService.findBySalaIdAndExistingBetweenReserva(salaId, fechaInicial,
 				fechaFinal);
 		boolean reservaDuranteExistente = reservaService.findBySalaIdAndReservaBetweenExisting(salaId, fechaInicial, fechaFinal);
+		boolean horaCorrecta = nuevaReserva.getHoraInicio().isAfter(horaInicioMinima) && nuevaReserva.getHoraFin().isBefore(horaFinMaxima);
 
 		if (errorFecha) {
 			ra.addFlashAttribute("errorFecha", true);
+			return "redirect:/user/nueva-reserva";
+		} else if(!horaCorrecta) {
+			ra.addFlashAttribute("errorHoras", true);
 			return "redirect:/user/nueva-reserva";
 		} else {
 			if ((reservaAntesDeExistentes && !existenteDuranteReserva && !reservaDuranteExistente)
@@ -94,7 +101,7 @@ public class UserController {
 	@GetMapping("/user/calendario-personal")
 	public String administrarReservas(Model model, @AuthenticationPrincipal Usuario usuarioLogueado) {
 		model.addAttribute("usuarioLogueado", usuarioLogueado);
-		return "/admin/admin-calendario";
+		return "/public/usuario-calendario";
 	}
 
 }

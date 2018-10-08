@@ -26,23 +26,37 @@
             </div>
         </div>
         <div class="row">
-	        <div class="col s12">
-		        <h3 th:text="#{nueva.reserva.titulo}">Nueva Reserva</h3>
-		        <a class="btn-floating btn-large waves-effect waves-light red" href="../admin/reserva-nueva.html" th:href="@{/admin/nueva-reserva}" sec:authorize="hasRole('ADMIN')"><i class="material-icons">add</i></a>
-	            <a class="btn-floating btn-large waves-effect waves-light red" href="../admin/reserva-nueva.html" th:href="@{/user/nueva-reserva}" sec:authorize="hasRole('USER')"><i class="material-icons">add</i></a>
-	        </div>
-        </div>
-        <div class="row" sec:authorize="hasRole('ADMIN')">
-        	<div class="col s12">
-        		<h3>Habilitar Fines de Semana</h3>
-            	<a class="btn-floating btn-large waves-effect waves-light red" th:href="@{/habilitarFinesDeSemana}"><i class="material-icons">add</i></a>
-        	</div>
+            <a class="btn-floating btn-large waves-effect waves-light red" href="../admin/reserva-nueva.html" th:href="@{/admin/nueva-reserva}" sec:authorize="hasRole('ADMIN')"><i class="material-icons">add</i></a>
+            <a class="btn-floating btn-large waves-effect waves-light red" href="../admin/reserva-nueva.html" th:href="@{/user/nueva-reserva}" sec:authorize="hasRole('USER')"><i class="material-icons">add</i></a>
         </div>
     </div>
     <script th:replace="fragments/comun :: eliminadoExito"></script>
     <script th:replace="fragments/comun :: editadoExito"></script>
     <script th:replace="fragments/comun :: reservaExito"></script>
-    <script src="../../js/calendario.js" th:src="@{/scripts/calendario.js}"></script>
+    <script>
+    $(document).ready(function () {
+        $('#calendar').fullCalendar({
+            editable: false,
+            defaultView: 'agendaWeek',
+            eventLimit: true,
+            header: {
+                left: '',
+                center: 'title',
+            },
+            minTime: '08:00:00',
+            maxTime: '22:00:00',
+            locale: 'es',
+            displayEventTime: true,
+            events: {
+            	url: '/userEvents',
+            	type: 'GET',
+            	error: function() {
+            		alert('Error al coger los eventos');
+            	},
+            }
+        });
+    });
+    </script>
 </body>
 
 </html>

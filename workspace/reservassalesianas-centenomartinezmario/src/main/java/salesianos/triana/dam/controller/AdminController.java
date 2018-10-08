@@ -31,6 +31,14 @@ public class AdminController {
 	
 	@Autowired
 	private ReservaService reservaService;
+	
+	private boolean finesDeSemana=false;
+	
+	@GetMapping("/habilitarFinesDeSemana")
+	public String habilitarFinesDeSemana() {
+		finesDeSemana = true;
+		return "redirect:/admin/calendario-general";
+	}
 
 	@GetMapping("/admin/calendario-general")
 	public String AdministrarReservas(Model model, @AuthenticationPrincipal Usuario usuarioLogueado) {

@@ -6,6 +6,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import salesianos.triana.dam.model.ReservaEvento;
+import salesianos.triana.dam.model.Usuario;
 import salesianos.triana.dam.service.ReservaEventoService;
 
 @RestController
@@ -25,18 +27,10 @@ public class EventoController {
 		return service.findAll();
 	}
 	
-//	@RequestMapping(value="/events", method=RequestMethod.GET)
-//	public List<ReservaEvento> getEventsInRange(@RequestParam(value = "start", required = true) String start, 
-//										@RequestParam(value = "end", required = true) String end) {
-//		LocalDateTime startDate = null;
-//		LocalDateTime endDate = null;
-//		DateTimeFormatter inputDateFormat=DateTimeFormatter.ofPattern("yyyy-MM-dd");
-//		
-//		startDate = LocalDateTime.parse(start, inputDateFormat);
-//		endDate = LocalDateTime.parse(end, inputDateFormat);
-//			
-//		return service.findByDatesBetween(startDate, endDate); 
-//	}
+	@RequestMapping(value="/userEvents", method=RequestMethod.GET)
+	public List<ReservaEvento> userEvents(@AuthenticationPrincipal Usuario usuarioLogueado) {
+		return service.findAllByDescription(usuarioLogueado.getNombre());
+	}
 	
 	@RequestMapping(value="/event", method=RequestMethod.POST)
 	public ReservaEvento addEvent(@RequestBody ReservaEvento evento) {

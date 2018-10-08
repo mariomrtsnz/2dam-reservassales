@@ -1,4 +1,14 @@
-## 0.2.1a - 2018-10-06
+## 0.2.1b - 2018-10-08
+### Añadido
+- Atributo imagen en clase modelo Sala.
+- Comprobación hora inicio de la cita dentro del mínimo y el máximo (con toast).
+
+### Actualizado
+- Calendario (fullcalendar) ahora muestra de 08:00 a 21:00 (mínimo y máximo establecido).
+- calendario.js ahora tiene por defecto deshabilitado los fines de semana.
+- calendario.js ahora muestra los Lunes como el primer día de la semana.
+
+## 0.2.1a - 2018-10-08
 ### Añadido
 - Imágenes de las 2 entidades creadas por defecto de las salas.
 - Botón para ir a registro y para volver a inicio de sesión.

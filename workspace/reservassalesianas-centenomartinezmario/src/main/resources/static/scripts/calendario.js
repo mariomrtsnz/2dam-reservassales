@@ -7,8 +7,8 @@ $(document).ready(function () {
             left: '',
             center: 'title',
         },
-//        minTime: '08:00:00',
-//        maxTime: '22:00:00',
+        minTime: '08:00:00',
+        maxTime: '22:00:00',
         locale: 'es',
         displayEventTime: true,
         events: {

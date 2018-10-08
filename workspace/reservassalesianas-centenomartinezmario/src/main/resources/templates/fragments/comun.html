@@ -115,3 +115,7 @@ M.toast({html: 'Error de solapamiento en las fechas'})
 <script th:fragment="errorFecha" th:if="${errorFecha}">
 M.toast({html: 'La Fecha Inicial debe ser anterior a la Fecha Final'})
 </script>
+
+<script th:fragment="errorHoras" th:if="${errorHoras}">
+M.toast({html: 'La Reserva debe ser posterior a las 08:00 y antes de las 21:00'})
+</script>

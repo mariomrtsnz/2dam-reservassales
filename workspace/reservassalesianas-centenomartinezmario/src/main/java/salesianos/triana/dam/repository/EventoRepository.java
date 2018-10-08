@@ -14,6 +14,7 @@ public interface EventoRepository extends JpaRepository<ReservaEvento, Long>{
 	List<ReservaEvento> findAll();
 	ReservaEvento save(ReservaEvento evento);
 	void delete(ReservaEvento evento);
+	List<ReservaEvento> findByDescription(String usuario);
 	
 //	@Query("select b from Event b " + "where b.start between ?1 and ?2 and b.end between ?1 and ?2")
 //	List<ReservaEvento> findByDatesBetween(LocalDateTime start, LocalDateTime end);
