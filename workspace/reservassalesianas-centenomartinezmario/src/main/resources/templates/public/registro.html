@@ -19,6 +19,10 @@
                     <h4 th:text="#{registro.titulo}" class="card-title center-align">Registro</h4>
                     <form th:action="@{/registroEnvio}" method="post" th:object="${registroUsuario}">
                         <div class="row">
+                        <a class="btn waves-effect waves-light" th:href="@{/login}">
+                            	<i class="material-icons">chevron_left</i>
+                            	Volver
+                            </a>
                             <div class="input-field col s12">
                                 <i class="material-icons prefix">account_circle</i>
                                 <input type="text" id="name" class="validate" required name="name" th:field="*{nombre}" th:value="*{nombre}"/>
