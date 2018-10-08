@@ -22,13 +22,15 @@ public class Sala {
 	private int aforoMax;
 	@OneToMany(mappedBy = "sala", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
 	Set<Reserva> reservas = new HashSet<Reserva>();
+	private String foto;
 
 	public Sala() {}
 	
-	public Sala(String nombre, int aforoMax) {
+	public Sala(String nombre, int aforoMax, String foto) {
 		super();
 		this.nombre = nombre;
 		this.aforoMax = aforoMax;
+		this.foto= foto;
 	}
 
 	public Long getId() {
@@ -62,10 +64,18 @@ public class Sala {
 	public void setReservas(Set<Reserva> reservas) {
 		this.reservas = reservas;
 	}
+	
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
 
 	@Override
 	public String toString() {
-		return "Sala [id=" + id + ", nombre=" + nombre + ", aforoMax=" + aforoMax + ", reservas=" + reservas + "]";
+		return "Sala [id=" + id + ", nombre=" + nombre + ", aforoMax=" + aforoMax + ", reservas=" + reservas + ", foto=" + foto + "]";
 	}
 
 	public void addReserva(Reserva r) {
