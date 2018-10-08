@@ -86,7 +86,7 @@ public class AdminController {
 	@PostMapping("/aniadirNuevaSala")
 	public String aniadirNuevaSala(@ModelAttribute("nuevaSala") Sala nuevaSala, BindingResult bindingresult,
 			Model model, RedirectAttributes ra) {
-		salaService.save(new Sala(nuevaSala.getNombre(), nuevaSala.getAforoMax()));
+		salaService.save(new Sala(nuevaSala.getNombre(), nuevaSala.getAforoMax(), nuevaSala.getFoto()));
 		ra.addFlashAttribute("creadoExito", true);
 		return "redirect:/admin/lista-salas";
 	}
