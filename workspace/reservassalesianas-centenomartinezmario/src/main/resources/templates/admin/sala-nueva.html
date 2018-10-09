@@ -41,7 +41,7 @@
                     <div class="section form-fields">
                         <div class="row">
                             <div class="input-field col s12">
-                                <input th:value="*{nombre}" th:field="*{nombre}" placeholder="$nombreSalaActual" id="name" type="text" class="validate" required>
+                                <input th:value="*{nombre}" th:field="*{nombre}" placeholder="Nombre de la Sala" id="name" type="text" class="validate" required>
                                 <label th:text="#{administrar.sala.nombre}" for="first_name">Nombre de la Sala</label>
                             </div>
                         </div>
@@ -59,7 +59,7 @@
                             </form>
                         </div>
                         <div class="row">
-                            <input type="number" th:value="*{aforoMax}" th:field="*{aforoMax}" class="validate" required placeholder="$aforoMax">
+                            <input type="number" th:value="*{aforoMax}" th:field="*{aforoMax}" class="validate" required placeholder="100">
                             <label th:text="#{administrar.sala.aforoMax}" for="fechaFin">Aforo Máximo</label>
                         </div>
                         <div class="section">

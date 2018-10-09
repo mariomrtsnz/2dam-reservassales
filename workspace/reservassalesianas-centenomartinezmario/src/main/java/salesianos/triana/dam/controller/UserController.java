@@ -3,6 +3,7 @@ package salesianos.triana.dam.controller;
 import java.security.Principal;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.temporal.ChronoUnit;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -43,6 +44,8 @@ public class UserController {
 		model.addAttribute("salas", salaService.findAll());
 		model.addAttribute("usuarios", usuarioService.findAll());
 		model.addAttribute("finesDeSemanaEstado", AdminController.isFinesDeSemana());
+		model.addAttribute("semanal", false);
+		model.addAttribute("numSemanas", 0);
 		return "public/reserva-nueva";
 	}
 
@@ -64,13 +67,15 @@ public class UserController {
 				fechaFinal);
 		boolean existenteDuranteReserva = reservaService.findBySalaIdAndExistingBetweenReserva(salaId, fechaInicial,
 				fechaFinal);
-		boolean reservaDuranteExistente = reservaService.findBySalaIdAndReservaBetweenExisting(salaId, fechaInicial, fechaFinal);
-		boolean horaCorrecta = nuevaReserva.getHoraInicio().isAfter(horaInicioMinima) && nuevaReserva.getHoraFin().isBefore(horaFinMaxima);
+		boolean reservaDuranteExistente = reservaService.findBySalaIdAndReservaBetweenExisting(salaId, fechaInicial,
+				fechaFinal);
+		boolean horaCorrecta = nuevaReserva.getHoraInicio().isAfter(horaInicioMinima)
+				&& nuevaReserva.getHoraFin().isBefore(horaFinMaxima);
 
 		if (errorFecha) {
 			ra.addFlashAttribute("errorFecha", true);
 			return "redirect:/user/nueva-reserva";
-		} else if(!horaCorrecta) {
+		} else if (!horaCorrecta) {
 			ra.addFlashAttribute("errorHoras", true);
 			return "redirect:/user/nueva-reserva";
 		} else {
@@ -83,7 +88,15 @@ public class UserController {
 					reserva = new Reserva(fechaInicial, fechaFinal, usuarioLogueado,
 							salaService.findOneById(nuevaReserva.getSalaId()));
 				}
-				reservaService.save(reserva);
+				if (nuevaReserva.isSemanal()) {
+					for (int i = 0; i < nuevaReserva.getNumSemanas(); i++) {
+						reservaService.save(new Reserva(reserva.getFechaInicial(), reserva.getFechaFinal(), reserva.getUsuario(), reserva.getSala()));
+						reserva.setFechaInicial(reserva.getFechaInicial().plus(1, ChronoUnit.WEEKS));
+						reserva.setFechaFinal(reserva.getFechaFinal().plus(1, ChronoUnit.WEEKS));
+					}
+				} else {
+					reservaService.save(reserva);
+				}
 				ra.addFlashAttribute("reservaExito", true);
 				ra.addFlashAttribute("estadoFinesDeSemana", AdminController.isFinesDeSemana());
 				return "redirect:/user/calendario-general";
@@ -93,9 +106,10 @@ public class UserController {
 			}
 		}
 	}
-	
+
 	@GetMapping("/user/eliminar-reserva/{id}")
-	public String eliminarReserva(@PathVariable("id") Long id, Model model, @AuthenticationPrincipal Usuario usuarioLogueado, RedirectAttributes ra) {
+	public String eliminarReserva(@PathVariable("id") Long id, Model model,
+			@AuthenticationPrincipal Usuario usuarioLogueado, RedirectAttributes ra) {
 		reservaService.remove(reservaService.findOne(id));
 		ra.addFlashAttribute("eliminadoExito", true);
 		ra.addFlashAttribute("estadoFinesDeSemana", AdminController.isFinesDeSemana());

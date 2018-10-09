@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+	<th:block th:replace="fragments/comun :: head"></th:block>
+    <title>Reservas Salesianas - Error</title>
+    <link rel="stylesheet" type="text/css" media="screen" th:href="@{/styles/main.css}"/>
+</head>
+
+<body>
+    <div class="background-image"></div>
+    <div class="title">
+        <h3 class="center-align">Reservas Salesianas</h3>
+    </div>
+    <div class="row">
+        <div class="col s12 l4 offset-l4">
+            <div class="card grey lighten-3">
+                <div class="card-content">
+                    <h4 th:text="#{home.error.titulo}" class="card-title center-align">Lo sentimos, ha habido un error</h4>
+                    <a th:text="#{home.error.inicio}" th:href="@{/}" class="btn waves-effect waves-light">Ir a Inicio</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

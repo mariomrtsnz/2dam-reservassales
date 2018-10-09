@@ -20,11 +20,12 @@ public class Reserva {
 	private LocalDateTime fechaFinal;
 	@ManyToOne
 	private Usuario usuario;
-	@ManyToOne (fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY)
 	private Sala sala;
 
-	public Reserva() {};
-	
+	public Reserva() {
+	};
+
 	public Reserva(LocalDateTime fechaInicial, LocalDateTime fechaFinal, Usuario usuario, Sala sala) {
 		this.fechaInicial = fechaInicial;
 		this.fechaFinal = fechaFinal;

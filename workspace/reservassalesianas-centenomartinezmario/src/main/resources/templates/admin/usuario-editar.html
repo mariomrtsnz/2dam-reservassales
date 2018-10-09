@@ -26,8 +26,8 @@
         </div>
         <div class="divider"></div>
         <form action="" th:object="${usuarioEditable}" th:action="@{/editarUsuario}" method="post">
-        <input type="hidden" required="required" name="id" th:field="*{id}" th:value="*{id}" readonly="readonly"/>
-        <input type="hidden" required="required" name="id" th:field="*{foto}" th:value="*{foto}" readonly="readonly"/>
+        <input required="required" name="id" th:field="*{id}" th:value="*{id}" readonly="readonly" class="hiddenInput"/>
+        <input required="required" name="foto" th:field="*{foto}" th:value="*{foto}" readonly="readonly" class="hiddenInput"/>
             <div class="row">
                 <div class="col s12">
                     <div class="section">
@@ -83,8 +83,11 @@
         </form>
     </div>
     <script>
-	$('input[type=hidden]').remove();
-</script>
+    	$(document).ready(function () {        
+			$('.hiddenInput').hide();
+    	});
+		$('input[type=hidden]').remove();
+	</script>
 </body>
 
 </html>

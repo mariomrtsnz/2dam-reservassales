@@ -73,6 +73,16 @@
                             <input type="text" class="timepicker" th:value="*{horaFin}" th:field="*{horaFin}" required placeholder="$horaFin">
                             <label th:text="#{nueva.reserva.horaFin}" for="horaFin">Hora de Finalización</label>
                         </div>
+                        <div class="row">
+                            <label>
+                                <input th:value="*{semanal}" th:field="*{semanal}" type="checkbox" class="filled-in"/>
+                                <span th:text="#{nueva.reserva.semanal}" id="repetirSemanal">Repetir Semanalmente</span>
+                            </label>
+                        </div>
+                        <div class="row" id="numSemanas">
+                            <input type="number" th:value="0" th:field="*{numSemanas}" class="validate" required placeholder="0">
+                            <label th:text="#{nueva.reserva.numSemanas}" for="">Número de Semanas a Repetir</label>
+                        </div>
                         <div class="section">
                             <div class="row center-align">
                                 <button th:text="#{nueva.reserva.enviar}" class="btn waves-effect waves-light" type="submit" name="action">Enviar
@@ -89,7 +99,9 @@
     <script th:replace="fragments/comun :: errorFecha"></script>
     <script th:replace="fragments/comun :: errorHoras"></script>  	 
     <script th:inline="javascript">
+		$('input[type=hidden]').remove();
 	    $(document).ready(function () {
+	    	$('#numSemanas').hide();
 	        $('select').formSelect();
 	        $('.datepicker').datepicker({
 	        	format: 'yyyy-mm-dd',
@@ -101,6 +113,9 @@
 	        	twelveHour: false
 	        });
 	        $('.materialboxed').materialbox();
+	        $('#repetirSemanal').click(function (e) { 	            
+	        	$('#numSemanas').toggle();
+	        });
 	    });
 	    var instance = M.Timepicker.getInstance(elem);
     </script>

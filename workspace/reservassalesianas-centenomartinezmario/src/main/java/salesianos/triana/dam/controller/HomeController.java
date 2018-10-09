@@ -1,6 +1,7 @@
 package salesianos.triana.dam.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,13 +9,14 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import salesianos.triana.dam.formbean.RegistroUsuario;
 import salesianos.triana.dam.model.Usuario;
 import salesianos.triana.dam.service.UsuarioService;
 
 @Controller
-public class HomeController {
+public class HomeController implements ErrorController{
 	
 	@Autowired
 	private UsuarioService usuarioService;
@@ -41,5 +43,15 @@ public class HomeController {
 	public String home(@AuthenticationPrincipal Usuario usuarioLogueado, Model model) {
 		model.addAttribute("usuarioLogueado", usuarioLogueado);
 		return "public/index-usuario";
+	}
+	
+	@RequestMapping("/error")
+	public String handleError() {
+		return "error";
+	}
+	
+	@Override
+	public String getErrorPath() {
+		return "/error";
 	}
 }

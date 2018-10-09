@@ -64,9 +64,6 @@
 									<option value="" disabled selected>Salas</option>
 									<option th:each="sala : ${salas}" th:text="${sala.nombre}"
 										th:value="${sala.id}" th:data-icon="@{${sala.foto}}">{sala.nombre}</option>
-									<option value=""
-										data-icon="https://materializecss.com/images/sample-1.jpg">Sala
-										1</option>
 								</select> <label th:text="#{nueva.reserva.eleccionSala}">Elige la
 									sala</label>
 							</div>

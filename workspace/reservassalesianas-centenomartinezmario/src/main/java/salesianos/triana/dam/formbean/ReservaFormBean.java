@@ -16,11 +16,14 @@ public class ReservaFormBean {
 	private LocalDate fechaFin;
 	private Long salaId;
 	private Long usuarioId;
-	
-	public ReservaFormBean() {}
+	private boolean semanal;
+	private int numSemanas;
+
+	public ReservaFormBean() {
+	}
 
 	public ReservaFormBean(LocalTime horaInicio, LocalDate fechaInicio, LocalTime horaFin, LocalDate fechaFin,
-			Long salaId, Long usuarioId) {
+			Long salaId, Long usuarioId, boolean semanal, int numSemanas) {
 		super();
 		this.horaInicio = horaInicio;
 		this.fechaInicio = fechaInicio;
@@ -28,6 +31,8 @@ public class ReservaFormBean {
 		this.fechaFin = fechaFin;
 		this.salaId = salaId;
 		this.usuarioId = usuarioId;
+		this.semanal = semanal;
+		this.numSemanas = numSemanas;
 	}
 
 	public LocalTime getHoraInicio() {
@@ -76,6 +81,22 @@ public class ReservaFormBean {
 
 	public void setUsuarioId(Long usuarioId) {
 		this.usuarioId = usuarioId;
+	}
+
+	public boolean isSemanal() {
+		return semanal;
+	}
+
+	public void setSemanal(boolean semanal) {
+		this.semanal = semanal;
+	}
+
+	public int getNumSemanas() {
+		return numSemanas;
+	}
+
+	public void setNumSemanas(int numSemanas) {
+		this.numSemanas = numSemanas;
 	}
 
 	@Override

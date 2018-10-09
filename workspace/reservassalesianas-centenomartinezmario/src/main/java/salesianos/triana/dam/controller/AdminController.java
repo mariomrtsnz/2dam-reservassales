@@ -162,7 +162,7 @@ public class AdminController {
 		LocalDate fechaInicio = LocalDate.of(reservaAEditar.getFechaInicial().getYear(), reservaAEditar.getFechaInicial().getMonth(), reservaAEditar.getFechaInicial().getDayOfMonth());
 		LocalTime horaFin = LocalTime.of(reservaAEditar.getFechaFinal().getHour(), reservaAEditar.getFechaFinal().getMinute());
 		LocalDate fechaFin = LocalDate.of(reservaAEditar.getFechaFinal().getYear(), reservaAEditar.getFechaFinal().getMonth(), reservaAEditar.getFechaFinal().getDayOfMonth());
-		ReservaFormBean reservaAEditarFormBean = new ReservaFormBean(horaInicio, fechaInicio, horaFin, fechaFin, reservaAEditar.getSala().getId(), reservaAEditar.getUsuario().getId());
+		ReservaFormBean reservaAEditarFormBean = new ReservaFormBean(horaInicio, fechaInicio, horaFin, fechaFin, reservaAEditar.getSala().getId(), reservaAEditar.getUsuario().getId(), false, 0);
 		model.addAttribute("reservaEditable", reservaAEditarFormBean);
 //		model.addAttribute("reservaEditable", reservaAEditar);
 //		model.addAttribute("horaInicio", horaInicio);
@@ -222,15 +222,6 @@ public class AdminController {
 			}
 		}
 	}
-
-//	@PostMapping("/editarReserva")
-//	public String editarReserva(@ModelAttribute("reservaEditable") Reserva reservaEditable, Model model,
-//			BindingResult bindingResult, RedirectAttributes ra, Principal principal) {
-//		model.addAttribute("usuarioLogueado", usuarioService.findFirstByEmail(principal.getName()));
-//		ra.addFlashAttribute("editadoExito", true);
-//		reservaService.edit(reservaEditable);
-//		return "redirect:/admin/calendario-general";
-//	}
 
 	public static boolean isFinesDeSemana() {
 		return finesDeSemana;

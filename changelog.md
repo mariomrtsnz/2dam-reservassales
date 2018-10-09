@@ -1,3 +1,12 @@
+## 0.9.9 - 2018-10-09
+### Añadido
+- Repetir Reserva en nueva-reserva (funcional).
+- Limitación de interacción entre usuario y calendario-general.
+- Página de error genérico y mappings para ella con internacionalización.
+
+### Actualizado
+- Problema al editar-usuario.
+
 ## 0.2.2b - 2018-10-09
 ### Añadido
 - Función en calendario.js para pinchar sobre una reserva y llevar a editar dicha reserva.

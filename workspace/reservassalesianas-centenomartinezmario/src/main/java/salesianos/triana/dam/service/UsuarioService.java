@@ -31,8 +31,10 @@ public class UsuarioService implements UserDetailsService {
 		usuario.setPass(passwordEncoder.encode(usuario.getPass()));
 //		Para asignarle ROLE_USER por defecto al usuario creado.
 		repositorio.save(usuario);
-		Authorities authorityUser = new Authorities("ROLE_USER", usuario);
-		authoritiesService.save(authorityUser);
+		if (usuario.getAuthorities().isEmpty()) {			
+			Authorities authorityUser = new Authorities("ROLE_USER", usuario);
+			authoritiesService.save(authorityUser);
+		}
 	}
 
 	public Usuario findOne(Long id) {
