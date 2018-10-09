@@ -37,6 +37,7 @@ public class Usuario implements UserDetails {
 	Set<Reserva> reservas = new HashSet<Reserva>();
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
 	private Set<Authorities> authorities = new HashSet<>();
+	private String foto;
 
 	public Usuario() {
 	};
@@ -52,6 +53,16 @@ public class Usuario implements UserDetails {
 		this.authorities = authorities;
 	}
 
+	public Usuario(String email, String pass, String nombre, String numTlf, boolean enabled, String foto) {
+		super();
+		this.email = email;
+		this.pass = pass;
+		this.nombre = nombre;
+		this.numTlf = numTlf;
+		this.enabled = enabled;
+		this.foto = foto;
+	}
+	
 	public Usuario(String email, String pass, String nombre, String numTlf, boolean enabled) {
 		super();
 		this.email = email;
@@ -109,6 +120,14 @@ public class Usuario implements UserDetails {
 		this.reservas = reservas;
 	}
 
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		// TODO Auto-generated method stub
@@ -122,7 +141,7 @@ public class Usuario implements UserDetails {
 	@Override
 	public String toString() {
 		return "Usuario [id=" + id + ", email=" + email + ", pass=" + pass + ", nombre=" + nombre + ", numTlf=" + numTlf
-				+ ", validado=" + enabled + ", reservas=" + reservas + ", authorities=" + authorities + "]";
+				+ ", validado=" + enabled + ", reservas=" + reservas + ", authorities=" + authorities + ", foto" + foto + "]";
 	}
 
 	@Override
