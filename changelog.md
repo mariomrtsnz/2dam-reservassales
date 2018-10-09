@@ -1,3 +1,20 @@
+## 0.2.2a - 2018-10-09
+### Añadido
+- Toast de éxito al cambiar el estado de activación de reservar los fines de semana.
+- Interruptor en admin-calendario.html para el Admin para modificar el estado de activación de reserva de los fines de semana (funcional).
+- Internacionalización de "Deshabilitar Fines de Semana".
+- Foto a la clase modelo Usuario.
+- Método de editar y de eliminar reserva (no funcional).
+
+### Actualizado
+- Foto de la sala en editar-sala.
+- Longitud del formulario de nueva-reserva y visualización del botón de Enviar.
+- Foto del usuario y en la base de datos (funcional).
+
+### Eliminado
+- Tarjeta en nueva-reserva.
+- "Sala 1" de ejemplo en el nueva-reserva.
+
 ## 0.2.1b - 2018-10-08
 ### Añadido
 - Atributo imagen en clase modelo Sala.

@@ -119,3 +119,7 @@ M.toast({html: 'La Fecha Inicial debe ser anterior a la Fecha Final'})
 <script th:fragment="errorHoras" th:if="${errorHoras}">
 M.toast({html: 'La Reserva debe ser posterior a las 08:00 y antes de las 21:00'})
 </script>
+
+<script th:fragment="exitoDeshabilitarFinesDeSemana" th:if="${exitoDeshabilitarFinesDeSemana}">
+M.toast({html: 'Éxito al modificar el estado de activación de los Fines de Semana.'})
+</script>

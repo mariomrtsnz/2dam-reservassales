@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -41,6 +42,7 @@ public class UserController {
 		model.addAttribute("usuarioLogueado", usuarioLogueado);
 		model.addAttribute("salas", salaService.findAll());
 		model.addAttribute("usuarios", usuarioService.findAll());
+		model.addAttribute("finesDeSemanaEstado", AdminController.isFinesDeSemana());
 		return "public/reserva-nueva";
 	}
 
@@ -89,7 +91,12 @@ public class UserController {
 				return "redirect:/user/nueva-reserva";
 			}
 		}
-
+	}
+	
+	@GetMapping("/user/eliminar-reserva/{id}")
+	public String eliminarReserva(@PathVariable("id") Long id, Model model, @AuthenticationPrincipal Usuario usuarioLogueado) {
+		reservaService.remove(reservaService.findOne(id));
+		return "redirect:/";
 	}
 
 	@GetMapping("/user/calendario-general")

@@ -34,14 +34,25 @@
         </div>
         <div class="row" sec:authorize="hasRole('ADMIN')">
         	<div class="col s12">
-        		<h3>Habilitar Fines de Semana</h3>
-            	<a class="btn-floating btn-large waves-effect waves-light red" th:href="@{/habilitarFinesDeSemana}"><i class="material-icons">add</i></a>
+        		<h3>Deshabilitar Fines de Semana</h3>
+				<!-- Switch -->
+				<div class="switch">
+				  <label>
+				  	<span th:if="${!estadoFinesDeSemana}">Off</span>
+				    <a th:if="${estadoFinesDeSemana}" th:href="@{/habilitarFinesDeSemana}">Off</a>
+				    <input disabled type="checkbox" th:checked="${estadoFinesDeSemana}">
+				    <span class="lever"></span>
+				    <span th:if="${estadoFinesDeSemana}">On</span>
+				    <a th:if="${!estadoFinesDeSemana}" th:href="@{/habilitarFinesDeSemana}">On</a>
+				  </label>
+				</div>        		
         	</div>
         </div>
     </div>
     <script th:replace="fragments/comun :: eliminadoExito"></script>
     <script th:replace="fragments/comun :: editadoExito"></script>
     <script th:replace="fragments/comun :: reservaExito"></script>
+    <script th:replace="fragments/comun :: exitoDeshabilitarFinesDeSemana"></script>
     <script src="../../js/calendario.js" th:src="@{/scripts/calendario.js}"></script>
 </body>
 

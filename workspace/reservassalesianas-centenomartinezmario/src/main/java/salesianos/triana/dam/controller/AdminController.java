@@ -1,6 +1,11 @@
 package salesianos.triana.dam.controller;
 
 import java.security.Principal;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -13,6 +18,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import salesianos.triana.dam.formbean.ReservaFormBean;
 import salesianos.triana.dam.model.Reserva;
 import salesianos.triana.dam.model.Sala;
 import salesianos.triana.dam.model.Usuario;
@@ -28,21 +34,27 @@ public class AdminController {
 
 	@Autowired
 	private SalaService salaService;
-	
+
 	@Autowired
 	private ReservaService reservaService;
-	
-	private boolean finesDeSemana=false;
-	
+
+	private static boolean finesDeSemana = true;
+
 	@GetMapping("/habilitarFinesDeSemana")
-	public String habilitarFinesDeSemana() {
-		finesDeSemana = true;
+	public String habilitarFinesDeSemana(RedirectAttributes ra) {
+		if (finesDeSemana)
+			setFinesDeSemana(false);
+		else
+			setFinesDeSemana(true);
+		
+		ra.addFlashAttribute("exitoDeshabilitarFinesDeSemana", true);
 		return "redirect:/admin/calendario-general";
 	}
 
 	@GetMapping("/admin/calendario-general")
 	public String AdministrarReservas(Model model, @AuthenticationPrincipal Usuario usuarioLogueado) {
 		model.addAttribute("usuarioLogueado", usuarioLogueado);
+		model.addAttribute("estadoFinesDeSemana", isFinesDeSemana());
 		return "admin/admin-calendario";
 	}
 
@@ -108,7 +120,8 @@ public class AdminController {
 	}
 
 	@GetMapping("/admin/editar-sala/{id}")
-	public String irAEditarSala(@PathVariable("id") Long id, Model model,@AuthenticationPrincipal Usuario usuarioLogueado) {
+	public String irAEditarSala(@PathVariable("id") Long id, Model model,
+			@AuthenticationPrincipal Usuario usuarioLogueado) {
 		model.addAttribute("usuarioLogueado", usuarioLogueado);
 		model.addAttribute("salaEditable", salaService.findOneById(id));
 		return "admin/sala-editar";
@@ -124,14 +137,16 @@ public class AdminController {
 	}
 
 	@GetMapping("/admin/editar-usuario/{id}")
-	public String irAEditarUsuario(@PathVariable("id") Long id, Model model, @AuthenticationPrincipal Usuario usuarioLogueado) {
+	public String irAEditarUsuario(@PathVariable("id") Long id, Model model,
+			@AuthenticationPrincipal Usuario usuarioLogueado) {
 		model.addAttribute("usuarioLogueado", usuarioLogueado);
 		model.addAttribute("usuarioEditable", usuarioService.findOne(id));
 		return "admin/usuario-editar";
 	}
 
 	@PostMapping("/editarUsuario")
-	public String editarUsuario(@ModelAttribute("usuarioEditable") Usuario usuarioEditable, Model model, BindingResult bindingResult, RedirectAttributes ra, Principal principal) {
+	public String editarUsuario(@ModelAttribute("usuarioEditable") Usuario usuarioEditable, Model model,
+			BindingResult bindingResult, RedirectAttributes ra, Principal principal) {
 		model.addAttribute("usuarioLogueado", usuarioService.findFirstByEmail(principal.getName()));
 		ra.addFlashAttribute("editadoExito", true);
 		usuarioService.edit(usuarioEditable);
@@ -139,18 +154,80 @@ public class AdminController {
 	}
 
 	@GetMapping("/admin/editar-reserva/{id}")
-	public String irAEditarReserva(@PathVariable("id") Long id, Model model, @AuthenticationPrincipal Usuario usuarioLogueado) {
+	public String irAEditarReserva(@PathVariable("id") Long id, Model model,
+			@AuthenticationPrincipal Usuario usuarioLogueado) {
 		model.addAttribute("usuarioLogueado", usuarioLogueado);
-		model.addAttribute("reservaEditable", reservaService.findOne(id));
+		Reserva reservaAEditar = reservaService.findOne(id);
+		LocalTime horaInicio = LocalTime.of(reservaAEditar.getFechaInicial().getHour(), reservaAEditar.getFechaInicial().getMinute());
+		LocalDate fechaInicio = LocalDate.of(reservaAEditar.getFechaInicial().getYear(), reservaAEditar.getFechaInicial().getMonth(), reservaAEditar.getFechaInicial().getDayOfMonth());
+		LocalTime horaFin = LocalTime.of(reservaAEditar.getFechaFinal().getHour(), reservaAEditar.getFechaFinal().getMinute());
+		LocalDate fechaFin = LocalDate.of(reservaAEditar.getFechaFinal().getYear(), reservaAEditar.getFechaFinal().getMonth(), reservaAEditar.getFechaFinal().getDayOfMonth());
+		ReservaFormBean reservaAEditarFormBean = new ReservaFormBean(horaInicio, fechaInicio, horaFin, fechaFin, reservaAEditar.getSala().getId(), reservaAEditar.getUsuario().getId());
+		model.addAttribute("reservaEditable", reservaAEditarFormBean);
 		return "admin/reserva-editar";
 	}
 	
 	@PostMapping("/editarReserva")
-	public String editarReserva(@ModelAttribute("reservaEditable") Reserva reservaEditable, Model model, BindingResult bindingResult, RedirectAttributes ra, Principal principal) {
-		model.addAttribute("usuarioLogueado", usuarioService.findFirstByEmail(principal.getName()));
-		ra.addFlashAttribute("editadoExito", true);
-		reservaService.edit(reservaEditable);
-		return "redirect:/admin/calendario-general";
+	public String editarReserva(@ModelAttribute("reservaEditable") ReservaFormBean reservaEditable, Model model,
+			BindingResult bindingResult, RedirectAttributes ra, Principal principal, HttpServletRequest request) {
+		LocalTime horaInicioMinima = LocalTime.of(8, 00);
+		LocalTime horaFinMaxima = LocalTime.of(21, 00);
+		LocalDateTime fechaInicial = LocalDateTime.of(reservaEditable.getFechaInicio(), reservaEditable.getHoraInicio());
+		LocalDateTime fechaFinal = LocalDateTime.of(reservaEditable.getFechaFin(), reservaEditable.getHoraFin());
+		Usuario usuarioLogueado = usuarioService.findFirstByEmail(principal.getName());
+		Reserva reserva;
+		Long salaId = reservaEditable.getSalaId();
+		boolean errorFecha = fechaInicial.isAfter(fechaFinal) || fechaFinal.isBefore(fechaInicial);
+		boolean reservaAntesDeExistentes = reservaService.salaIdAndReservaEarlierThanExisting(salaId, fechaInicial,
+				fechaFinal);
+		boolean reservaDespuesDeExistentes = reservaService.salaIdAndReservaLaterThanExisting(salaId, fechaInicial,
+				fechaFinal);
+		boolean existenteDuranteReserva = reservaService.findBySalaIdAndExistingBetweenReserva(salaId, fechaInicial,
+				fechaFinal);
+		boolean reservaDuranteExistente = reservaService.findBySalaIdAndReservaBetweenExisting(salaId, fechaInicial, fechaFinal);
+		boolean horaCorrecta = reservaEditable.getHoraInicio().isAfter(horaInicioMinima) && reservaEditable.getHoraFin().isBefore(horaFinMaxima);
+
+		if (errorFecha) {
+			ra.addFlashAttribute("errorFecha", true);
+			return "redirect:/user/nueva-reserva";
+		} else if(!horaCorrecta) {
+			ra.addFlashAttribute("errorHoras", true);
+			return "redirect:/user/nueva-reserva";
+		} else {
+			if ((reservaAntesDeExistentes && !existenteDuranteReserva && !reservaDuranteExistente)
+					|| (reservaDespuesDeExistentes && !existenteDuranteReserva && !reservaDuranteExistente)) {
+				if (request.isUserInRole("ROLE_ADMIN")) {
+					reserva = new Reserva(fechaInicial, fechaFinal, usuarioService.findOne(reservaEditable.getUsuarioId()),
+							salaService.findOneById(salaId));
+				} else {
+					reserva = new Reserva(fechaInicial, fechaFinal, usuarioLogueado,
+							salaService.findOneById(reservaEditable.getSalaId()));
+				}
+				reservaService.edit(reserva);
+				ra.addFlashAttribute("reservaExito", true);
+				return "redirect:/user/calendario-general";
+			} else {
+				ra.addFlashAttribute("errorSolapa", true);
+				return "redirect:/user/nueva-reserva";
+			}
+		}
+	}
+
+//	@PostMapping("/editarReserva")
+//	public String editarReserva(@ModelAttribute("reservaEditable") Reserva reservaEditable, Model model,
+//			BindingResult bindingResult, RedirectAttributes ra, Principal principal) {
+//		model.addAttribute("usuarioLogueado", usuarioService.findFirstByEmail(principal.getName()));
+//		ra.addFlashAttribute("editadoExito", true);
+//		reservaService.edit(reservaEditable);
+//		return "redirect:/admin/calendario-general";
+//	}
+
+	public static boolean isFinesDeSemana() {
+		return finesDeSemana;
+	}
+
+	public static void setFinesDeSemana(boolean finesDeSemana) {
+		AdminController.finesDeSemana = finesDeSemana;
 	}
 
 }

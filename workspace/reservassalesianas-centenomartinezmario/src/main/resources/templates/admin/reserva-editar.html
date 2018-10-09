@@ -8,7 +8,6 @@
 	<th:block th:replace="fragments/comun :: head"></th:block>
     <link rel="stylesheet" type="text/css" media="screen" th:href="@{/styles/main.css}"/>
     <link rel="stylesheet" type="text/css" media="screen" href="../../css/reserva.css" th:href="@{/styles/reserva.css}"/>
-    <script src="../../js/nueva-reserva.js" th:src="@{/scripts/nueva-reserva.js}"></script>
 	<script src="../../js/index-admin.js" th:src="@{/scripts/index-admin.js}"></script>
 </head>
 
@@ -112,6 +111,23 @@
     </div>
     <script th:replace="fragments/comun :: errorSolapa"></script>
     <script th:replace="fragments/comun :: errorFecha"></script>
+    <script th:replace="fragments/comun :: errorHoras"></script>  	 
+    <script th:inline="javascript">
+	    $(document).ready(function () {
+	        $('select').formSelect();
+	        $('.datepicker').datepicker({
+	        	format: 'yyyy-mm-dd',
+	        	disableWeekends: /*[[${finesDeSemanaEstado}]]*/ 'false',
+	        	firstDay: 1,
+	        	minDate: new Date(),
+	        });
+	        $('.timepicker').timepicker({
+	        	twelveHour: false
+	        });
+	        $('.materialboxed').materialbox();
+	    });
+	    var instance = M.Timepicker.getInstance(elem);
+    </script>
 </body>
 
 </html>
