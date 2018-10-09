@@ -34,7 +34,7 @@
         </div>
         <div class="row" sec:authorize="hasRole('ADMIN')">
         	<div class="col s12">
-        		<h3>Habilitar Fines de Semana</h3>
+        		<h3 th:text="#{reserva.deshabilitarFinSemana}">Habilitar Fines de Semana</h3>
             	<a class="btn-floating btn-large waves-effect waves-light red" th:href="@{/habilitarFinesDeSemana}"><i class="material-icons">add</i></a>
         	</div>
         </div>
