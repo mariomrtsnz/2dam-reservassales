@@ -1,3 +1,7 @@
+## 1.0.0 - 2018-10-09
+### Añadido
+- Editar reserva (funcional).
+
 ## 0.9.9 - 2018-10-09
 ### Añadido
 - Repetir Reserva en nueva-reserva (funcional).

@@ -45,7 +45,7 @@ public class ReservaService {
 	}
 
 	public void edit(Reserva entidad) {
-		eventoService.edit(eventoService.findOne(entidad.getId()));
+		remove(entidad);
 		save(entidad);
 	}
 
@@ -100,5 +100,9 @@ public class ReservaService {
 
 	public Iterable<Reserva> findByUsuario(Usuario usuario) {
 		return repositorio.findByUsuario(usuario);
+	}
+	
+	public Reserva findReservaByUsuarioAndSalaAndFechaInicialAndFechaFinal(Usuario usuario, Sala sala, LocalDateTime fechaInicial, LocalDateTime fechaFinal) {
+		return repositorio.findReservaByUsuarioAndSalaAndFechaInicialAndFechaFinal(usuario, sala, fechaInicial, fechaFinal);
 	}
 }

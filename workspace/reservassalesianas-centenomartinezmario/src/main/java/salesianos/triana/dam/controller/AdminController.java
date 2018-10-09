@@ -40,13 +40,15 @@ public class AdminController {
 
 	private static boolean finesDeSemana = true;
 
+	private Long reservaId;
+
 	@GetMapping("/habilitarFinesDeSemana")
 	public String habilitarFinesDeSemana(RedirectAttributes ra) {
 		if (finesDeSemana)
 			setFinesDeSemana(false);
 		else
 			setFinesDeSemana(true);
-		
+
 		ra.addFlashAttribute("exitoDeshabilitarFinesDeSemana", true);
 		return "redirect:/admin/calendario-general";
 	}
@@ -158,63 +160,65 @@ public class AdminController {
 			@AuthenticationPrincipal Usuario usuarioLogueado) {
 		model.addAttribute("usuarioLogueado", usuarioLogueado);
 		Reserva reservaAEditar = reservaService.findOne(id);
-		LocalTime horaInicio = LocalTime.of(reservaAEditar.getFechaInicial().getHour(), reservaAEditar.getFechaInicial().getMinute());
-		LocalDate fechaInicio = LocalDate.of(reservaAEditar.getFechaInicial().getYear(), reservaAEditar.getFechaInicial().getMonth(), reservaAEditar.getFechaInicial().getDayOfMonth());
-		LocalTime horaFin = LocalTime.of(reservaAEditar.getFechaFinal().getHour(), reservaAEditar.getFechaFinal().getMinute());
-		LocalDate fechaFin = LocalDate.of(reservaAEditar.getFechaFinal().getYear(), reservaAEditar.getFechaFinal().getMonth(), reservaAEditar.getFechaFinal().getDayOfMonth());
-		ReservaFormBean reservaAEditarFormBean = new ReservaFormBean(horaInicio, fechaInicio, horaFin, fechaFin, reservaAEditar.getSala().getId(), reservaAEditar.getUsuario().getId(), false, 0);
+		LocalTime horaInicio = LocalTime.of(reservaAEditar.getFechaInicial().getHour(),
+				reservaAEditar.getFechaInicial().getMinute());
+		LocalDate fechaInicio = LocalDate.of(reservaAEditar.getFechaInicial().getYear(),
+				reservaAEditar.getFechaInicial().getMonth(), reservaAEditar.getFechaInicial().getDayOfMonth());
+		LocalTime horaFin = LocalTime.of(reservaAEditar.getFechaFinal().getHour(),
+				reservaAEditar.getFechaFinal().getMinute());
+		LocalDate fechaFin = LocalDate.of(reservaAEditar.getFechaFinal().getYear(),
+				reservaAEditar.getFechaFinal().getMonth(), reservaAEditar.getFechaFinal().getDayOfMonth());
+		ReservaFormBean reservaAEditarFormBean = new ReservaFormBean(horaInicio, fechaInicio, horaFin, fechaFin,
+				reservaAEditar.getSala().getId(), reservaAEditar.getUsuario().getId(), false, 0);
 		model.addAttribute("reservaEditable", reservaAEditarFormBean);
-//		model.addAttribute("reservaEditable", reservaAEditar);
-//		model.addAttribute("horaInicio", horaInicio);
-//		model.addAttribute("fechaInicio", fechaInicio);
-//		model.addAttribute("horaFin", horaFin);
-//		model.addAttribute("fechaFin", fechaFin);
-		model.addAttribute("reservaId", reservaAEditar.getId());
+		setReservaId(id);
 		model.addAttribute("salas", salaService.findAll());
 		model.addAttribute("usuarios", usuarioService.findAll());
 		model.addAttribute("finesDeSemanaEstado", isFinesDeSemana());
 		model.addAttribute("fotoReservaEditable", reservaAEditar.getSala().getFoto());
 		return "admin/reserva-editar";
 	}
-	
+
 	@PostMapping("/editarReserva")
 	public String editarReserva(@ModelAttribute("reservaEditable") ReservaFormBean reservaEditable, Model model,
 			BindingResult bindingResult, RedirectAttributes ra, Principal principal, HttpServletRequest request) {
 		LocalTime horaInicioMinima = LocalTime.of(8, 00);
 		LocalTime horaFinMaxima = LocalTime.of(21, 00);
-		LocalDateTime fechaInicial = LocalDateTime.of(reservaEditable.getFechaInicio(), reservaEditable.getHoraInicio());
+		LocalDateTime fechaInicial = LocalDateTime.of(reservaEditable.getFechaInicio(),
+				reservaEditable.getHoraInicio());
 		LocalDateTime fechaFinal = LocalDateTime.of(reservaEditable.getFechaFin(), reservaEditable.getHoraFin());
 		Usuario usuarioLogueado = usuarioService.findFirstByEmail(principal.getName());
-		Reserva reserva;
 		Long salaId = reservaEditable.getSalaId();
+		Sala sala = salaService.findOneById(salaId);
 		boolean errorFecha = fechaInicial.isAfter(fechaFinal) || fechaFinal.isBefore(fechaInicial);
 		boolean reservaAntesDeExistentes = reservaService.salaIdAndReservaEarlierThanExisting(salaId, fechaInicial,
 				fechaFinal);
 		boolean reservaDespuesDeExistentes = reservaService.salaIdAndReservaLaterThanExisting(salaId, fechaInicial,
 				fechaFinal);
-		boolean existenteDuranteReserva = reservaService.findBySalaIdAndExistingBetweenReserva(salaId, fechaInicial,
+		boolean reservaDuranteExistente = reservaService.findBySalaIdAndReservaBetweenExisting(salaId, fechaInicial,
 				fechaFinal);
-		boolean reservaDuranteExistente = reservaService.findBySalaIdAndReservaBetweenExisting(salaId, fechaInicial, fechaFinal);
-		boolean horaCorrecta = reservaEditable.getHoraInicio().isAfter(horaInicioMinima) && reservaEditable.getHoraFin().isBefore(horaFinMaxima);
-
+		boolean horaCorrecta = reservaEditable.getHoraInicio().isAfter(horaInicioMinima)
+				&& reservaEditable.getHoraFin().isBefore(horaFinMaxima);
+		Reserva reserva = reservaService.findOne(reservaId);
+		reserva.setFechaInicial(fechaInicial);
+		reserva.setFechaFinal(fechaFinal);
+		reserva.setSala(sala);
+		reserva.setUsuario(usuarioService.findOne(reservaEditable.getUsuarioId()));
 		if (errorFecha) {
 			ra.addFlashAttribute("errorFecha", true);
 			return "redirect:/admin/editar-reserva/";
-		} else if(!horaCorrecta) {
+		} else if (!horaCorrecta) {
 			ra.addFlashAttribute("errorHoras", true);
 			return "redirect:/admin/editar-reserva/";
 		} else {
-			if ((reservaAntesDeExistentes && !existenteDuranteReserva && !reservaDuranteExistente)
-					|| (reservaDespuesDeExistentes && !existenteDuranteReserva && !reservaDuranteExistente)) {
-				if (request.isUserInRole("ROLE_ADMIN")) {
-					reserva = new Reserva(fechaInicial, fechaFinal, usuarioService.findOne(reservaEditable.getUsuarioId()),
-							salaService.findOneById(salaId));
-				} else {
-					reserva = new Reserva(fechaInicial, fechaFinal, usuarioLogueado,
-							salaService.findOneById(reservaEditable.getSalaId()));
+			if ((reservaAntesDeExistentes && !reservaDuranteExistente)
+					|| (reservaDespuesDeExistentes && !reservaDuranteExistente)) {
+				if (request.isUserInRole("ROLE_USER")) {
+					reserva.setUsuario(usuarioLogueado);
 				}
 				reservaService.edit(reserva);
 				ra.addFlashAttribute("reservaExito", true);
+				ra.addFlashAttribute("estadoFinesDeSemana", AdminController.isFinesDeSemana());
 				return "redirect:/user/calendario-general";
 			} else {
 				ra.addFlashAttribute("errorSolapa", true);
@@ -229,6 +233,14 @@ public class AdminController {
 
 	public static void setFinesDeSemana(boolean finesDeSemana) {
 		AdminController.finesDeSemana = finesDeSemana;
+	}
+
+	public Long getReservaId() {
+		return reservaId;
+	}
+
+	public void setReservaId(Long reservaId) {
+		this.reservaId = reservaId;
 	}
 
 }

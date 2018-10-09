@@ -43,5 +43,6 @@ public interface ReservaRepository extends JpaRepository<Reserva, Long> {
 	@Query("select distinct r from Reserva r where r.sala.id = ?1 and ?2 > r.fechaFinal and ?3 > r.fechaFinal")
 	Iterable<Reserva> findBySalaIdAndReservaLaterThanExisting(Long salaId, LocalDateTime fechaInicial, LocalDateTime fechaFinal);
 	
+	Reserva findReservaByUsuarioAndSalaAndFechaInicialAndFechaFinal(Usuario usuario, Sala sala, LocalDateTime fechaInicial, LocalDateTime fechaFinal);
 	
 }
