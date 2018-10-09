@@ -83,7 +83,7 @@ public class AdminController {
 	public String aniadirNuevoUsuario(@ModelAttribute("nuevoUsuario") Usuario nuevoUsuario, BindingResult bindingresult,
 			Model model, RedirectAttributes ra) {
 		usuarioService.save(new Usuario(nuevoUsuario.getEmail(), nuevoUsuario.getPass(), nuevoUsuario.getNombre(),
-				nuevoUsuario.getNumTlf(), nuevoUsuario.isEnabled()));
+				nuevoUsuario.getNumTlf(), nuevoUsuario.isEnabled(), nuevoUsuario.getFoto()));
 		ra.addFlashAttribute("creadoExito", true);
 		return "redirect:/admin/lista-usuarios";
 	}

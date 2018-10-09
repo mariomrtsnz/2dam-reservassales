@@ -61,7 +61,7 @@
 				<img src="https://materializecss.com/images/sample-1.jpg">
 			</div>
 			<a href="#user"><img class="circle"
-				src="../../resources/images/logosalesianos.png"></a> <a
+				th:src="@{${usuarioLogueado.foto}}"></a> <a
 				href="#name"><span class="white-text name" th:text="${usuarioLogueado.nombre}">$loggedUser.nombre</span></a>
 			<a href="#email"><span class="white-text email" th:text="${usuarioLogueado.email}">$loggedUser.email</span></a>
 		</div>

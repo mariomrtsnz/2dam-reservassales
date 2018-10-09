@@ -22,10 +22,10 @@ INSERT INTO PUBLIC.SALA(ID, AFOROMAX, NOMBRE, FOTO) VALUES
 (2, 300, STRINGDECODE('Sal\u00f3n de actos'), '/images/fotosSalas/salonDeActos.jpg');
 
 -- 3 +/- SELECT COUNT(*) FROM PUBLIC.USUARIO;
-INSERT INTO PUBLIC.USUARIO(ID, EMAIL, ENABLED, NOMBRE, NUM_TLF, PASS) VALUES
-(1, 'usuario@usuario.com', TRUE, 'Usuario', '111222333', '$2a$10$ZyGuUBE92Mz.FwAA99CWN..lECUtH4cdZyWe1cnwt1AKsS8sHHDma'),
-(2, 'usuario2@usuario2.com', FALSE, 'Usuario2', '777888999', '$2a$10$K7NOylS7GHNZ/dEvO8ac.un4dOfxlHIqysIMTKaZT9rqVmehMXmd.'),
-(3, 'admin@admin.com', TRUE, 'Admin', '444555666', '$2a$10$2nBr/5HOZt9Iq5DeDBIvG.td3BiMnzgKzn.AJIV/mzv9diBNi4Iee');
+INSERT INTO PUBLIC.USUARIO(ID, EMAIL, ENABLED, NOMBRE, NUM_TLF, PASS, FOTO) VALUES
+(1, 'usuario@usuario.com', TRUE, 'Usuario', '111222333', '$2a$10$ZyGuUBE92Mz.FwAA99CWN..lECUtH4cdZyWe1cnwt1AKsS8sHHDma', '/images/fotoPerfil/fotoPerfil.jpg'),
+(2, 'usuario2@usuario2.com', FALSE, 'Usuario2', '777888999', '$2a$10$K7NOylS7GHNZ/dEvO8ac.un4dOfxlHIqysIMTKaZT9rqVmehMXmd.', '/images/fotoPerfil/fotoPerfil.jpg'),
+(3, 'admin@admin.com', TRUE, 'Admin', '444555666', '$2a$10$2nBr/5HOZt9Iq5DeDBIvG.td3BiMnzgKzn.AJIV/mzv9diBNi4Iee', '/images/fotoPerfil/fotoPerfil.jpg');
 
 ALTER TABLE PUBLIC.USUARIO ADD CONSTRAINT PUBLIC.UK_4TDEHXJ7DH8GHFC68KBWBSBLL UNIQUE(EMAIL);
 ALTER TABLE PUBLIC.USUARIO ADD CONSTRAINT PUBLIC.UK_5NXBP92JYGM8O49SPMBREVXE1 UNIQUE(NUM_TLF);
