@@ -43,7 +43,7 @@ public class Usuario implements UserDetails {
 	};
 
 	public Usuario(String email, String pass, String nombre, String numTlf, boolean enabled,
-			Set<Authorities> authorities) {
+			Set<Authorities> authorities, String foto) {
 		super();
 		this.email = email;
 		this.pass = pass;
@@ -51,6 +51,7 @@ public class Usuario implements UserDetails {
 		this.numTlf = numTlf;
 		this.enabled = enabled;
 		this.authorities = authorities;
+		this.foto = foto;
 	}
 
 	public Usuario(String email, String pass, String nombre, String numTlf, boolean enabled, String foto) {

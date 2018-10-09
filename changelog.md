@@ -1,3 +1,15 @@
+## 0.2.2b - 2018-10-09
+### Añadido
+- Función en calendario.js para pinchar sobre una reserva y llevar a editar dicha reserva.
+- Función eliminar reserva (funcional).
+
+### Actualizado
+- Fichero admin-calendario.html con botón de Deshabilitar Fines de Semana corregido tras ultimo merge.
+- usuario-editar corregido problema causado por la foto de usuario.
+- sala-editar corregido problema causado por la foto de usuario.
+- Internacionalización de Editar Reserva.
+- Fullcalendar.min.css modificado para mostrar en modo cursor al hacer hover sobre una tarjeta de evento.
+
 ## 0.2.2a - 2018-10-09
 ### Añadido
 - Toast de éxito al cambiar el estado de activación de reservar los fines de semana.

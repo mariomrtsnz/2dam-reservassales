@@ -33,10 +33,10 @@ public class ReservassalesianasCentenomartinezmarioApplication {
 //			SalaService salaService, ReservaService reservaService, ReservaEventoService eventoService) {
 //		return args -> {
 //			Usuario usuario = new Usuario("usuario@usuario.com",
-//					"usuario", "Usuario", "111222333", true);
+//					"usuario", "Usuario", "111222333", true, "/images/fotoPerfil/fotoPerfil.jpg");
 //			usuarioService.save(usuario);
 //			Usuario usuario2 = new Usuario("usuario2@usuario2.com",
-//					"usuario2", "Usuario2", "777888999", false);
+//					"usuario2", "Usuario2", "777888999", false, "/images/fotoPerfil/fotoPerfil.jpg");
 //			usuarioService.save(usuario2);
 //			Usuario admin = new Usuario("admin@admin.com",
 //					"admin", "Admin", "444555666", true);
@@ -46,9 +46,9 @@ public class ReservassalesianasCentenomartinezmarioApplication {
 //			authoritiesService.save(authorityAdmin);
 //			
 //
-//			Sala sala1 = new Sala("Biblioteca", 150);
+//			Sala sala1 = new Sala("Biblioteca", 150, "/images/fotosSalas/biblioteca.jpg");
 //			salaService.save(sala1);
-//			Sala sala2 = new Sala("Salón de actos", 300);
+//			Sala sala2 = new Sala("Salón de actos", 300, "/images/fotosSalas/salonDeActos.jpg");
 //			salaService.save(sala2);
 //
 //			Reserva reserva1 = new Reserva(LocalDateTime.of(LocalDate.of(2018, 12, 30), LocalTime.of(10, 00)),

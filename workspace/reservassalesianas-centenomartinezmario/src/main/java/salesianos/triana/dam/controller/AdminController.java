@@ -164,6 +164,16 @@ public class AdminController {
 		LocalDate fechaFin = LocalDate.of(reservaAEditar.getFechaFinal().getYear(), reservaAEditar.getFechaFinal().getMonth(), reservaAEditar.getFechaFinal().getDayOfMonth());
 		ReservaFormBean reservaAEditarFormBean = new ReservaFormBean(horaInicio, fechaInicio, horaFin, fechaFin, reservaAEditar.getSala().getId(), reservaAEditar.getUsuario().getId());
 		model.addAttribute("reservaEditable", reservaAEditarFormBean);
+//		model.addAttribute("reservaEditable", reservaAEditar);
+//		model.addAttribute("horaInicio", horaInicio);
+//		model.addAttribute("fechaInicio", fechaInicio);
+//		model.addAttribute("horaFin", horaFin);
+//		model.addAttribute("fechaFin", fechaFin);
+		model.addAttribute("reservaId", reservaAEditar.getId());
+		model.addAttribute("salas", salaService.findAll());
+		model.addAttribute("usuarios", usuarioService.findAll());
+		model.addAttribute("finesDeSemanaEstado", isFinesDeSemana());
+		model.addAttribute("fotoReservaEditable", reservaAEditar.getSala().getFoto());
 		return "admin/reserva-editar";
 	}
 	
@@ -189,10 +199,10 @@ public class AdminController {
 
 		if (errorFecha) {
 			ra.addFlashAttribute("errorFecha", true);
-			return "redirect:/user/nueva-reserva";
+			return "redirect:/admin/editar-reserva/";
 		} else if(!horaCorrecta) {
 			ra.addFlashAttribute("errorHoras", true);
-			return "redirect:/user/nueva-reserva";
+			return "redirect:/admin/editar-reserva/";
 		} else {
 			if ((reservaAntesDeExistentes && !existenteDuranteReserva && !reservaDuranteExistente)
 					|| (reservaDespuesDeExistentes && !existenteDuranteReserva && !reservaDuranteExistente)) {

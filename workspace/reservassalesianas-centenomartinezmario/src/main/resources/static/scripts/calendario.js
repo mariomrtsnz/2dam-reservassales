@@ -17,6 +17,14 @@ $(document).ready(function () {
         	error: function() {
         		alert('Error al coger los eventos');
         	},
+        },
+        eventClick: function(event, element) {
+        	editEvent(event, element);
         }
     });
 });
+
+function editEvent(event, elements) {
+	window.location.href = `/admin/editar-reserva/${event.id}`;
+//	alert ("ID:" + event.id + "  EventStart  " + eventStart + "   " + eventEnd + "   " + event.end);
+}

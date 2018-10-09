@@ -22,6 +22,14 @@ public class ReservaEventoService {
 		return repositorio.findAll();
 	}
 	
+	public ReservaEvento findOne(Long id) {
+		return repositorio.findById(id).orElse(null);
+	}
+	
+	public void edit(ReservaEvento entidad) {
+		save(entidad);
+	}
+	
 	public List<ReservaEvento> findAllByDescription(String usuario) {
 		return repositorio.findByDescription(usuario);
 	}

@@ -85,6 +85,7 @@ public class UserController {
 				}
 				reservaService.save(reserva);
 				ra.addFlashAttribute("reservaExito", true);
+				ra.addFlashAttribute("estadoFinesDeSemana", AdminController.isFinesDeSemana());
 				return "redirect:/user/calendario-general";
 			} else {
 				ra.addFlashAttribute("errorSolapa", true);
@@ -94,9 +95,11 @@ public class UserController {
 	}
 	
 	@GetMapping("/user/eliminar-reserva/{id}")
-	public String eliminarReserva(@PathVariable("id") Long id, Model model, @AuthenticationPrincipal Usuario usuarioLogueado) {
+	public String eliminarReserva(@PathVariable("id") Long id, Model model, @AuthenticationPrincipal Usuario usuarioLogueado, RedirectAttributes ra) {
 		reservaService.remove(reservaService.findOne(id));
-		return "redirect:/";
+		ra.addFlashAttribute("eliminadoExito", true);
+		ra.addFlashAttribute("estadoFinesDeSemana", AdminController.isFinesDeSemana());
+		return "redirect:/user/calendario-general";
 	}
 
 	@GetMapping("/user/calendario-general")

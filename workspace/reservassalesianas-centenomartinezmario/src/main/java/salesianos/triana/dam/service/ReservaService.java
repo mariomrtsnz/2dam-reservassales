@@ -38,13 +38,14 @@ public class ReservaService {
 
 	public Reserva remove(Reserva entidad) {
 		Reserva reservaABorrar = findOne(entidad.getId());
+		eventoService.delete(eventoService.findOne(entidad.getId()));
 		if (reservaABorrar != null)
 			repositorio.delete(entidad);
 		return reservaABorrar;
 	}
 
 	public void edit(Reserva entidad) {
-		remove(entidad);
+		eventoService.edit(eventoService.findOne(entidad.getId()));
 		save(entidad);
 	}
 
